@@ -22,7 +22,7 @@ A website to read web novels, build with Spring and Thymeleaf
 
 **For writer**
 - Write new novels
-- Recieve notification when others post review to his/her own works.
+- Recieve notification when others post review to his/her own works
 - Create, modify, delete his/her own works.
 
 **For manager**
@@ -38,11 +38,11 @@ Diagram not yet implemented
 
 ## Security
 Using Spring Security with these flows:
-- OAuth2 with popular authentication provider (Google, Facebook, Twitter).
+- OAuth2 with popular authentication provider (Google, Facebook, Twitter)
 - Register/login with local account
 
 ## Requirements
-You need Java 16 installed,
+You need Java 16 installed.
 
 ## Demo
 Not yet implemented

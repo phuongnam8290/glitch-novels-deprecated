@@ -1,0 +1,626 @@
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(../font/proxima-nova/proxima_nova_alt_regular-webfont.woff2);
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(../font/proxima-nova/proxima_nova_alt_bold-webfont.woff2);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(../font/proxima-nova/proxima_nova_alt_light-webfont.woff2);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(../font/proxima-nova/proxima_nova_alt_regular_italic-webfont.woff2);
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(../font/proxima-nova/proxima_nova_alt_bold_italic-webfont.woff2);
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(../font/proxima-nova/proxima_nova_alt_light_italic-webfont.woff2);
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* ----------------------------------------------
+-----------------COMMON ELEMENTS-----------------
+---------------------------------------------- */ 
+
+/* Fix inconsistence height for form-control with appended button in Bootstrap 4.1.3 and later */
+.form-control.search-input {
+  height: auto !important;
+}
+
+html {
+  font-family: 'Proxima Nova', sans-serif;
+}
+
+body {
+  background:
+  linear-gradient(
+    rgba(12.5, 13.3, 13.3, 0.95), 
+    rgba(12.5, 13.3, 13.3, 0.95)
+  ), 
+  url(../images/background.png) 
+  fixed center/cover no-repeat;
+  height: 100%;
+  color: #EBE5DE;
+}
+
+.container-fluid {
+  padding: 0 0;
+}
+
+section.container-fluid {
+  padding: 3rem 4rem 0 4rem;
+  background: transparent;
+}
+
+.color-primary {
+  color: #EBE5DE
+}
+
+p {
+  word-spacing: 2px;
+  padding-right: 2px;
+}
+
+.title-text {
+  font-weight: bold;
+  font-size: 1.3rem; 
+}
+
+.paragraph-text {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.fader-text {
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+.paragraph-text p {
+  margin-top: 1rem;
+}
+
+.paragraph-text p:first-child {
+  margin-top: 0;
+}
+
+/* ----------------------------------------------
+Navigation bar
+---------------------------------------------- */ 
+.navbar {
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .7));
+}
+
+.navbar-brand {
+  width: 5em;
+}
+
+.nav-link {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  transition: color .5s;
+  color: #EBE5DE
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #70AED2
+}
+
+.line1,
+.line2,
+.line3 {
+  width: 23px;
+  height:3px;
+  margin: 5px;
+  transition: all .4s;
+}
+
+.change .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.change .line2 {
+  opacity: 0;
+}
+
+.change .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.search-input,
+.search-input:focus {
+  background-color: transparent;
+}
+
+.search-input {
+  width: 30rem;
+  border: 1px solid #EBE5DE;
+}
+
+@media (max-width: 1200px) {
+  .search-input {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .search-input {
+    width: 15rem;
+  }
+}
+
+.search-input:focus {
+  border: 1px solid #70AED2;
+  box-shadow: 0px 0px 2px #70AED2;
+}
+
+input.search-input[type="text"]::placeholder {
+  font-family: 'Proxima Nova', 'Font Awesome\ 5 Pro', sans-serif;
+  font-weight: bold;
+}
+/* ----------------------------------------------
+End of Navigation bar
+---------------------------------------------- */ 
+
+/* ----------------------------------------------
+Footer
+---------------------------------------------- */ 
+footer {
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .8));
+  padding: 0.7rem 3rem !important;
+}
+
+footer .logo img {
+  width: 35px;
+}
+
+footer .line {
+  width: 100%;
+  border-top: 1px solid #EBE5DE;
+}
+/* ----------------------------------------------
+End of footer
+---------------------------------------------- */ 
+
+/* ----------------------------------------------
+-------------END OF COMMON ELEMENTS--------------
+---------------------------------------------- */ 
+
+
+/* ----------------------------------------------
+----------------------INDEX----------------------
+---------------------------------------------- */ 
+/* ----------------------------------------------
+Banner section
+---------------------------------------------- */ 
+
+.banner .item {
+/* .owl-carousel .item { */
+  filter: grayscale(60%) brightness(40%) blur(2px);
+  transform: scale(1.02);
+  transition: 1s ease all;
+  background-size: cover;
+  height: 50vh;
+  width: 125vh;
+}
+
+.banner .title {
+  font-weight: 500;
+  position:absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 2rem;
+  width: 80%;
+  text-align: center;
+  text-shadow: 0px 0px 5px #000000;
+}
+
+@media (max-width: 992px) {
+  .owl-carousel .item {
+    height: 30vh;
+    width: 75vh;
+  }
+
+  .banner .title {
+    font-size: 1rem;
+  }
+}
+
+.center .item {
+  filter: none;
+}
+
+.banner .overlay-1 {
+  background-image: url(../images/banner/01.png);
+}
+
+.banner .overlay-2 {
+  background-image: url(../images/banner/02.png);
+}
+
+.banner .overlay-3 {
+  background-image: url(../images/banner/03.png);
+}
+
+.banner .overlay-4 {
+  background-image: url(../images/banner/04.png);
+}
+
+.banner .overlay-5 {
+  background-image: url(../images/banner/05.png);
+}
+
+.banner .overlay-6 {
+  background-image: url(../images/banner/06.png);
+}
+
+.banner .overlay-7 {
+  background-image: url(../images/banner/07.png);
+}
+
+.banner .overlay-8 {
+  background-image: url(../images/banner/08.png);
+}
+
+.banner .overlay-9 {
+  background-image: url(../images/banner/09.png);
+}
+
+.banner .overlay-10 {
+  background-image: url(../images/banner/10.png);
+}
+/* ----------------------------------------------
+End of banner section
+---------------------------------------------- */ 
+
+/* ----------------------------------------------
+Notable novels section
+---------------------------------------------- */ 
+.notable-novels {
+  padding-left: 0;
+  overflow: hidden;
+}
+
+/* Notable novels navigation tabs */
+.notable-novels .nav-tabs {
+  border-bottom: none !important;
+}
+
+.notable-novels .nav-link {
+  position: relative;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 1rem 1.5rem;
+  word-spacing: 2px;
+  border:none !important;
+}
+
+.notable-novels .nav-link.active {
+  background-color: transparent !important;
+  border: 1px solid #EBE5DE !important;
+  border-bottom: none !important;
+  color: #EBE5DE !important;
+}
+
+.notable-novels .nav-link.active:before {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 100%;
+  width: 100vw;
+  border-bottom: 1px solid #EBE5DE;
+}
+
+.notable-novels .nav-link.active:after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  right: 100%;
+  width: 1500px;
+  border-bottom: 1px solid #EBE5DE;
+}
+
+/* Notable novels item */
+.notable-novels .item {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  border: none;
+  padding: 2rem 1rem 2rem 1rem;
+}
+
+.notable-novels .item img {
+  width: 125px;
+  height: auto;
+}
+
+.notable-novels .item .synopsis {
+  height: 6rem;
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+/* Latest update novels */
+.notable-novels .item .new-chapter {
+  color: #EBE5DE;
+  margin-top: 1rem;
+}
+
+.notable-novels .item .new-chapter:hover {
+  text-decoration: none;
+  color: #70AED2;
+}
+
+.notable-novels .item .new-chapter .update-time {
+  font-style: italic;
+}
+
+/* Most popular novels */
+.notable-novels .item .info {
+  margin-top: 1rem;
+}
+
+/* New arrival novels */
+.notable-novels .item .genre a {
+  border: 1px solid #EBE5DE;
+  border-radius: 0%;
+  color: #EBE5DE;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  margin-left: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.notable-novels .item .genre a:hover {
+  border: 1px solid #70AED2;
+  color: #70AED2;
+}
+
+.notable-novels .item .long-synopsis {
+  height: 7rem;
+  -webkit-line-clamp: 4;
+}
+
+/* Random novel*/
+.random-novel .synopsis,
+.random-novel .info {
+  background: transparent;
+}
+
+.random-novel .header button{
+  background: transparent;
+  border: none;
+  padding: 1.5rem 0;
+  outline: none;
+  position: relative;
+}
+
+.random-novel .header button:hover,
+.random-novel .header button:hover:before,
+.random-novel .header button:hover::after {
+  color: #70AED2;
+  border-color: #70AED2;
+}
+
+.random-novel .header button:before {
+  position: absolute;
+  content: "";
+  right: 100%;
+  top: 50%;
+  width: 10vw;
+  border-bottom: 1px solid #EBE5DE;
+  margin-right: 1.2rem;
+}
+
+.random-novel .header button:after {
+  position: absolute;
+  content: "";
+  left: 100%;
+  top: 50%;
+  width: 10vw;
+  border-bottom: 1px solid #EBE5DE;
+  margin-left: 1.2rem;
+}
+
+.random-novel .info .content .row {
+  margin-top: .8rem;
+}
+
+.random-novel .info .content .row:first-child {
+  margin-top: 0;
+}
+
+.random-novel .info .content .col-5 {
+  font-weight: bold;
+}
+
+/* ----------------------------------------------
+End of notable novels section
+---------------------------------------------- */ 
+
+/* ----------------------------------------------
+Suggested curators section
+---------------------------------------------- */ 
+.curators .header {
+  overflow: hidden;
+}
+
+.curators .header p {
+  position: relative;
+}
+
+.curators .header p:before {
+  position: absolute;
+  content: "";
+  right: 100%;
+  top: 50%;
+  width: 50vw;
+  border-bottom: 1px solid #EBE5DE;
+  margin-right: 1.2rem;
+}
+
+.curators .header p:after {
+  position: absolute;
+  content: "";
+  left: 100%;
+  top: 50%;
+  width: 50vw;
+  border-bottom: 1px solid #EBE5DE;
+  margin-left: 1.2rem;
+}
+
+/* Curator's profile */
+.curator .avatar img {
+  width: 70px;
+  height: auto;
+}
+
+/* Active curator */
+.curator.active {
+  min-width: 15rem;
+}
+
+.curator.active .name .content {
+  white-space: nowrap;
+}
+
+.curator .follow a,
+.curator .followers-number p {
+  color: #EBE5DE;
+  border: 1px solid #EBE5DE;
+  padding: 0.2rem 1rem;
+}
+
+.curator .follow a {
+  transition-property: color, border;
+  transition-duration: .15s;
+  transition-timing-function: ease-in-out;
+}
+
+.curator .follow a:hover {
+  text-decoration: none;
+  color: #70AED2;
+  border: 1px solid #70AED2;
+}
+
+.curator.active .followers-number {
+  position: relative;
+  margin-left: 0.5rem;
+  overflow: hidden;
+  height: 2.1rem;
+  width: 0;
+}
+
+.curator.active .followers-number .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+/* Deactived curator list */
+.curator.deactive {
+  padding-left: 0.5rem;
+}
+
+.curator.deactive .info {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.curator.deactive .name,
+.curator.deactive .followers-number{
+  position: absolute;
+  white-space: nowrap;
+}
+
+.curator.deactive .name {
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.curator.deactive .followers-number {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 0.27rem;
+}
+
+.curator.deactive .followers-number .content,
+.curator.deactive .name .content{
+  display: inline-block;
+}
+
+/* Curator's review */
+.review {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  border: none;
+  padding: 1rem 0;
+}
+
+.review img {
+  width: 125px;
+  height: auto;
+}
+
+.review .title {
+  white-space: nowrap;
+  display: inline;
+}
+
+.review .stars {
+  padding-left: 1rem;
+  white-space: nowrap;
+}
+
+.review .viewport {
+  height: 9.3rem;
+  overflow: hidden;
+  cursor: grab;
+
+  /* Fading viewport to bottom - May not work on some browsers */
+  -webkit-mask-image: -webkit-gradient(linear, center top, center bottom, 
+			color-stop(0.70,  rgba(0,0,0,1)),
+			color-stop(1.00,  rgba(0,0,0,0)));
+  mask-image: -webkit-gradient(linear, center top, center bottom, 
+                               color-stop(0.70,  rgba(0,0,0,1)),
+                               color-stop(1.00,  rgba(0,0,0,0)));
+}
+
+/* ----------------------------------------------
+End of suggested curators section
+---------------------------------------------- */ 
+
+
+/* ----------------------------------------------
+-------------------END OF INDEX------------------
+---------------------------------------------- */ 
