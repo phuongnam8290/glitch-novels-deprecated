@@ -1,32 +1,32 @@
 
 # Glitch Novels
-A website to read web novels, build with Spring and Thymeleaf
+A website to read web novels, build with Spring and Vue.js
 
 ## Main functionalities
 
 **For unauthenticated users**
-- Read novel
+- Read novels
 - Search with multiple criteria (title, author name, country...)
-- View comment, review
+- View comments, reviews
 
 **For normal users**
 - Modify his/her own profile
 - Bookmark novels
 - Recieve notification when bookmarked novels have new update
-- Write comment
-- Interact with others comment, review 
+- Write comments
+- Interact with others comments, reviews
 
 **For curators** (User that have many reaction)
-- Write review
-- Create curator list that help other discover interesting novel
+- Write reviews
+- Create curator's list that help other discover interesting novels
 
 **For writer**
 - Write new novels
 - Recieve notification when others post review to his/her own works
-- Create, modify, delete his/her own works.
+- Create, modify, delete his/her own works
 
 **For manager**
-- Recommend novel (These novel'll appear in top banner)
+- Recommend novels (These novels'll appear in top banner)
 - Write news
 
 **For administrator**

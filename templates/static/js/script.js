@@ -93,11 +93,7 @@ $(document).ready(() => {
       viewport: document.querySelector(`.curators .review .viewport-${i}`),
       content: document.querySelector(`.curators .review .content-${i}`),
       scrollMode: 'transform',
-      direction: 'vertical',
-      bounce: false,
-      onUpdate: (state) => {
-        let copy = state;
-      }
+      direction: 'vertical'
     });
   } 
 
@@ -250,8 +246,7 @@ let toggleReviews = (name) => {
           viewport: $(viewport)[0],
           content: $(viewport).find('.content')[0],
           scrollMode: 'transform',
-          direction: 'vertical',
-          bounce: false
+          direction: 'vertical'
         });
       });
     });
