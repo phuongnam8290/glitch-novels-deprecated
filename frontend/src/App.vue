@@ -93,6 +93,11 @@ p {
   padding-right: 2px;
 }
 
+a:hover {
+  transition: all 0.3s ease-in-out;
+  color: #70AED2;;
+}
+
 .title-text {
   font-weight: bold;
   font-size: 1.3rem; 
