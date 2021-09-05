@@ -21,43 +21,37 @@ export default {
 <style>
 @font-face {
   font-family: "Proxima Nova";
-  /* src: url(../font/proxima-nova/proxima_nova_alt_regular-webfont.woff2); */
-  src: url(./assets/font/proxima-nova/proxima_nova_alt_regular-webfont.woff2);
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_regular-webfont.woff2);
 }
 
 @font-face {
   font-family: "Proxima Nova";
-  /* src: url(../font/proxima-nova/proxima_nova_alt_bold-webfont.woff2); */
-  src: url(./assets/font/proxima-nova/proxima_nova_alt_bold-webfont.woff2);
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_bold-webfont.woff2);
   font-weight: bold;
 }
 
 @font-face {
   font-family: "Proxima Nova";
-  /* src: url(../font/proxima-nova/proxima_nova_alt_light-webfont.woff2); */
-  src: url(./assets/font/proxima-nova/proxima_nova_alt_light-webfont.woff2);
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_light-webfont.woff2);
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Proxima Nova";
-  /* src: url(../font/proxima-nova/proxima_nova_alt_regular_italic-webfont.woff2); */
-  src: url(./assets/font/proxima-nova/proxima_nova_alt_regular_italic-webfont.woff2);
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_regular_italic-webfont.woff2);
   font-style: italic;
 }
 
 @font-face {
   font-family: "Proxima Nova";
-  /* src: url(../font/proxima-nova/proxima_nova_alt_bold_italic-webfont.woff2); */
-  src: url(./assets/font/proxima-nova/proxima_nova_alt_bold_italic-webfont.woff2);
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_bold_italic-webfont.woff2);
   font-weight: bold;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Proxima Nova";
-  /* src: url(../font/proxima-nova/proxima_nova_alt_light_italic-webfont.woff2); */
-  src: url(./assets/font/proxima-nova/proxima_nova_alt_light_italic-webfont.woff2);
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_light_italic-webfont.woff2);
   font-weight: 300;
   font-style: italic;
 }
@@ -75,7 +69,7 @@ body {
     rgba(12.5, 13.3, 13.3, 0.95), 
     rgba(12.5, 13.3, 13.3, 0.95)
   ), 
-  url(./assets/images/background.png) 
+  url(~@/assets/images/background.png) 
   fixed center/cover no-repeat;
   height: 100%;
   color: #EBE5DE;

@@ -1,11 +1,16 @@
 <template>
-  <div class="test">
-
-  </div>
+  <section>
+    <the-banner></the-banner>
+  </section>
 </template>
 
-<style scoped>
-  .test {
-    height: 100vh;
+<script>
+import TheBanner from "../components/index/TheBanner.vue"
+
+export default {
+  components: {
+    "the-banner": TheBanner
   }
-</style>
+}
+</script>
+

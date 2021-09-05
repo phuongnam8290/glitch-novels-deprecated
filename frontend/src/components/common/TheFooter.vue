@@ -1,13 +1,16 @@
 <template>
   <footer class="container-fluid sticky-bottom">
-    <div class="d-flex align-items-center">
+    <div class="align-items-center d-none d-sm-flex">
       <div class="logo">
-        <img src="../../assets/images/logo-small.png">
+        <img src="@/assets/images/logo-small.png">
       </div>
       <div class="line mx-4"></div>
       <div class="copyright text-nowrap">
         Copyright © 2012-2021 Glitch Network.
-      </div>
+      </div>     
+    </div>
+    <div class="d-block d-sm-none text-center">
+       © 2012-2021 Glitch Network
     </div>
   </footer>
 </template>

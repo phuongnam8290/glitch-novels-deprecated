@@ -5,7 +5,7 @@
       <!-- Brand -->
       <a href="/" class="navbar-brand ml-4">
         <!-- <img class="img-fluid" src="static/images/logo.png" /> -->
-        <img class="img-fluid" src="../../assets/images/logo.png" />
+        <img class="img-fluid" src="@/assets/images/logo.png" />
       </a>
 
       <!-- Toggle button -->
@@ -27,8 +27,8 @@
           <input type="text" class="form-control search-input" placeholder="&#xF002; Search anything"/>
         </form>
       </div>
-      
     </nav>
+    <div :style="{height: `${navbarHeight}px`}"></div>
   </header>
 </template>
 
@@ -36,10 +36,20 @@
 import $ from 'jquery'
 
 export default {
+  data() {
+    return{
+      navbarHeight: 0
+    };
+  },
   methods: {
     toggleAnimation() {
       $('.navbar-toggler').toggleClass('change');
     }
+  },
+  mounted() {
+    setTimeout(()=> {
+      this.navbarHeight = $('nav').outerHeight();
+    }, 10);
   }
 }
 </script>
