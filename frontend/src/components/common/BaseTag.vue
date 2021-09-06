@@ -1,0 +1,23 @@
+<template>
+  <a class="tag" style="cursor: pointer;">
+    <slot></slot>
+  </a>
+</template>
+
+<style scoped>
+.tag {
+  border: 1px solid #EBE5DE;
+  border-radius: 0%;
+  color: #EBE5DE;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tag:hover {
+  border: 1px solid #70AED2;
+  color: #70AED2;
+  text-decoration: none;
+}
+</style>

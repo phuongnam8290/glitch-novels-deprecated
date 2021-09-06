@@ -4,14 +4,18 @@
       <img :src="require(`@/assets/images/novel-list/${imgSrc}`)">
     </template>
 
-    <template v-slot:header>
-      <p class="title-text"> {{ title }} </p>
-      <p class="mt-1 fader-text"> {{ author }} </p>
+    <template v-slot:title>
+      {{ title }}
+    </template>
+    <template v-slot:subtitle>
+      {{ author }}
     </template>
 
     <template v-slot:content> 
-      <p class="mt-2 paragraph-text synopsis">
-        {{ synopsis }} 
+      <p v-for="paragraph in synopsis" :key="paragraph"
+         style="cursor:grab;"
+      >
+      {{ paragraph }}
       </p>
     </template>
 
@@ -44,6 +48,10 @@ export default {
 img {
   width: 125px;
   height: auto;
+}
+
+a {
+  cursor: pointer;
 }
 
 .synopsis {

@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { dragscrollNext} from "vue-dragscroll"
 import router from './router.js'
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,5 +13,6 @@ import App from './App.vue'
 const app = createApp(App);
 
 app.use(router);
+app.directive('dragscroll', dragscrollNext);
 
 app.mount('#app');
