@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import LatestNovelsTab from "@/components/index/LatestNovelsTab.vue"
-import PopularNovelsTab from "@/components/index/PopularNovelsTab.vue"
-import NewNovelsTab from "@/components/index/NewNovelsTab.vue"
+import LatestNovelsTab from "@/components/index/notable-novels/latest-novels/LatestNovelsTab.vue"
+import PopularNovelsTab from "@/components/index/notable-novels/popular-novels/PopularNovelsTab.vue"
+import NewNovelsTab from "@/components/index//notable-novels/new-novels/NewNovelsTab.vue"
 
 export default {
   components: { 

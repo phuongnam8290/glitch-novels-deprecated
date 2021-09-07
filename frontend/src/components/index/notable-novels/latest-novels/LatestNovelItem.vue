@@ -1,7 +1,7 @@
 <template>
   <base-card>
     <template v-slot:cover>
-      <img :src="require(`@/assets/images/novel-list/${imgSrc}`)">
+      <img :src="require(`@/assets/images/novel-list/${cover}`)">
     </template>
 
     <template v-slot:title>
@@ -40,7 +40,7 @@ export default {
   components: {
     "base-card": BaseCard
   },
-  props: ["imgSrc", "title", "author", "synopsis", "newestChapter", "updateTime"]
+  props: ["cover", "title", "author", "synopsis", "newestChapter", "updateTime"]
 }
 </script>
 

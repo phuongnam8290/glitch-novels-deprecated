@@ -2,7 +2,7 @@
   <div class="row">
     <new-novel-item v-for="i in 4"
         :key="i"
-        :imgSrc="imgSrc"
+        :cover="cover"
         :title="title"
         :author="author"
         :synopsis="synopsis"
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import NewNovelItem from '@/components/index/NewNovelItem.vue'
+import NewNovelItem from '@/components/index/notable-novels/new-novels/NewNovelItem.vue'
 
 export default {
   components: {
@@ -21,7 +21,7 @@ export default {
   }, 
   data() {
     return {
-      imgSrc: "01.png",
+      cover: "01.png",
       title: "Solo Leveling",
       author: "추공 (Chugong)",
       synopsis: [

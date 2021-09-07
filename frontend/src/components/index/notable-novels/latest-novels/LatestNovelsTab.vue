@@ -1,28 +1,28 @@
 <template>
   <div class="row">
-    <popular-novel-item v-for="i in 8"
-                    :key="i"
-                    :imgSrc="imgSrc"
-                    :title="title"
-                    :author="author"
-                    :synopsis="synopsis"
-                    :stars="stars"
-                    :publicationStatus="publicationStatus"
+    <latest-novel-item v-for="i in 8"
+                  :key="i"
+                  :cover="cover"
+                  :title="title"
+                  :author="author"
+                  :synopsis="synopsis"
+                  :newestChapter="newestChapter"
+                  :updateTime="updateTime"
     >
-    </popular-novel-item>
+    </latest-novel-item>
   </div>
 </template>
 
 <script>
-import PopularNovelItem from '@/components/index/PopularNovelItem.vue'
+import LatestNovelItem from '@/components/index/notable-novels/latest-novels/LatestNovelItem.vue'
 
 export default {
   components: {
-    "popular-novel-item": PopularNovelItem
+    "latest-novel-item": LatestNovelItem
   }, 
   data() {
     return {
-      imgSrc: "01.png",
+      cover: "01.png",
       title: "Solo Leveling",
       author: "추공 (Chugong)",
       synopsis: [
@@ -30,8 +30,8 @@ export default {
         "However, a mysterious System grants him the power of the ‘Player’, setting him on a course for an incredible and often times perilous Journey.",
         "Follow Sang Jin-Woo as he embarks on an adventure to become an unparalleled existence through his “Level-Up” system - the only one in the entire world!"
       ],
-      stars: 4.78,
-      publicationStatus: "428 Chapters (Ongoing)"
+      newestChapter: "Ch. 50",
+      updateTime: "30 minutes ago",
     }
   }
 }

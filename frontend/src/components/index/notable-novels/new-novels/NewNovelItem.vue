@@ -1,7 +1,7 @@
 <template>
   <base-card layoutStyle="col-12 fullwidth">
     <template v-slot:cover>
-      <img :src="require(`@/assets/images/novel-list/${imgSrc}`)">
+      <img :src="require(`@/assets/images/novel-list/${cover}`)">
     </template>
 
     <template v-slot:title>
@@ -40,7 +40,7 @@ export default {
     "base-card": BaseCard,
     "base-tag": BaseTag
   },
-  props: ["imgSrc", "title", "author", "synopsis", "genres"]
+  props: ["cover", "title", "author", "synopsis", "genres"]
 }
 </script>
 
