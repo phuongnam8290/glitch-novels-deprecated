@@ -1,35 +1,41 @@
 <template>
-  <ul class="d-flex align-items-start tabs">
-    <li :class="{active: activeTab == 'latest-novels-tab'}">
-      <div class="tab" @click="setActiveTab('latest-novels-tab')">
-        <span class="d-inline d-sm-inline d-md-none d-lg-inline pr-lg-2">
-          <i class="fas fa-clock"></i>
-        </span>
-        <span class="d-none d-md-inline">Latest Update</span>
-      </div>
-    </li>
-    <li :class="{active: activeTab == 'popular-novels-tab'}">
-      <div class="tab" @click="setActiveTab('popular-novels-tab')">
-        <span class="d-inline d-sm-inline d-md-none d-lg-inline pr-lg-2">
-          <i class="fas fa-fire"></i>
-        </span>
-        <span class="d-none d-md-inline">Most Popular</span>
-      </div>
-    </li>
-    <li :class="{active: activeTab == 'new-novels-tab'}">
-      <div class="tab" @click="setActiveTab('new-novels-tab')">
-        <span class="d-inline d-sm-inline d-md-none d-lg-inline pr-lg-2">
-          <i class="fas fa-sparkles"></i>
-        </span>
-        <span class="d-none d-md-inline">New Arrival</span>
-      </div>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col-12 pr-0">
+      <ul class="slider tab-bar bar-style-1 title-text">
+        <li @click="setActiveTab('latest-novels-tab')">
+          <span class="d-inline d-sm-inline d-md-none d-lg-inline pr-lg-2">
+            <i class="fas fa-clock"></i>
+          </span>
+          <span class="d-none d-md-inline">Latest Update</span>
+        </li>
+        <li @click="setActiveTab('popular-novels-tab')">
+          <span class="d-inline d-sm-inline d-md-none d-lg-inline pr-lg-2">
+            <i class="fas fa-fire"></i>
+          </span>
+          <span class="d-none d-md-inline">Most Popular</span>
+        </li>
+        <li @click="setActiveTab('new-novels-tab')">
+          <span class="d-inline d-sm-inline d-md-none d-lg-inline pr-lg-2">
+            <i class="fas fa-sparkles"></i>
+          </span>
+          <span class="d-none d-md-inline">New Arrival</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-  <component :is="activeTab"></component>
+  <transition enter-active-class="fadein"
+              leave-active-class="fadeout"
+              mode="out-in">
+    <component :is="activeTab"></component>
+  </transition>
+
+
 </template>
 
 <script>
+import $ from "jquery"
+import "@/assets/js/plugins/RegisterTabBar.js"
 import LatestNovelsTab from "@/components/index/notable-novels/latest-novels/LatestNovelsTab.vue"
 import PopularNovelsTab from "@/components/index/notable-novels/popular-novels/PopularNovelsTab.vue"
 import NewNovelsTab from "@/components/index//notable-novels/new-novels/NewNovelsTab.vue"
@@ -42,60 +48,66 @@ export default {
   },
   data() {
     return {
-      activeTab: "latest-novels-tab"
+      activeTab: "latest-novels-tab",
+      test: true
     }
   },
   methods: {
     setActiveTab(activeTab) {
       this.activeTab = activeTab;
     }
+  },
+  mounted() {
+    $(".slider").RegisterTabBar("slider1").find("li:first-child").click();
   }
 }
 </script>
 
 <style scoped>
-.tabs {
-  border-bottom: none !important;
-}
-
-.active .tab{
-  border: 1px solid #EBE5DE !important;
-  border-bottom: none !important;
-  border-radius: 0;
-  color: #EBE5DE !important;
-}
-
-.active .tab:before {
-  content: '';
-  position: absolute;
-  bottom: 0px;
-  left: 100%;
-  width: 100vw;
+ul.tab-bar,
+ul.tab-bar>li { 
+  position: relative; 
   border-bottom: 1px solid #EBE5DE;
 }
 
-.active .tab:after {
-  content: '';
-  position: absolute;
-  bottom: 0px;
-  right: 100%;
-  width: 1500px;
-  border-bottom: 1px solid #EBE5DE;
+ul.tab-bar.bar-style-1:before { 
+  background-color: #70AED2; 
+  margin-bottom: -2px;
 }
 
-.tab {
-  color: #EBE5DE;
-  position: relative;
-  font-size: 1.3rem;
-  font-weight: bold;
-  padding: 1rem 1.5rem;
-  border:none !important;
-  background: transparent;
+ul.tab-bar:before {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  height: 3px;
+  z-index: 1;
+}
+
+ul.tab-bar>li { 
+  list-style-type: none; 
+  border-width: 0; 
+}
+
+ul.tab-bar.bar-style-1>li.active { 
+  color: #70AED2; 
+  transition: color 0.5s;
+}
+
+li {
+  list-style-type: none;
+  display: inline-block;
+  border-width: 0;
+  padding-bottom: 1.5rem;
+  margin-right: 2rem;
+  background-color: transparent;
+  text-align: center;
   cursor: pointer;
+  transition: color 0.5s;
 }
 
-.tab:hover {
-  transition: all 0.3s ease-in-out;
-  color: #70AED2;;
+li:hover {
+  color: #70AED2;
 }
 </style>

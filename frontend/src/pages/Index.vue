@@ -32,10 +32,15 @@
       </div>
     </div>
 
-    <div class="row reviews" 
-         v-if="activeReviews.length > 0">
-      <reviews-list :reviews="activeReviews"></reviews-list>
-    </div>
+    <transition enter-active-class="fadein"
+                leave-active-class="fadeout"
+                mode="out-in">
+      <div class="row reviews"
+           :key="activeReviews"
+           v-if="activeReviews.length > 0">
+        <reviews-list :reviews="activeReviews"></reviews-list>
+      </div>
+    </transition>
   </section>
 </template>
 

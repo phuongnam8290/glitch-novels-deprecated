@@ -149,4 +149,14 @@ a:hover {
 .paragraph-text p:first-child {
   margin-top: 0;
 }
+
+.fadein {
+  animation: fadeIn;
+  animation-duration: .5s;
+}
+
+.fadeout {
+  animation: fadeOut;
+  animation-duration: .5s;
+}
 </style>

@@ -1,30 +1,34 @@
 <template>
   <!-- Active cutator infomation -->
-  <div class="d-flex overflow-hidden curator active">
-    <div class="avatar">
-      <img :src="require(`@/assets/images/avatars/${activeCurator.avatar}`)">
-    </div>
-    <div class="overflow-hidden ml-3 info">
-      <div class="overflow-hidden title-text username">
-        <p class="d-inline"> {{ activeCurator.username }} </p>
+  <transition enter-active-class="fadein"
+              leave-active-class="fadeout"
+              mode="out-in">
+    <div class="d-flex overflow-hidden curator active"
+         :key="activeCurator">
+      <div class="avatar">
+        <img :src="require(`@/assets/images/avatars/${activeCurator.avatar}`)">
       </div>
-      <div class="d-flex align-items-start mt-3 paragraph-text follow">
-        <a @mouseenter="slideRight('start')"
-           @mouseleave="slideRight('stop')">
-          Follow
-        </a>
-        <div class="d-inline-block followers">
-          <p class="d-inline-block"> {{ activeCurator.followers }} </p>
+      <div class="overflow-hidden ml-3 info">
+        <div class="overflow-hidden title-text username">
+          <p class="d-inline"> {{ activeCurator.username }} </p>
+        </div>
+        <div class="d-flex align-items-start mt-3 paragraph-text follow">
+          <a @mouseenter="slideRight('start')"
+            @mouseleave="slideRight('stop')">
+            Follow
+          </a>
+          <div class="d-inline-block followers">
+            <p class="d-inline-block"> {{ activeCurator.followers }} </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </transition>
   <!-- End of active cutator infomation -->
 
   
   <!-- Curators list section -->
   <div class="d-flex justify-content-end curators-list">
-    
     <div class="d-flex curator inactive"
         v-for="(curator, index) in inactiveCurators" :key="curator.id">
       <div class="mr-3 info">
@@ -36,7 +40,7 @@
         </div>
       </div>
       <div class="avatar"
-          @click="activateCurator(index)"
+          @click="activateCurator($event, index)"
           @mouseenter="slideLeft($event, 'start')"
           @mouseleave="slideLeft($event, 'stop')">
         <img :src="require(`@/assets/images/avatars/${curator.avatar}`)">
@@ -174,16 +178,22 @@ export default {
     }
   },
   methods: {
-    activateCurator(inactiveCuratorIndex) {      
+    activateCurator(event, inactiveCuratorIndex) {      
+      let container = $(event.currentTarget).parent();
+      let info = container.find('.info');
+      info.stop().animate({width: '-1.5rem'}, 500);
+
       //Map index from sliced array (inactiveCurators) to original array 
       let originalIndex = inactiveCuratorIndex + 1;
       
       // Swap array's elements
       let temp = this.curators[0];
       this.curators[0] = this.curators[originalIndex];
-      this.curators[originalIndex] = temp;
 
-      // Disable inactive curator slide after clicked
+      container.fadeOut(500, () => {       
+        this.curators[originalIndex] = temp;
+      })
+
       this.shouldSlideLeft = false;
       
       this.emitChangeActiveReviews();
@@ -258,6 +268,7 @@ export default {
           let scrollDistance = textWidth - containertWidth;
           let scrollDuration = scrollDistance * 30;
 
+          container.stop().animate({scrollLeft: 0});
           this.timeoutId = setTimeout(() => {
             container.animate({scrollLeft: scrollDistance}, scrollDuration)
                      .animate({scrollLeft: 0}, scrollDuration);
