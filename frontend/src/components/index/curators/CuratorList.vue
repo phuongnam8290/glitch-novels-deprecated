@@ -2,19 +2,19 @@
   <!-- Active cutator infomation -->
   <div class="d-flex overflow-hidden curator active">
     <div class="avatar">
-      <img :src="require(`@/assets/images/avatars/${curators[0].avatar}`)">
+      <img :src="require(`@/assets/images/avatars/${activeCurator.avatar}`)">
     </div>
     <div class="overflow-hidden ml-3 info">
       <div class="overflow-hidden title-text username">
-        <p class="d-inline"> {{ curators[0].username }} </p>
+        <p class="d-inline"> {{ activeCurator.username }} </p>
       </div>
       <div class="d-flex align-items-start mt-3 paragraph-text follow">
         <a @mouseenter="slideRight('start')"
-          @mouseleave="slideRight('stop')">
+           @mouseleave="slideRight('stop')">
           Follow
         </a>
         <div class="d-inline-block followers">
-          <p class="d-inline-block"> {{ curators[0].followers }} </p>
+          <p class="d-inline-block"> {{ activeCurator.followers }} </p>
         </div>
       </div>
     </div>
@@ -26,10 +26,7 @@
   <div class="d-flex justify-content-end curators-list">
     
     <div class="d-flex curator inactive"
-        v-for="(curator, index) in curators.slice(1)" :key="curator.id"
-        @click="activateCurator(index)"
-        @mouseenter="slideLeft($event, 'start')"
-        @mouseleave="slideLeft($event, 'stop')">
+        v-for="(curator, index) in inactiveCurators" :key="curator.id">
       <div class="mr-3 info">
         <div class="text-right username">
           <p class="title-text"> {{ curator.username }} </p>
@@ -38,7 +35,10 @@
           <p class="paragraph-text"> {{ curator.followers }} </p>
         </div>
       </div>
-      <div class="avatar">
+      <div class="avatar"
+          @click="activateCurator(index)"
+          @mouseenter="slideLeft($event, 'start')"
+          @mouseleave="slideLeft($event, 'stop')">
         <img :src="require(`@/assets/images/avatars/${curator.avatar}`)">
       </div>
     </div>
@@ -52,7 +52,6 @@ export default {
   emits: ["change-active-reviews"],
   data() {
     return {
-      previousEvent: "nothing",
       curators: [
         {
           id: 1,
@@ -157,21 +156,44 @@ export default {
           ]
         }
       ],
+
+      // Use for disable inactive curator slide after clicked
+      shouldSlideLeft: true,
+
+      // Use for reset username scrolling
+      timeoutId: null,
       intervalId: null
     }
   },
+  computed: {
+    activeCurator() {
+      return this.curators[0];
+    },
+    inactiveCurators() {
+      return this.curators.slice(1);
+    }
+  },
   methods: {
-    activateCurator(index) {
-      this.previousEvent = "click";
-      this.emitChangeActiveReviews(index);
+    activateCurator(inactiveCuratorIndex) {      
+      //Map index from sliced array (inactiveCurators) to original array 
+      let originalIndex = inactiveCuratorIndex + 1;
+      
+      // Swap array's elements
       let temp = this.curators[0];
-      this.curators[0] = this.curators[index+1];
-      this.curators[index+1] = temp;
+      this.curators[0] = this.curators[originalIndex];
+      this.curators[originalIndex] = temp;
+
+      // Disable inactive curator slide after clicked
+      this.shouldSlideLeft = false;
+      
+      this.emitChangeActiveReviews();
     },
-    emitChangeActiveReviews(index) {
-      this.$emit("change-active-reviews", this.curators[index+1].reviews);
+
+    emitChangeActiveReviews() {
+      this.$emit("change-active-reviews", this.activeCurator.reviews);
     },
-    // Only animate on medium screen and up
+
+    // Only animate on target screensize and up
     shouldAnimate(screenSize) {
       let screenWidth = $(window).width();
 
@@ -190,15 +212,16 @@ export default {
 
       if(status === "start") {
         $('.curator.active .followers').stop().animate({width: '15rem'}, 300);
-      } else {
+      } else if (status == "stop") {
         $('.curator.active .followers').stop().animate({width: '-1.5rem'}, 300);
       }
     },
 
     // Handle mouse hover over inactive curator
     slideLeft(event, status) {
-      if(this.previousEvent == "click") {
-        this.previousEvent = "mouserover";
+      // Do not slide if this method is called after click event.
+      if(!this.shouldSlideLeft) {
+        this.shouldSlideLeft = true;
         return;
       }
       
@@ -206,47 +229,53 @@ export default {
         return;
       }
 
-      let content = $(event.currentTarget).find(".info");
+      let content = $(event.currentTarget).parent().find(".info");
+      let username = content.find(".username p");
 
       if(status == "start") {
         let contentWidth = content.find(".followers p").outerWidth();
-        content.stop().animate({width: `${contentWidth}px`}, 300);
         
-        let username = content.find(".username p");
-        this.scrollText(username)
-      } else {
+        content.stop().animate({width: `${contentWidth}px`}, 300);   
+        this.scrollText(username, "start");
+      } 
+      else if (status == "stop") {
         content.stop().animate({width: "-1.5rem"}, 300);
+        this.scrollText(username, "stop")
 
-        if (this.intervalId != null) {
-          clearInterval(this.intervalId);
-          this.intervalId = null;
-        }
+        this.intervalId = clearInterval(this.intervalId);
+        this.timeoutId = clearTimeout(this.clearTimeout);
       }
     },
 
-    scrollText(text) {
+    scrollText(text, status) {
       let containertWidth = text.parents(".info").find('.followers p').width();
       let textWidth = text.width();
 
       if(containertWidth < textWidth) {
-        let scrollDistance = textWidth - containertWidth;
-        let scrollDuration = Math.floor(scrollDistance * 30);
         let container = text.parent();
-        
-        setTimeout(() => {
-          container.stop().animate({scrollLeft: scrollDistance}, scrollDuration, "linear")
-            .animate({scrollLeft: 0}, scrollDuration, "linear");
-        }, 700)
 
-        this.intervalId = setInterval(() => {
-          container.stop().animate({scrollLeft: scrollDistance}, scrollDuration, "linear")
-                   .animate({scrollLeft: 0}, scrollDuration, "linear");
-        }, scrollDuration * 2 + 1000);
+        if(status == "start") {
+          let scrollDistance = textWidth - containertWidth;
+          let scrollDuration = scrollDistance * 30;
+
+          this.timeoutId = setTimeout(() => {
+            container.animate({scrollLeft: scrollDistance}, scrollDuration)
+                     .animate({scrollLeft: 0}, scrollDuration);
+          
+            this.intervalId = setInterval(() => {
+              container.animate({scrollLeft: scrollDistance}, scrollDuration)
+                       .animate({scrollLeft: 0}, scrollDuration);
+              }, scrollDuration * 2 + 1000);
+          }, 1000);
+        } 
+        else if (status == "stop") {
+          container.stop().animate({scrollLeft: 0});
+        }
       }
     }
   },
   mounted() {
-    this.emitChangeActiveReviews(-1);
+    this.emitChangeActiveReviews();
   }
 }
 </script>

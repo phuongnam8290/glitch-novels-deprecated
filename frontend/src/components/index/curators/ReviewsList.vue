@@ -1,4 +1,4 @@
-<template v-if="reviews.length > 0">
+<template>
   <base-card v-for="n in 4" :key="n">
     <template v-slot:cover>
       <img :src="require(`@/assets/images/reviews/${reviews[0].novel.cover}`)">
