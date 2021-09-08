@@ -21,7 +21,7 @@
 
     <template v-slot:footer>
       <p class="d-flex justify-content-between info">
-        <span class="star">
+        <span>
           <i class="fas fa-star pr-1"></i>
           {{ stars }}
         </span>

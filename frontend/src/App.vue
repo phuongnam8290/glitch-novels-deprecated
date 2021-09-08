@@ -75,13 +75,41 @@ body {
   color: #EBE5DE;
 }
 
-.container-fluid {
+header.container-fluid {
   padding: 0 0;
 }
 
 section.container-fluid {
   padding: 3rem 4rem 0 4rem;
   background: transparent;
+}
+
+.section-title {
+  overflow: hidden;
+}
+
+.section-title p {
+  position: relative;
+}
+
+.section-title p:before {
+  position: absolute;
+  content: "";
+  right: 100%;
+  top: 50%;
+  width: 50vw;
+  border-bottom: 1px solid #EBE5DE;
+  margin-right: 1.2rem;
+}
+
+.section-title p:after {
+  position: absolute;
+  content: "";
+  left: 100%;
+  top: 50%;
+  width: 50vw;
+  border-bottom: 1px solid #EBE5DE;
+  margin-left: 1.2rem;
 }
 
 .color-primary {

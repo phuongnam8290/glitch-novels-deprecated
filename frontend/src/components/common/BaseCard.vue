@@ -16,6 +16,7 @@
           </div>
 
           <div class="overflow-hidden" 
+               v-if="hasSubtitleSlot"
                @mouseenter="startMarquee" 
                @mouseleave="stopMarquee">
             <p class="d-inline-block text-nowrap mt-1 fader-text" style="cursor: pointer;">
@@ -52,6 +53,11 @@ export default {
       type: String,
       required: false,
       default: "col-md-12 col-lg-6"
+    }
+  },
+  computed: {
+    hasSubtitleSlot() {
+      return !!this.$slots.subtitle;
     }
   },
   methods: {
@@ -140,4 +146,5 @@ export default {
 .t1 {
   max-width: 250px;
 }
+
 </style>
