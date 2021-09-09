@@ -50,13 +50,17 @@ export default {
 </script>
 
 <style>
-.banner .swiper-slide {
-  /* filter: grayscale(60%) brightness(40%) blur(2px);
+.swiper-slide {
+  filter: grayscale(60%) brightness(40%) blur(2px);
   transform: scale(1.02);
-  transition: 1s ease all; */
+  transition: filter 1s;
   background-size: cover;
   height: 50vh;
   width: 70vw;
+}
+
+.swiper-slide.swiper-slide-active {
+  filter: none;
 }
 
 .banner .title {

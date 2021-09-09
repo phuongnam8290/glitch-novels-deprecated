@@ -1,7 +1,7 @@
 <template>
   <!-- Banner section -->
   <section>
-    <the-banner></the-banner>
+    <index-banner></index-banner>
   </section>
 
   <section class="container-fluid">
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import TheBanner from "@/components/index/TheBanner.vue"
+import IndexBanner from "@/components/index/IndexBanner.vue"
 import NotableNovels from "@/components/index/notable-novels/NotableNovels.vue"
 import RandomNovel from "@/components/index/random-novel/RandomNovel.vue"
 import CuratorList from "@/components/index/curators/CuratorList.vue"
@@ -53,7 +53,7 @@ import ReviewsList from "@/components/index/curators/ReviewsList.vue"
 
 export default {
   components: {
-    "the-banner": TheBanner,
+    "index-banner": IndexBanner,
     "notable-novels": NotableNovels,
     "random-novel": RandomNovel,
     "curator-list": CuratorList,

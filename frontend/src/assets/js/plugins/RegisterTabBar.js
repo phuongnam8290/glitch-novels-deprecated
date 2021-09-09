@@ -21,7 +21,8 @@ $.fn.RegisterTabBar = function (id) {
               $("style#" + ID).text(
                   "ul[data-style-id='" + ID + "']:before { " +
                       "left: " + ($li.position().left) + "px !important; " +
-                      "right: " + ($ele.width() - $li.position().left - $li.outerWidth()) + "px !important; " +
+                      "width: " + ($li.outerWidth()) + "px !important; " +
+                    //   "right: " + ($ele.width() - $li.position().left - $li.outerWidth()) + "px !important; " +
                       "-webkit-transition: left " + (IsToLeft ? ".45s" : ".8s") + ", right " + (IsToLeft ? ".9s" : ".3s") + " !important; " +
                       "transition: left " + (IsToLeft ? ".45s" : ".8s") + ", right " + (IsToLeft ? ".9s" : ".3s") + " !important; " +
                   "} "

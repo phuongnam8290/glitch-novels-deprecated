@@ -30,7 +30,8 @@
   <!-- Curators list section -->
   <div class="d-flex justify-content-end curators-list">
     <div class="d-flex curator inactive"
-        v-for="(curator, index) in inactiveCurators" :key="curator.id">
+        v-for="(curator, index) in inactiveCurators" :key="curator.id"
+        @click="activateCurator($event, index)">
       <div class="mr-3 info">
         <div class="text-right username">
           <p class="title-text"> {{ curator.username }} </p>
@@ -40,7 +41,6 @@
         </div>
       </div>
       <div class="avatar"
-          @click="activateCurator($event, index)"
           @mouseenter="slideLeft($event, 'start')"
           @mouseleave="slideLeft($event, 'stop')">
         <img :src="require(`@/assets/images/avatars/${curator.avatar}`)">
@@ -179,7 +179,7 @@ export default {
   },
   methods: {
     activateCurator(event, inactiveCuratorIndex) {      
-      let container = $(event.currentTarget).parent();
+      let container = $(event.currentTarget);
       let info = container.find('.info');
       info.stop().animate({width: '-1.5rem'}, 500);
 
