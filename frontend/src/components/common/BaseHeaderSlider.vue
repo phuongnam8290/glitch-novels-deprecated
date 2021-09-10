@@ -1,6 +1,7 @@
 <template>
   <ul class="slider tab-bar bar-style-1 title-text"
-      :class="style">
+      :class="style"
+      v-once>
     <li v-for="slot in slots" :key="slot.id"
         @click="activateTab(slot.name)">
       <slot :name="slot.name"></slot>
@@ -22,6 +23,11 @@ export default {
     slots: {
       type: Array,
       required: true
+    },
+    startPosition: {
+      type: Number,
+      required: false,
+      default: 1
     }
   },
   emits: ["activate-tab"],
@@ -32,7 +38,7 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      $(".slider").RegisterTabBar("slider1").find("li:first-child").click();
+      $(".slider").RegisterTabBar("slider1").find(`li:nth-child(${this.startPosition})`).click();
     }, 150);
   }
 }
@@ -91,7 +97,7 @@ ul.tab-bar.bar-style-1>li.active {
 }
 
 ul.tab-bar.bar-style-1.header>li.active { 
-  color: #EBE5DE; 
+  color: #70AED2; 
 }
 
 li {

@@ -1,18 +1,14 @@
 <template>
-  <base-card>
-    <template v-slot:cover>
-      <img :src="require(`@/assets/images/novel-list/${cover}`)">
-    </template>
-
+  <base-card :cover="`novel-list/${novel.cover}`">
     <template v-slot:title>
-      {{ title }}
+      {{ novel.title }}
     </template>
     <template v-slot:subtitle>
-      {{ author }}
+      {{ novel.author }}
     </template>
 
     <template v-slot:content> 
-      <p v-for="paragraph in synopsis" :key="paragraph"
+      <p v-for="paragraph in novel.synopsis" :key="paragraph"
          style="cursor:grab;"
       >
         {{ paragraph }}
@@ -23,11 +19,11 @@
       <p class="d-flex justify-content-between info">
         <span>
           <i class="fas fa-star pr-1"></i>
-          {{ stars }}
+          {{ novel.rating }}
         </span>
         <span class="d-none d-sm-block pl-3">
           <i class="fas fa-books pr-1"></i>
-          {{ publicationStatus }}
+          {{ novel.publication }}
         </span>
       </p>
     </template>
@@ -41,7 +37,22 @@ export default {
   components: {
     "base-card": BaseCard
   },
-  props: ["cover", "title", "author", "synopsis", "stars", "publicationStatus"]
+  props: {
+    novel: {
+      type: Object,
+      required: true,
+      default: () => {
+        return {
+          cover: "n/a",
+          title: "n/a",
+          author: "n/a",
+          synopsis: [],
+          rating: "n/a",
+          publication: "n/a"
+        }
+      }
+    }
+  }
 }
 </script>
 

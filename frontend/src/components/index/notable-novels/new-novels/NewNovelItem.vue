@@ -1,27 +1,26 @@
 <template>
-  <base-card layoutStyle="col-12 fullwidth">
-    <template v-slot:cover>
-      <img :src="require(`@/assets/images/novel-list/${cover}`)">
-    </template>
+  <base-card :cover="`novel-list/${novel.cover}`"
+             layoutStyle="col-12 fullwidth">
 
     <template v-slot:title>
-      {{ title }}
+      {{ novel.title }}
     </template>
 
     <template v-slot:subtitle>
-      {{ author }}
+      {{ novel.author }}
     </template>
 
     <template v-slot:misc>
       <div class="d-none d-md-flex pl-2 genre">
-        <base-tag v-for="genre in genres" :key="genre">
+        <!-- <base-tag v-for="genre in genres" :key="genre"> -->
+        <base-tag v-for="genre in getLoopedElements(novel.genres, 3)" :key="genre">
           {{ genre }}
         </base-tag>
       </div>
     </template>
 
     <template v-slot:content> 
-      <p v-for="paragraph in synopsis"
+      <p v-for="paragraph in novel.synopsis"
          :key="paragraph"
          style="cursor:grab;"
       >
@@ -32,15 +31,32 @@
 </template>
 
 <script>
+import Utils from "@/assets/js/mixins/Utils.js";
+
 import BaseCard from '@/components/common/BaseCard.vue';
-import BaseTag from '@/components/common/BaseTag.vue'
+import BaseTag from '@/components/common/BaseTag.vue';
 
 export default {
   components: {
     "base-card": BaseCard,
     "base-tag": BaseTag
   },
-  props: ["cover", "title", "author", "synopsis", "genres"]
+  props: {
+    novel: {
+      type: Object,
+      required: true,
+      default: () => {
+        return {
+          cover: "n/a",
+          title: "n/a",
+          author: "n/a",
+          synopsis: [],
+          genres: []
+        }
+      }
+    }
+  },
+  mixins: [Utils]
 }
 </script>
 

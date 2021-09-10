@@ -1,5 +1,5 @@
 <template>
-  <a class="tag" style="cursor: pointer;">
+  <a class="text-nowrap tag" style="cursor: pointer;">
     <slot></slot>
   </a>
 </template>
@@ -12,7 +12,11 @@
   font-size: 1rem;
   padding: 0.2rem 0.8rem;
   margin-left: 0.8rem;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.tag:first-child {
+  margin-left: 0;
 }
 
 .tag:hover {

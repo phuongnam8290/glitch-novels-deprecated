@@ -1,8 +1,6 @@
 <template>
-  <base-card v-for="n in 4" :key="n">
-    <template v-slot:cover>
-      <img :src="require(`@/assets/images/reviews/${reviews[0].novel.cover}`)">
-    </template>
+  <base-card v-for="n in 4" :key="n"
+             :cover="`reviews/${reviews[0].novel.cover}`">
 
     <template v-slot:title>
       {{ reviews[0].novel.title }}
@@ -10,13 +8,13 @@
 
     <template v-slot:misc>
       <div class="d-none d-md-flex pl-2">
-        <span v-for="fullStars in fullStars(0)" :key="fullStars">
+        <span v-for="fullStar in getRatingStars(reviews[0].rating).fullStars" :key="fullStar">
           <i class="fas fa-star"></i>
         </span>
-        <span v-for="halfStar in halfStar(0)" :key="halfStar" >
+        <span v-if="getRatingStars(reviews[0].rating).haveHalfStar">
           <i class="fas fa-star-half-alt"></i>
         </span>
-        <span v-for="emptyStars in emptyStars(0)" :key="emptyStars">
+        <span v-for="emptyStar in getRatingStars(reviews[0].rating).emptyStars" :key="emptyStar">
           <i class="far fa-star"></i>
         </span>
       </div>
@@ -40,27 +38,18 @@
 </template>
 
 <script>
+import Utils from "@/assets/js/mixins/Utils.js"
 import BaseCard from "@/components/common/BaseCard.vue"
 
 export default {
   components: {
     "base-card": BaseCard
   },
+  mixins: [Utils],
   props: {
     reviews: {
       type: Array,
       required: true
-    }
-  },
-  methods: {
-    fullStars(index) {
-      return Math.floor(this.reviews[index].rating);
-    },
-    emptyStars(index) {
-      return Math.floor(5 - this.reviews[index].rating);
-    },
-    halfStar(index) {
-      return 5 - (this.fullStars(index) + this.emptyStars(index));
     }
   }
 }
