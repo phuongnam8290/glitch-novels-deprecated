@@ -4,15 +4,14 @@
   <transition enter-active-class="fadein"
               leave-active-class="fadeout"
               mode="out-in">
-  <!-- Default size -->
-  <div class="d-flex card pt-4 pb-3" :class="[layoutStyle, size]"
-       v-if="size == 'default'" key="default">
+  <!-- Default style -->
+  <div class="d-flex card pt-4 pb-3" :class="[layoutStyle, style]"
+       v-if="style == 'default'" key="default">
     <div class="cover">
        <img :src="require(`@/assets/images/${cover}`)">
     </div>
 
-    <div class="d-flex flex-column overflow-hidden card-body py-0 pr-0"
-         v-if="size == 'default'">
+    <div class="d-flex flex-column overflow-hidden card-body py-0 pr-0">
       <div class="d-flex justify-content-between align-items-start">
         <div class="overflow-hidden">
           <div class="overflow-hidden" 
@@ -52,11 +51,11 @@
       </div>
     </div>
   </div>
-  <!-- End default size -->
+  <!-- End default style -->
   
-  <!-- Minimal size -->
-  <div class="d-flex card pt-4 pb-3" :class="[layoutStyle, size]"
-       v-else-if="size == 'minimal'" key="minimal">
+  <!-- Minimal style -->
+  <div class="d-flex card pt-4 pb-3" :class="[layoutStyle, style]"
+       v-else-if="style == 'minimal'" key="minimal">
     <div class="cover">
        <img :src="require(`@/assets/images/${cover}`)">
     </div>
@@ -114,11 +113,11 @@
       </div>
     </div>
   </div>
-  <!-- End of minimal size -->
+  <!-- End of minimal style -->
 
-  <!-- Thumbnail size -->
-  <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex card pt-4 pb-3" :class="size"
-       v-else-if="size == 'thumbnail'" key="thumbnail">
+  <!-- Thumbnail style -->
+  <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex card pt-4 pb-3" :class="style"
+       v-else-if="style == 'thumbnail'" key="thumbnail">
     <div class="position-relative cover">
         <img class="img-fluid"
              :src="require(`@/assets/images/${cover}`)">
@@ -132,7 +131,7 @@
         </div>       
     </div>
   </div>
-  <!-- End thumbnail size -->
+  <!-- End thumbnail style -->
   </transition>
 </template>
 
@@ -153,7 +152,7 @@ export default {
       required: false,
       default: "col-md-12 col-lg-6"
     },
-    size: {
+    style: {
       type: String,
       required: false,
       default: "default"
