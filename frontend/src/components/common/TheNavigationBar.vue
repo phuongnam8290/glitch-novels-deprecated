@@ -57,16 +57,10 @@ export default {
       return this.$route.path.includes(path);
     }
   },
-  watch: {
-    '$route.path': function (path) {
-      if (path.includes("index")) {
-        setTimeout(()=> {
-          this.navbarHeight = $('nav').outerHeight();
-        }, 10);
-      } else {
-        this.navbarHeight = 0;
-      }
-    }
+  mounted() {
+    setTimeout(()=> {
+      this.navbarHeight = $('nav').outerHeight();
+    }, 10);
   }
 }
 </script>

@@ -1,7 +1,8 @@
 <template>
-  <div class="row pb-2 header">
-    <div class="col-12 d-flex justify-content-between px-0 left-controls">
-      
+  <div class="row align-items-center">
+    <div class="col-12 d-flex justify-content-between px-0 right-controls">
+      <sort-drop-down-list></sort-drop-down-list>
+
       <base-header-slider :style="'button'"
                           :slots="slots"
                           :start-position="2"
@@ -24,27 +25,18 @@
           </span>
         </template>
       </base-header-slider>
-
-      <div class="d-flex align-self-start right-controls">
-        <p class="filter">
-          <i class="fas fa-filter"></i>
-          Filter
-        </p>
-        <p class="sort">
-          <i class="fas fa-sort-amount-up-alt"></i>
-          Sort
-        </p>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 import BaseHeaderSlider from "@/components/common/BaseHeaderSlider.vue";
+import SortDropdownList from "@/components/browse/SortDropdownList.vue"
 
 export default {
   components: {
-    "base-header-slider": BaseHeaderSlider
+    "base-header-slider": BaseHeaderSlider,
+    "sort-drop-down-list": SortDropdownList
   },
   emits: ["change-style"],
   data() {
@@ -77,29 +69,4 @@ export default {
 </script>
 
 <style scoped>
-.row.header{
-  border-bottom: 1px solid #EBE5DE;
-}
-
-.right-controls {
-  font-size: 1.3rem;
-}
-
-.filter {
-  margin-right: .2rem;
-}
-
-.filter,
-.sort {
-  padding: 0.6rem;
-  border: 1px solid transparent;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-.filter:hover,
-.sort:hover {
-  color: #70AED2;
-  border: 1px solid #70AED2;
-}
 </style>

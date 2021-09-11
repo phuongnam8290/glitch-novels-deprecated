@@ -159,4 +159,14 @@ a:hover {
   animation: fadeOut;
   animation-duration: .5s;
 }
+
+.fadeindown {
+  animation: fadeInDown;
+  animation-duration: .5s;
+}
+
+.fadeoutup {
+  animation: fadeOutUp;
+  animation-duration: .5s;
+}
 </style>
