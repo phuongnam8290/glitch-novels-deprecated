@@ -6,9 +6,9 @@ import Browse from "@/pages/Browse.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: '/browse' },
-    { path: '/index', component: Index},
-    { path: '/browse', component: Browse}
+    { path: "/", redirect: "/browse" },
+    { path: "/index", component: Index},
+    { path: "/browse", component: Browse}
   ]
 });
 

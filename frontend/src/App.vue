@@ -123,7 +123,7 @@ p {
 
 a:hover {
   transition: all 0.3s ease-in-out;
-  color: #70AED2;;
+  color: #70AED2;
 }
 
 .title-text {

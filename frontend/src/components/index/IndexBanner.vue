@@ -63,7 +63,7 @@ export default {
   filter: none;
 }
 
-.banner .title {
+.swiper-slide .title {
   font-weight: 500;
   position:absolute;
   bottom: 10%;
@@ -76,32 +76,32 @@ export default {
 }
 
 @media (max-width: 992px) {
-  .banner .item {
+  .swiper-slide .item {
     height: 40vh;
     width: 100vw;
   }
   
-  .banner .title {
+  .swiper-slide .title {
     font-size: 2rem;
   }
 }
 
 @media (max-width: 768px) {
-  .banner .item {
+  .swiper-slide {
     height: 30vh;
   }
 
-  .banner .title {
+  .swiper-slide .title {
     font-size: 1.5rem;
   }
 }
 
 @media (max-width: 576px) {
-  .banner .item {
+  .swiper-slide .item {
     height: 20vh;
   }
 
-  .banner .title {
+  .swiper-slide .title {
     font-size: 1.2rem;
   }
 }

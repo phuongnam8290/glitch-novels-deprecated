@@ -1,6 +1,6 @@
 <template>
   <div class="row pb-2 header">
-    <div class="col-12 d-flex justify-content-between px-0">
+    <div class="col-12 d-flex justify-content-between px-0 left-controls">
       
       <base-header-slider :style="'button'"
                           :slots="slots"
@@ -25,7 +25,7 @@
         </template>
       </base-header-slider>
 
-      <div class="d-flex align-self-start title-text">
+      <div class="d-flex align-self-start right-controls">
         <p class="filter">
           <i class="fas fa-filter"></i>
           Filter
@@ -77,12 +77,16 @@ export default {
 </script>
 
 <style scoped>
-.header .row{
+.row.header{
   border-bottom: 1px solid #EBE5DE;
 }
 
+.right-controls {
+  font-size: 1.3rem;
+}
+
 .filter {
-  margin-right: 1rem;
+  margin-right: .2rem;
 }
 
 .filter,

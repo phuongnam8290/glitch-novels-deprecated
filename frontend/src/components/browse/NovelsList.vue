@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <base-card :style="style"
+    <card :style="style"
                 v-for="n in 18" :key="n"
                 :cover="`novel-list/${novels[0].cover}`"
                 :novel="novels[0]">
@@ -14,9 +14,9 @@
       </template>
 
       <template v-slot:misc>
-          <base-tag v-for="genre in getLoopedElements(novels[0].genres, 3)" :key="genre">
+          <tag v-for="genre in getLoopedElements(novels[0].genres, 3)" :key="genre">
             {{ genre }}
-          </base-tag>
+          </tag>
       </template>
 
       <template v-slot:content> 
@@ -39,21 +39,20 @@
           </span>
         </p>
       </template>
-
-    </base-card>
+    </card>
   </div>
 </template>
 
 <script>
 import Utils from "@/assets/js/mixins/Utils.js"
 
-import BaseCard from "@/components/common/BaseCard.vue";
-import BaseTag from "@/components/common/BaseTag.vue";
+import Card from "@/components/common/BaseCard.vue";
+import Tag from "@/components/common/BaseTag.vue";
 
 export default {
   components: {
-    "base-card": BaseCard,
-    "base-tag": BaseTag
+    "card": Card,
+    "tag": Tag
   },
   mixins: [Utils],
   props: {
@@ -90,7 +89,7 @@ export default {
 </script>
 
 <style scoped>
-.body .row {
+.row {
   margin-left: -2rem;
 }
 </style>

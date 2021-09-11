@@ -61,7 +61,7 @@
     </div>
 
     <div class="d-flex flex-column overflow-hidden card-body py-0 pr-0">
-      <div class="d-flex justify-content-between overflow-hidden">
+      <div class="d-flex justify-content-between align-items-end overflow-hidden mb-1">
         <div class="overflow-hidden"
               @mouseenter="startMarquee" 
               @mouseleave="stopMarquee">
@@ -83,13 +83,7 @@
         </div>
       </div>
 
-      <div class="mt-3 text-nowrap">
-          <base-tag v-for="genre in getLoopedElements(novel.genres, 5)" :key="genre">
-            {{ genre }}
-          </base-tag>
-      </div>
-      
-      <div class="d-flex justify-content-between mt-3">
+      <div class="d-flex justify-content-between mt-2">
         <span class="d-sm-block">
           <i class="fas fa-books mr-1"></i>
           {{ novel.publication }}
@@ -110,6 +104,12 @@
           <i class="fas fa-comments"></i>
           {{ novel.comments }}
         </span>
+      </div>
+
+      <div class="mt-3 text-nowrap">
+          <base-tag v-for="genre in getLoopedElements(novel.genres, 5)" :key="genre">
+            {{ genre }}
+          </base-tag>
       </div>
     </div>
   </div>
@@ -258,7 +258,7 @@ export default {
 
 .minimal img {
   width: auto;
-  height: 80px;
+  height: 85px;
 }
 
 .default .card-body {

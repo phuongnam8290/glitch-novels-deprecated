@@ -18,8 +18,16 @@
       <!-- Main navbar nav -->
       <div class="collapse navbar-collapse font-weight-bold" id="main-navbar-nav">
         <div class="navbar-nav ml-4 ml-lg-3">
-          <a href="#" class="nav-item nav-link active mr-lg-2 mb-1 mb-lg-0">Home</a>
-          <a href="#" class="nav-item nav-link mr-lg-2 mb-1 mb-lg-0">Browse</a>
+          <router-link class="nav-item nav-link mr-lg-2 mb-1 mb-lg-0"
+                       :class="{active: isActive('index')}"
+                       to="index">
+            Home
+          </router-link>
+          <router-link class="nav-item nav-link mr-lg-2 mb-1 mb-lg-0"
+                       :class="{active: isActive('browse')}"
+                       to="browse">
+            Browse
+          </router-link>
           <a href="#" class="nav-item nav-link mr-lg-2 mb-1 mb-lg-0">Rankings</a>
           <a href="#" class="nav-item nav-link mb-2 mb-lg-0">News</a>
         </div>
@@ -44,12 +52,21 @@ export default {
   methods: {
     toggleAnimation() {
       $('.navbar-toggler').toggleClass('change');
+    },
+    isActive(path) {
+      return this.$route.path.includes(path);
     }
   },
-  mounted() {
-    setTimeout(()=> {
-      this.navbarHeight = $('nav').outerHeight();
-    }, 10);
+  watch: {
+    '$route.path': function (path) {
+      if (path.includes("index")) {
+        setTimeout(()=> {
+          this.navbarHeight = $('nav').outerHeight();
+        }, 10);
+      } else {
+        this.navbarHeight = 0;
+      }
+    }
   }
 }
 </script>

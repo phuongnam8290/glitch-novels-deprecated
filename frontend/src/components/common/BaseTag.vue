@@ -9,7 +9,7 @@
   border: 1px solid #EBE5DE;
   border-radius: 0%;
   color: #EBE5DE;
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding: 0.2rem 0.8rem;
   margin-left: 0.8rem;
   margin-top: 0.3rem;

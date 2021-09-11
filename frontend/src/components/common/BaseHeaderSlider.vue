@@ -39,7 +39,7 @@ export default {
   mounted() {
     setTimeout(() => {
       $(".slider").RegisterTabBar("slider1").find(`li:nth-child(${this.startPosition})`).click();
-    }, 150);
+    }, 300);
   }
 }
 </script>
