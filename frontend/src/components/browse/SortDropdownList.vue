@@ -4,9 +4,9 @@
     <div class="d-flex justify-content-start align-items-center display">
       <div class="sort-btn"
            @click="toggleSortMode">
-        <i class="fas fa-sort-amount-down-alt fa-lg"
+        <i class="fas fa-sort-amount-down-alt"
            v-if="sortMode == 'default'"></i>
-        <i class="fas fa-sort-amount-up-alt fa-lg"
+        <i class="fas fa-sort-amount-up-alt"
            v-else></i>
       </div>
       <div class="d-flex justify-content-between text"
@@ -122,27 +122,34 @@ export default {
 </script>
 
 <style scoped>
-.sort {
-  font-size: 1.3rem;
-}
-
 .display {
   border: 1px solid #EBE5DE;
-}
-
-.display .sort-btn {
-  padding: .8rem 1rem .8rem 1.5rem;
-
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-.display .text{
-  padding: .7rem 1rem .7rem .5rem;
-  width: 17rem;
   font-size: 1.3rem;
-  transition: all 0.3s;
+  transition: all .3s;
+}
+
+.display:hover {
+  color:#70AED2;
+  border: 1px solid #70AED2;
+}
+
+.sort-btn {
+  padding: .8rem 1rem .8rem 1rem;
   cursor: pointer;
+}
+
+ .text{
+  padding: .7rem 1rem .7rem 0;
+  width: 17rem;
+  cursor: pointer;
+}
+
+.text i {
+  transition: transform .5s;
+}
+
+.animate {
+ transform: rotate(180deg); 
 }
 
 .wrapper {
@@ -176,11 +183,4 @@ export default {
   color: #70AED2;
 }
 
-.text i {
-  transition: all .5s;
-}
-
-.animate {
- transform: rotate(180deg); 
-}
 </style>

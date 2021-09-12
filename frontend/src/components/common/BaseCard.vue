@@ -136,8 +136,8 @@
 </template>
 
 <script>
-import $ from 'jquery';
 import Utils from "@/assets/js/mixins/Utils.js";
+import ScrollText from "@/assets/js/mixins/ScrollText.js";
 
 import BaseTag from "@/components/common/BaseTag.vue";
 
@@ -145,7 +145,7 @@ export default {
   components: {
     "base-tag": BaseTag
   },
-  mixins: [Utils],
+  mixins: [Utils, ScrollText],
   props: {
     layoutStyle: {
       type: String,
@@ -184,36 +184,6 @@ export default {
   computed: {
     hasSubtitleSlot() {
       return !!this.$slots.subtitle;
-    }
-  },
-  methods: {
-    startMarquee(event) {
-      let container = $(event.currentTarget);
-      let child = container.children();
-
-      let containerWidth = container.width();
-      let childWidth = child.width();
-
-      if(childWidth > containerWidth) {
-        let scrollDistance = childWidth - containerWidth;
-
-        container.stop();
-        container.animate(
-          {scrollLeft: scrollDistance},
-          2000, 
-          'linear'
-        );
-      }
-    },
-    stopMarquee(event) {
-      let container = $(event.currentTarget);
-
-      container.stop();
-      container.animate(
-        {scrollLeft: 0},
-        400,
-        'swing'
-      );
     }
   }
 }

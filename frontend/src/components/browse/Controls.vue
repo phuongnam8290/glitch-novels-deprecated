@@ -1,9 +1,15 @@
 <template>
-  <div class="row align-items-center">
-    <div class="col-12 d-flex justify-content-between px-0 right-controls">
+  <div class="row mb-4">
+    <div class="col-12 px-0">
+      <novels-filter></novels-filter>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 d-flex justify-content-between px-0">
       <sort-drop-down-list></sort-drop-down-list>
 
-      <base-header-slider :style="'button'"
+      <header-slider :style="'button'"
                           :slots="slots"
                           :start-position="2"
                           @activate-tab="emitChangeStyle">
@@ -24,19 +30,21 @@
             <i class="fas fa-th"></i>
           </span>
         </template>
-      </base-header-slider>
+      </header-slider>
     </div>
   </div>
 </template>
 
 <script>
-import BaseHeaderSlider from "@/components/common/BaseHeaderSlider.vue";
-import SortDropdownList from "@/components/browse/SortDropdownList.vue"
+import NovelsFilter from "@/components/common/BaseFilter.vue";
+import HeaderSlider from "@/components/common/BaseHeaderSlider.vue";
+import SortDropdownList from "@/components/browse/SortDropdownList.vue";
 
 export default {
   components: {
-    "base-header-slider": BaseHeaderSlider,
-    "sort-drop-down-list": SortDropdownList
+    "header-slider": HeaderSlider,
+    "sort-drop-down-list": SortDropdownList,
+    "novels-filter": NovelsFilter
   },
   emits: ["change-style"],
   data() {
