@@ -1,5 +1,5 @@
 <template>
-  <section class="container-fluid">
+  <section class="container-fluid py-0 controls">
     <controls @change-style="changeNovelsStyle"></controls>
   </section>
 
@@ -37,6 +37,11 @@ export default {
 </script>
 
 <style scoped>
+.controls {
+  margin-top: 1.7rem;
+  margin-bottom: .3rem;
+}
+
 .novels {
   padding-top: 0;
   margin-top: -1rem;

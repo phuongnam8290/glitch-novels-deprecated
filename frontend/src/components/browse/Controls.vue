@@ -1,18 +1,19 @@
 <template>
-  <div class="row mb-4">
+  <div class="row filter-control">
     <div class="col-12 px-0">
-      <novels-filter></novels-filter>
+      <filter-control></filter-control>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-12 d-flex justify-content-between px-0">
-      <sort-drop-down-list></sort-drop-down-list>
+    <div class="col-12 d-flex justify-content-between px-0 misc-controls">
+      <sort-drop-down-list class="drop-down-list"></sort-drop-down-list>
 
-      <header-slider :style="'button'"
-                          :slots="slots"
-                          :start-position="2"
-                          @activate-tab="emitChangeStyle">
+      <header-slider class="slider"
+                     :style="'button'"
+                     :slots="slots"
+                     :start-position="2"
+                     @activate-tab="emitChangeStyle">
         <template v-slot:[getSlotName(0)]>
           <span>
             <i class="fas fa-list"></i>
@@ -36,7 +37,7 @@
 </template>
 
 <script>
-import NovelsFilter from "@/components/common/BaseFilter.vue";
+import FilterControl from "@/components/browse/FilterControl.vue";
 import HeaderSlider from "@/components/common/BaseHeaderSlider.vue";
 import SortDropdownList from "@/components/browse/SortDropdownList.vue";
 
@@ -44,7 +45,7 @@ export default {
   components: {
     "header-slider": HeaderSlider,
     "sort-drop-down-list": SortDropdownList,
-    "novels-filter": NovelsFilter
+    "filter-control": FilterControl
   },
   emits: ["change-style"],
   data() {
@@ -77,4 +78,18 @@ export default {
 </script>
 
 <style scoped>
+.filter-control {
+  margin-bottom: 1.7rem;
+}
+
+.misc-controls {
+  flex-wrap: wrap;
+  margin-top: -1.7rem;
+}
+
+.drop-down-list,
+.slider {
+  margin-top: 1.7rem;
+}
+
 </style>

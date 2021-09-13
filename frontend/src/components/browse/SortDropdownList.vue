@@ -61,7 +61,7 @@ export default {
           reverse: "oldest"
         },
         title: {
-          default: "ascending",
+          default: "ascending sdsadsad",
           reverse: "descending"
         },
         follows: {
@@ -124,7 +124,6 @@ export default {
 <style scoped>
 .display {
   border: 1px solid #EBE5DE;
-  font-size: 1.3rem;
   transition: all .3s;
 }
 
@@ -134,17 +133,19 @@ export default {
 }
 
 .sort-btn {
-  padding: .8rem 1rem .8rem 1rem;
+  padding: .8rem .8rem .6rem 1rem;
   cursor: pointer;
 }
 
- .text{
+.text{
   padding: .7rem 1rem .7rem 0;
-  width: 17rem;
+  max-width: 17rem;
+  min-width: 10rem;
   cursor: pointer;
 }
 
 .text i {
+  margin-left: 1rem;
   transition: transform .5s;
 }
 
@@ -169,8 +170,7 @@ export default {
 
 .drop-down-item {
   padding: .7rem 1rem .7rem .5rem;
-  padding-left: 4.2rem;
-  font-size: 1.2rem;
+  padding-left: 2.8rem;
   font-weight: 200;
   cursor: pointer;
 }

@@ -119,6 +119,7 @@ section.container-fluid {
 p {
   word-spacing: 2px;
   padding-right: 2px;
+  padding-bottom: 0.1rem;
 }
 
 a:hover {
