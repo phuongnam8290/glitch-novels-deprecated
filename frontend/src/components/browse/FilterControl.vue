@@ -100,13 +100,13 @@ export default {
 
       if(selectedCriteria.length <= 3) {
         for (let criterion of selectedCriteria) {
-          message += `${criterion.title}, `;
+          message += `${criterion.name}, `;
         }
         message = message.slice(0, -2);
       } 
       else {
         for (let i = 0; i < 3; i++) {
-          message += `${selectedCriteria[i].title}, `;
+          message += `${selectedCriteria[i].name}, `;
         }
 
         message = message.slice(0, -2);
@@ -119,77 +119,85 @@ export default {
   setup() {
     const criteria = reactive({
       protagonist: {
+        name: "Protagonists",
+        icon: "fa-venus-mars",
         content: [
-          {title: "Male", selected: false},
-          {title: "Female", selected: false}
+          {name: "Male", selected: false},
+          {name: "Female", selected: false}
         ],
         selectAll: true
       },
       status: {
+        name: "Status",
+        icon: "fa-circle-notch",
         content: [
-          {title: "Ongoing", selected: false},
-          {title: "Completed", selected: false},
-          {title: "Hiatus", selected: false},
-          {title: "Cancelled", selected: false}
+          {name: "Ongoing", selected: false},
+          {name: "Completed", selected: false},
+          {name: "Hiatus", selected: false},
+          {name: "Cancelled", selected: false}
         ],
         selectAll: true
       },
       genre: {
+        name: "Genres",
+        icon: "fa-theater-masks",
         content: [
-          {title: "Action", selected: false},
-          {title: "Adventure", selected: false},
-          {title: "Boy's Love", selected: false},
-          {title: "Comedy", selected: false},
-          {title: "Crime", selected: false},
-          {title: "Drama", selected: false},
-          {title: "Fantasy", selected: false},
-          {title: "Girl's Love", selected: false},
-          {title: "Historical", selected: false},
-          {title: "Horror", selected: false},
-          {title: "Mecha", selected: false},
-          {title: "Medical", selected: false},
-          {title: "Mystery", selected: false},
-          {title: "Philosophical", selected: false},
-          {title: "Romance", selected: false},
-          {title: "Sci-fi", selected: false},
-          {title: "Slice of Life", selected: false},
-          {title: "Sports", selected: false},
-          {title: "Thriller", selected: false},
-          {title: "Tragedy", selected: false},
-          {title: "Wuxia", selected: false}
+          {name: "Action", selected: false},
+          {name: "Adventure", selected: false},
+          {name: "Boy's Love", selected: false},
+          {name: "Comedy", selected: false},
+          {name: "Crime", selected: false},
+          {name: "Drama", selected: false},
+          {name: "Fantasy", selected: false},
+          {name: "Girl's Love", selected: false},
+          {name: "Historical", selected: false},
+          {name: "Horror", selected: false},
+          {name: "Mecha", selected: false},
+          {name: "Medical", selected: false},
+          {name: "Mystery", selected: false},
+          {name: "Philosophical", selected: false},
+          {name: "Romance", selected: false},
+          {name: "Sci-fi", selected: false},
+          {name: "Slice of Life", selected: false},
+          {name: "Sports", selected: false},
+          {name: "Thriller", selected: false},
+          {name: "Tragedy", selected: false},
+          {name: "Wuxia", selected: false}
         ],
         selectAll: true
       },
       theme: {
+        name: "Themes",
+        icon: "fa-hat-wizard",
         content: [
-          {title: "Alien", selected: false},
-          {title: "Animal", selected: false},
-          {title: "Cooking", selected: false},
-          {title: "Deliquent", selected: false},
-          {title: "Demon", selected: false},
-          {title: "Gender Blender", selected: false},
-          {title: "Harem", selected: false},
-          {title: "Mafia", selected: false},
-          {title: "Magic", selected: false},
-          {title: "Martial Arts", selected: false},
-          {title: "Military", selected: false},
-          {title: "Monster Girls", selected: false},
-          {title: "Monster", selected: false},
-          {title: "Music", selected: false},
-          {title: "Ninja", selected: false},
-          {title: "Office", selected: false},
-          {title: "Police", selected: false},
-          {title: "Post-Apocalyptic", selected: false},
-          {title: "Reincarnation",selected: false},
-          {title: "School Life", selected: false},
-          {title: "Supernatural", selected: false},
-          {title: "Survival", selected: false},
-          {title: "Time Travel", selected: false},
-          {title: "Vampires", selected: false},
-          {title: "Video Games", selected: false},
-          {title: "Villainess", selected: false},
-          {title: "Virtual Reality", selected: false},
-          {title: "Zombies", selected: false}
+          {name: "Alien", selected: false},
+          {name: "Animal", selected: false},
+          {name: "Cooking", selected: false},
+          {name: "Deliquent", selected: false},
+          {name: "Demon", selected: false},
+          {name: "Gender Blender", selected: false},
+          {name: "Harem", selected: false},
+          {name: "Mafia", selected: false},
+          {name: "Magic", selected: false},
+          {name: "Martial Arts", selected: false},
+          {name: "Military", selected: false},
+          {name: "Monster Girls", selected: false},
+          {name: "Monster", selected: false},
+          {name: "Music", selected: false},
+          {name: "Ninja", selected: false},
+          {name: "Office", selected: false},
+          {name: "Police", selected: false},
+          {name: "Post-Apocalyptic", selected: false},
+          {name: "Reincarnation",selected: false},
+          {name: "School Life", selected: false},
+          {name: "Supernatural", selected: false},
+          {name: "Survival", selected: false},
+          {name: "Time Travel", selected: false},
+          {name: "Vampires", selected: false},
+          {name: "Video Games", selected: false},
+          {name: "Villainess", selected: false},
+          {name: "Virtual Reality", selected: false},
+          {name: "Zombies", selected: false}
         ],
         selectAll: true
       }

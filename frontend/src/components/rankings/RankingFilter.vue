@@ -2,21 +2,22 @@
   <div class="d-flex justify-content-center">
     <ul class="d-flex overflow-hidden">      
       <li class="d-none d-md-flex item"
-          @click="showModal">
+          @click.stop="showModal">
         <p class="d-inline-block text-nowrap">
-          Type: Popular Ranking
+          Ranking: {{ generateRankingMessage("rankings") }}
         </p> 
       </li>
       <li class="d-none d-md-flex item status"
-          @click="showModal">
+          @click.stop="showModal">
         <p class="d-inline-block text-nowrap">
-          Time: Monthly
+          Time: {{ generateRankingMessage("periods") }}
         </p> 
       </li>
     </ul>
 
     <teleport to="#app">
-      <ranking-modal v-if="isShowModal"></ranking-modal>
+      <ranking-modal v-if="isShowModal"
+                     @close-modal="closeModal"></ranking-modal>
     </teleport>
   </div>
 </template>
@@ -38,24 +39,42 @@ export default {
   methods: {
     showModal() {
       this.isShowModal = true;
+    },
+    closeModal() {
+      this.isShowModal = false;
+    },
+    generateRankingMessage(type) {
+      let selectedItems = this.rankings[type].content.filter(item => {
+        return item.selected == true;
+      });
+
+      return selectedItems[0].name;
     }
   },
   setup() {
     const rankings = reactive({
-      types: [
-        {title: "Trending Ranking", selected: false},
-        {title: "Bookmark Ranking", selected: false},
-        {title: "Popular Ranking", selected: true},
-        {title: "Update Ranking", selected: false},
-        {title: "Active Ranking", selected: false}
-      ],
-      times: [
-        {title: "Montly", selected: true},
-        {title: "Season", selected: false},
-        {title: "Bi annual", selected: false},
-        {title: "Annual", selected: false},
-        {title: "All-time", selected: false},
-      ]
+      rankings: {
+        name: "Rankings",
+        icon: "fa-crown",
+        content: [
+          {name: "Trending", selected: false},
+          {name: "Bookmark", selected: false},
+          {name: "Popular", selected: true},
+          {name: "Update", selected: false},
+          {name: "Active", selected: false}
+        ],
+      },
+      periods: {
+        name: "Periods",
+        icon: "fa-calendar-alt",
+        content: [
+          {name: "Montly", selected: true},
+          {name: "Season", selected: false},
+          {name: "Bi-annual", selected: false},
+          {name: "Annual", selected: false},
+          {name: "All-time", selected: false},
+        ] 
+      }
     });
 
     provide("rankings", rankings);

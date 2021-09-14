@@ -15,7 +15,7 @@
 <script>
 import Controls from "@/components/browse/Controls.vue";
 import NovelsList from "@/components/browse/NovelsList.vue";
-import Pagination from "@/components/common/BasePagination.vue";
+import Pagination from "@/components/common/ThePagination.vue";
 
 export default {
   components: {
