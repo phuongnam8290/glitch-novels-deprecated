@@ -28,7 +28,11 @@
                        to="browse">
             Browse
           </router-link>
-          <a href="#" class="nav-item nav-link mr-lg-2 mb-1 mb-lg-0">Rankings</a>
+          <router-link class="nav-item nav-link mr-lg-2 mb-1 mb-lg-0"
+                       :class="{active: isActive('rankings')}"
+                       to="rankings">
+            Rankings
+          </router-link>
           <a href="#" class="nav-item nav-link mb-2 mb-lg-0">News</a>
         </div>
         <form class="mr-5 mb-2 mb-lg-0 ml-4 ml-lg-auto">
@@ -84,7 +88,7 @@ export default {
 
 .nav-link:hover,
 .nav-link.active {
-  color: #70AED2
+  color: #70AED2;
 }
 
 .line1,

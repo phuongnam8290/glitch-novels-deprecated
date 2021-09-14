@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="d-flex justify-content-center align-items-center overlay"> -->
   <div>
     <div class="filter-modal"
          ref="modal">
