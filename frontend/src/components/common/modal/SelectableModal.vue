@@ -1,7 +1,7 @@
 <template>
   <base-modal>
     <template v-slot:header>
-      Filter 
+      {{ title }}
     </template>
 
     <template v-slot:body>
@@ -17,8 +17,11 @@
         <ul class="group-content">
           <li :class="{active: item.selected}"
               v-for="(item, index) in itemsGroup.content" :key="item.name"
+              v-tooltip="{content: item.tooltip ? `<i class='fal fa-info-circle'></i> ${item.tooltip}` : null, html: true}"
               @click="toggleItem(itemsGroup, index)">
-            {{ item.name }}
+            <p>
+              {{ item.name }}
+            </p>            
           </li>
         </ul>
       </div>
@@ -36,6 +39,11 @@ export default {
     "base-modal": BaseModal
   },
   props: {
+    title: {
+      type: String,
+      required: false,
+      default: "title"
+    },
     isSelectAll: {
       type: Function,
       required: false,
@@ -85,7 +93,7 @@ ul {
 
 li {
   border: 1px solid #EBE5DE; 
-  padding: .3rem 1rem;
+  padding: .5rem 1rem .4rem 1rem;
   margin-right: 1rem;
   margin-bottom: .8rem;
   transition: all .3s;
@@ -109,6 +117,10 @@ li.active:hover {
   color: #EBE5DE;
 }
 
+li p {
+  cursor: pointer;
+}
+
 .items-group {
   margin-bottom: 1rem;
 }
@@ -126,5 +138,4 @@ li.active:hover {
   padding-right: .3rem;
   --fa-secondary-opacity: .7;
 }
-
 </style>

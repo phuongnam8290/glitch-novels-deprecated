@@ -151,6 +151,19 @@ a:hover {
   margin-top: 0;
 }
 
+/* For tooltip */
+.v-popper--theme-tooltip .v-popper__inner {
+  max-width: 20rem;
+  padding: .8rem 1rem;
+  color: #EBE5DE;
+  border: 1px solid #EBE5DE;
+  line-height: 1.3rem;
+}
+
+.v-popper--theme-tooltip .v-popper__inner i {
+  padding-right: .3rem;
+}
+
 .fadein {
   animation: fadeIn;
   animation-duration: .5s;

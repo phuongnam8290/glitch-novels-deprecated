@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="overlay d-flex justify-content-center align-items-center">
     <div class="custom-modal"
          ref="modal">
       <div class="modal-guts">
@@ -15,8 +15,6 @@
         </div>
       </div>
     </div>
-
-    <div class="overlay"></div>
   </div>
 </template>
 
@@ -62,25 +60,16 @@ export default {
 }
 
 .custom-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 90%;
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid #EBE5DE;
+  max-width: 80%;
+  max-height: 90%;
+  overflow: auto;
   z-index: 1050;
 }
 
 .modal-guts {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width:100%;
-  height: 100%;
-  padding: 2rem;
-  overflow: auto;
+  padding: 3rem 3rem 1rem 3rem;
 }
 
 .custom-modal-header p:before {

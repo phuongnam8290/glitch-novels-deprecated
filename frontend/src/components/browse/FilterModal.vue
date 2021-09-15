@@ -1,5 +1,5 @@
 <template>
-  <selectable-modal></selectable-modal>
+  <selectable-modal title="Filter"></selectable-modal>
 </template>
 
 <script>

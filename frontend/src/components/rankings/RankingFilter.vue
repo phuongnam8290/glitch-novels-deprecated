@@ -3,12 +3,14 @@
     <ul class="d-flex overflow-hidden">      
       <li class="d-none d-md-flex item"
           @click.stop="showModal">
+        <i class="fad fa-crown"></i>
         <p class="d-inline-block text-nowrap">
           Ranking: {{ generateRankingMessage("rankings") }}
         </p> 
       </li>
       <li class="d-none d-md-flex item status"
           @click.stop="showModal">
+        <i class="fad fa-calendar-alt"></i>
         <p class="d-inline-block text-nowrap">
           Time: {{ generateRankingMessage("periods") }}
         </p> 
@@ -57,11 +59,16 @@ export default {
         name: "Rankings",
         icon: "fa-crown",
         content: [
-          {name: "Trending", selected: false},
-          {name: "Bookmark", selected: false},
-          {name: "Popular", selected: true},
-          {name: "Update", selected: false},
-          {name: "Active", selected: false}
+          {name: "Trending", selected: false, 
+           tooltip: "The ranking is based on the total number of readers votes during a specific period."},
+          {name: "Collect", selected: false, 
+           tooltip: "The ranking is based on the number of readers who bookmark this book during a specific period."},
+          {name: "Popular", selected: true,
+           tooltip: "The ranking is based on the number of increased readers to a book during a specific period."},
+          {name: "Update", selected: false,
+           tooltip: "The ranking is based on the number of words published during a specific period."},
+          {name: "Active", selected: false,
+           tooltip: "The ranking is based on the number of new comments to a book during a specific period."}
         ],
       },
       periods: {
@@ -69,9 +76,9 @@ export default {
         icon: "fa-calendar-alt",
         content: [
           {name: "Montly", selected: true},
-          {name: "Season", selected: false},
-          {name: "Bi-annual", selected: false},
-          {name: "Annual", selected: false},
+          {name: "Season", selected: false, tooltip: "Last 3 months"},
+          {name: "Bi-annual", selected: false, tooltip: "Last 6 months"},
+          {name: "Annual", selected: false, tooltip: "Last year"},
           {name: "All-time", selected: false},
         ] 
       }

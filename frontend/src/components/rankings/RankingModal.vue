@@ -1,5 +1,7 @@
 <template>
-  <selectable-modal :toggleItem="toggleItem"></selectable-modal>
+  <selectable-modal title="Rankings" 
+                    :toggleItem="toggleItem">
+  </selectable-modal>
 </template>
 
 <script>
