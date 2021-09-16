@@ -1,6 +1,6 @@
 <template>
   <base-card :cover="`novel-list/${novel.cover}`"
-             layoutStyle="col-12 fullwidth">
+             layoutStyle="col-12">
 
     <template v-slot:title>
       {{ novel.title }}
@@ -12,7 +12,6 @@
 
     <template v-slot:misc>
       <div class="d-none d-md-flex pl-2 genre">
-        <!-- <base-tag v-for="genre in genres" :key="genre"> -->
         <base-tag v-for="genre in getLoopedElements(novel.genres, 3)" :key="genre">
           {{ genre }}
         </base-tag>

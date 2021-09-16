@@ -1,5 +1,5 @@
 <template>
-  <div class="d-none d-lg-flex justify-content-center align-items-center">
+  <div class="d-none d-md-flex justify-content-center align-items-center">
     
     <div class="rankings second-ranking">
       <div class="position-relative wrapper">

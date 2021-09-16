@@ -18,8 +18,8 @@
     </ul>
 
     <teleport to="#app">
-      <ranking-modal v-if="isShowModal"
-                     @close-modal="closeModal"></ranking-modal>
+      <rankings-modal v-if="isShowModal"
+                     @close-modal="closeModal"></rankings-modal>
     </teleport>
   </div>
 </template>
@@ -27,11 +27,11 @@
 <script>
 import {provide, reactive} from "vue";
 
-import RankingModal from "@/components/rankings/RankingModal.vue";
+import RankingsModal from "@/components/rankings/RankingsModal.vue";
 
 export default {
   components: {
-    "ranking-modal": RankingModal
+    "rankings-modal": RankingsModal
   },
   data() {
     return {
