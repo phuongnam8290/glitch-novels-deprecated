@@ -199,24 +199,24 @@ export default {
   padding: 2rem 0 2rem 1rem;
 }
 
-.default.card:nth-child(odd):not(.fullwidth),
-.minimal.card:nth-child(odd):not(.fullwidth) {
+.default.card:nth-child(odd):not(.col-12),
+.minimal.card:nth-child(odd):not(.col-12) {
   padding-right: 1rem;
 }
 
-.default.card:nth-child(even):not(.fullwidth),
-.minimal.card:nth-child(even):not(.fullwidth) {
+.default.card:nth-child(even):not(.col-12),
+.minimal.card:nth-child(even):not(.col-12) {
   padding-left: 2rem;
 }
 
 @media (max-width: 992px) {
-  .default.card:nth-child(odd):not(.fullwidth),
-  .minimal.card:nth-child(odd):not(.fullwidth) {
+  .default.card:nth-child(odd):not(.col-12),
+  .minimal.card:nth-child(odd):not(.col-12) {
     padding-right: 0;
   }
 
-  .default.card:nth-child(even):not(.fullwidth),
-  .minimal.card:nth-child(even):not(.fullwidth) {
+  .default.card:nth-child(even):not(.col-12),
+  .minimal.card:nth-child(even):not(.col-12) {
     padding-left: 1rem;
   }
 }

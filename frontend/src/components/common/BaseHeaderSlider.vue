@@ -63,6 +63,10 @@ ul.tab-bar.bar-style-1:before {
   background-color: var(--secondary-color); 
 }
 
+ul.tab-bar.bar-style-1.button:before { 
+  background-color: var(--darker-secondary-color); 
+}
+
 ul.tab-bar.bar-style-1.header:before { 
   margin-bottom: -2px;
 }

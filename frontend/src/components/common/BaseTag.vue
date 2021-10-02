@@ -9,7 +9,7 @@
 
 <style scoped>
 .tag {
-  background-image: linear-gradient(to bottom right, var(--hover-color) 49.5%, transparent 50%);
+  background-image: linear-gradient(to bottom right, var(--darker-secondary-color) 49.5%, transparent 50%);
   background-size: 200% 200%;
   background-position: bottom right;
   transition: background-position .5s;
@@ -35,7 +35,7 @@
   left: 0;
   width: 0;
   height: 0;
-  border-top: 10px solid var(--hover-color);
+  border-top: 10px solid var(--darker-secondary-color);
   border-right: 10px solid transparent;
 }
 

@@ -65,8 +65,7 @@ body {
   --primary-color: #EBE5DE;
   /* --secondary-color: #B98B56; */
   --secondary-color: #C9A882;
-  --hover-color: #8E6E48;
-  --selected-color: #8E6E48;
+  --darker-secondary-color: #8E6E48;
 
   font-family: 'Proxima Nova', sans-serif !important;
 

@@ -15,11 +15,7 @@ export default {
   },
   methods: {
     toggleItem(itemsGroup, index) {
-      let selectedItems = itemsGroup.content.filter(item => {
-        return item.selected == true;
-      });
-
-      for (let item of selectedItems) {
+      for (let item of itemsGroup.content) {
         item.selected = false;
       }
 

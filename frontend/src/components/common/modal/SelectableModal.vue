@@ -11,7 +11,7 @@
           <span>
             <i class="fad" :class="itemsGroup.icon"></i>
           </span>
-          {{ itemsGroup.name }} {{isSelectAll(itemsGroup) ? "(All)" : ""}}
+          {{ itemsGroup.name }} {{itemsGroup.selectAll ? "(All)" : ""}}
         </p>
 
         <ul class="group-content">
@@ -48,7 +48,7 @@ export default {
       type: Function,
       required: false,
       default : function(itemsGroup) {
-        if(!itemsGroup.selectAll) {
+        if(itemsGroup.selectAll === undefined) {
           return false;
         }
 
@@ -72,6 +72,7 @@ export default {
       required: false,
       default: function(itemsGroup, index) {
         itemsGroup.content[index].selected = !itemsGroup.content[index].selected; 
+        this.isSelectAll(itemsGroup);
       }
     }
   },
@@ -106,14 +107,8 @@ li:hover {
 }
 
 li.active {
-  border: 1px solid var(--secondary-color);
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-}
-
-li.active:hover {
-  border: 1px solid var(--secondary-color);
-  background-color: var(--secondary-color);
+  border: 1px solid var(--darker-secondary-color);
+  background-color: var(--darker-secondary-color);
   color: var(--primary-color);
 }
 
