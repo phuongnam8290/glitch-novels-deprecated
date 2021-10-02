@@ -61,7 +61,7 @@ export default {
 
 .custom-modal {
   background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid #EBE5DE;
+  border: 1px solid var(--primary-color);
   max-width: 80%;
   max-height: 90%;
   overflow: auto;
@@ -78,7 +78,7 @@ export default {
   right: 100%;
   top: 50%;
   width: 50vw;
-  border-bottom: 1px solid #EBE5DE;
+  border-bottom: 1px solid var(--primary-color);
   margin-right: 1.2rem;
 }
 
@@ -88,7 +88,7 @@ export default {
   left: 100%;
   top: 50%;
   width: 50vw;
-  border-bottom: 1px solid #EBE5DE;
+  border-bottom: 1px solid var(--primary-color);
   margin-left: 1.2rem;
 }
 

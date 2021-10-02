@@ -75,13 +75,13 @@ a {
 }
 
 .new-chapter {
-  color: #EBE5DE;
+  color: var(--primary-color);
   margin-top: 1rem;
 }
 
 .new-chapter:hover {
   text-decoration: none;
-  color: #70AED2;
+  color: var(--secondary-color);
 }
 
 .update-time {

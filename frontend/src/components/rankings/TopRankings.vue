@@ -215,14 +215,14 @@
 .back .content .read-btn {
   display: inline-block;
   padding: .5rem 1rem;
-  border: 1px solid #EBE5DE;
+  border: 1px solid var(--primary-color);
   transition: border .3s, color .3s;
   cursor: pointer;
 }
 
 .back .content .read-btn:hover {
-  border: 1px solid #70AED2;
-  color: #70AED2;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
 }
 
 .medal {

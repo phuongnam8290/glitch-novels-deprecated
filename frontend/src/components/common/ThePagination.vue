@@ -133,7 +133,7 @@ export default {
   padding: .6rem;
   margin: 0 .2rem;
   min-width: 3rem;
-  color: #EBE5DE;
+  color: var(--primary-color);
   text-decoration: none;
   text-align: center;
   font-weight: bold;
@@ -143,12 +143,12 @@ export default {
 
 .page-item,
 input {
-  border: 1px solid #EBE5DE;
+  border: 1px solid var(--primary-color);
 }
 
 .page-item:hover {
-  color: #70AED2;
-  border: 1px solid #70AED2;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 input{
@@ -157,7 +157,7 @@ input{
   margin: 0 .2rem;
   height: 2.3rem;
   background-color: transparent;
-  color: #EBE5DE;
+  color: var(--primary-color);
   font-weight: bold;
 }
 
@@ -166,16 +166,16 @@ input:focus-visible {
 }
 
 .ellipsis:hover {
-  color: #70AED2;
+  color: var(--secondary-color);
 }
 
 .active {
-  background-color: #70AED2;
-  border: 1px solid #70AED2;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 .active:hover {
-  color: #EBE5DE;
+  color: var(--primary-color);
 }
 
 </style>

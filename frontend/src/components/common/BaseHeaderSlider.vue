@@ -56,11 +56,11 @@ ul.tab-bar>li {
 
 ul.tab-bar.header,
 ul.tab-bar.header>li { 
-  border-bottom: 1px solid #EBE5DE;
+  border-bottom: 1px solid var(--primary-color);
 }
 
 ul.tab-bar.bar-style-1:before { 
-  background-color: #70AED2; 
+  background-color: var(--secondary-color); 
 }
 
 ul.tab-bar.bar-style-1.header:before { 
@@ -97,7 +97,7 @@ ul.tab-bar.bar-style-1>li.active {
 }
 
 ul.tab-bar.bar-style-1.header>li.active { 
-  color: #70AED2; 
+  color: var(--secondary-color); 
 }
 
 li {
@@ -111,11 +111,11 @@ li {
 }
 
 li:hover {
-  color: #70AED2;
+  color: var(--secondary-color);
 }
 
 ul.button li.active:hover {
-  color: #EBE5DE;
+  color: var(--primary-color);
 }
 
 ul.header li {
@@ -125,7 +125,7 @@ ul.header li {
 
 ul.button li {
   padding: 0.6rem;
-  border: 1px solid #EBE5DE;
+  border: 1px solid var(--primary-color);
   z-index: 2;
 }
 </style>

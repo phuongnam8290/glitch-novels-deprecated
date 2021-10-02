@@ -83,12 +83,12 @@ export default {
   font-size: 1.3rem;
   letter-spacing: 1px;
   transition: color .5s;
-  color: #EBE5DE
+  color: var(--primary-color);
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: #70AED2;
+  color: var(--secondary-color);
 }
 
 .line1,
@@ -115,12 +115,12 @@ export default {
 .search-input,
 .search-input:focus {
   background-color: transparent;
-  color: #EBE5DE;
+  color: var(--primary-color);
 }
 
 .search-input {
   width: 30rem;
-  border: 1px solid #EBE5DE;
+  border: 1px solid var(--primary-color);
 }
 
 @media (max-width: 1200px) {
@@ -136,8 +136,8 @@ export default {
 }
 
 .search-input:focus {
-  border: 1px solid #70AED2;
-  box-shadow: 0px 0px 2px #70AED2;
+  border: 1px solid var(--secondary-color);
+  box-shadow: 0px 0px 2px var(--secondary-color);
 }
 
 input.search-input[type="text"]::placeholder {

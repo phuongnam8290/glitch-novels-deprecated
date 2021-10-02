@@ -20,8 +20,7 @@
         </div>
       </li>
       <li class="d-none d-md-flex item status">
-        <i class="fad fa-circle-notch">
-        </i>
+        <i class="far fa-heart-rate"></i>
         <div class="overflow-hidden"
             @mouseenter="startMarquee" 
             @mouseleave="stopMarquee">
@@ -129,7 +128,7 @@ export default {
       },
       status: {
         name: "Status",
-        icon: "fa-circle-notch",
+        icon: "far fa-heart-rate",
         content: [
           {name: "Ongoing", selected: false},
           {name: "Completed", selected: false},
@@ -217,7 +216,7 @@ ul {
 }
 
 li {
- border: 1px solid #EBE5DE; 
+ border: 1px solid var(--primary-color); 
  padding: .8rem 1rem .8rem 1rem;
  margin-right: 1rem;
  margin-bottom: .5rem;
@@ -230,8 +229,8 @@ li p {
 }
 
 li.add-filter:hover {
-  color:#70AED2;
-  border: 1px solid #70AED2;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 li i {

@@ -106,7 +106,7 @@
         </span>
       </div>
 
-      <div class="mt-3 text-nowrap">
+      <div class="mt-2 text-nowrap">
           <base-tag v-for="genre in getLoopedElements(novel.genres, 5)" :key="genre">
             {{ genre }}
           </base-tag>

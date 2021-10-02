@@ -123,13 +123,13 @@ export default {
 
 <style scoped>
 .display {
-  border: 1px solid #EBE5DE;
+  border: 1px solid var(--primary-color);
   transition: all .3s;
 }
 
 .display:hover {
-  color:#70AED2;
-  border: 1px solid #70AED2;
+  color:var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 .sort-btn {
@@ -163,7 +163,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  border: 1px solid #EBE5DE;
+  border: 1px solid var(--primary-color);
   border-top: none;
   background-color: rgba(0, 0, 0, 0.9);
 }
@@ -180,7 +180,7 @@ export default {
 }
 
 .sort-btn:hover {
-  color: #70AED2;
+  color: var(--secondary-color);
 }
 
 </style>

@@ -77,7 +77,7 @@ export default {
   right: 100%;
   top: 50%;
   width: 10vw;
-  border-bottom: 1px solid #EBE5DE;
+  border-bottom: 1px solid var(--primary-color);
   margin-right: 1.2rem;
 }
 
@@ -87,7 +87,7 @@ export default {
   left: 100%;
   top: 50%;
   width: 10vw;
-  border-bottom: 1px solid #EBE5DE;
+  border-bottom: 1px solid var(--primary-color);
   margin-left: 1.2rem;
 }
 
@@ -95,8 +95,8 @@ export default {
 .header p:hover:before,
 .header p:hover:after {
   transition: all .3s ease-in-out;
-  color: #70AED2;
-  border-color: #70AED2;
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
 }
 
 .body {

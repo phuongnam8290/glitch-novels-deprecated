@@ -308,8 +308,8 @@ export default {
 
 .curator .follow a,
 .curator .followers p {
-  color: #EBE5DE;
-  border: 1px solid #EBE5DE;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   padding: 0.2rem 1rem;
 }
 
@@ -322,8 +322,8 @@ export default {
 
 .curator .follow a:hover {
   text-decoration: none;
-  color: #70AED2;
-  border: 1px solid #70AED2;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 .curator.active .followers {

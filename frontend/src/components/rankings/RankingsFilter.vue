@@ -98,7 +98,7 @@ ul {
 }
 
 li {
-  border: 1px solid #EBE5DE; 
+  border: 1px solid var(--primary-color); 
   padding: .8rem 1rem .8rem 1rem;
   margin-right: 1rem;
   margin-bottom: .5rem;
@@ -111,8 +111,8 @@ li p {
 }
 
 li.add-filter:hover {
-  color:#70AED2;
-  border: 1px solid #70AED2;
+  color:var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 li i {

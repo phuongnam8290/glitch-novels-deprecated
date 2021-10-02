@@ -62,6 +62,12 @@ export default {
 }
 
 body {
+  --primary-color: #EBE5DE;
+  /* --secondary-color: #B98B56; */
+  --secondary-color: #C9A882;
+  --hover-color: #8E6E48;
+  --selected-color: #8E6E48;
+
   font-family: 'Proxima Nova', sans-serif !important;
 
   background:
@@ -72,7 +78,7 @@ body {
   url(~@/assets/images/background.png) 
   fixed center/cover no-repeat;
   height: 100%;
-  color: #EBE5DE;
+  color: var(--primary-color);
 }
 
 header.container-fluid {
@@ -98,7 +104,7 @@ section.container-fluid {
   right: 100%;
   top: 50%;
   width: 50vw;
-  border-bottom: 1px solid #EBE5DE;
+  border-bottom: 1px solid var(--primary-color);
   margin-right: 1.2rem;
 }
 
@@ -108,12 +114,12 @@ section.container-fluid {
   left: 100%;
   top: 50%;
   width: 50vw;
-  border-bottom: 1px solid #EBE5DE;
+  border-bottom: 1px solid var(--primary-color);
   margin-left: 1.2rem;
 }
 
 .color-primary {
-  color: #EBE5DE
+  color: var(--primary-color);
 }
 
 p {
@@ -124,7 +130,7 @@ p {
 
 a:hover {
   transition: all 0.3s ease-in-out;
-  color: #70AED2;
+  color: var(--secondary-color);
 }
 
 .title-text {
@@ -155,8 +161,8 @@ a:hover {
 .v-popper--theme-tooltip .v-popper__inner {
   max-width: 20rem;
   padding: .8rem 1rem;
-  color: #EBE5DE;
-  border: 1px solid #EBE5DE;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   line-height: 1.3rem;
 }
 

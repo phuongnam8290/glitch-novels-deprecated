@@ -27,6 +27,6 @@ footer .logo img {
 
 footer .line {
   width: 100%;
-  border-top: 1px solid #EBE5DE;
+  border-top: 1px solid var(--primary-color);
 }
 </style>

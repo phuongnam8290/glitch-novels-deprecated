@@ -92,7 +92,7 @@ ul {
 }
 
 li {
-  border: 1px solid #EBE5DE; 
+  border: 1px solid var(--primary-color); 
   padding: .5rem 1rem .4rem 1rem;
   margin-right: 1rem;
   margin-bottom: .8rem;
@@ -101,20 +101,20 @@ li {
 }
 
 li:hover {
-  color:#70AED2;
-  border: 1px solid #70AED2;
+  color:var(--secondary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 li.active {
-  border: 1px solid #3c89b6;
-  background-color: #3c89b6;
-  color: #EBE5DE;
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 li.active:hover {
-  border: 1px solid #3c89b6;
-  background-color: #3c89b6;
-  color: #EBE5DE;
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 li p {
