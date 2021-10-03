@@ -15,14 +15,8 @@
   transition: background-position .5s;
 
   padding: .3rem .8rem;
-  margin-left: 0.7rem;
-  margin-top: 0.3rem;
 
   cursor: pointer;
-}
-
-.tag:first-child {
-  margin-left: 0;
 }
 
 .tag:hover {

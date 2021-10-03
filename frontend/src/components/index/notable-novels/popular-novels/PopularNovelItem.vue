@@ -18,8 +18,8 @@
     <template v-slot:footer>
       <p class="d-flex justify-content-between info">
         <span>
-          <i class="fas fa-star pr-1"></i>
-          {{ novel.rating }}
+          <i class="fas fa-star pr-1 ratings"></i>
+          {{ novel.ratings }}
         </span>
         <span class="d-none d-sm-block pl-3">
           <i class="fas fa-books pr-1"></i>

@@ -1,13 +1,13 @@
 <template>
-  <section class="container-fluid">
+  <section class="container-fluid d-none d-md-block">
     <top-rankings></top-rankings>
   </section>
-  <section class="container-fluid">
+  <section class="container-fluid d-block d-lg-none">
     <rankings-filter></rankings-filter>
   </section>
   <section class="container-fluid">
     <div class="row">
-      <div class="col-12 col-lg-9 pl-0">
+      <div class="col-12 col-lg-9 px-sm-0">
         <rankings-list></rankings-list>
       </div>
       <div class="col-0 col-lg-3"></div>

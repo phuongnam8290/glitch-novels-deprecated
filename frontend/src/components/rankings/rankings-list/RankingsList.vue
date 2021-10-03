@@ -4,10 +4,10 @@
       <div class="row no-gutters"
            v-for="i in 20" :key="i">
         <div class="col-2 py-3 px-0 left-col">
-            <p class="text-center ranking">
+            <p class="text-center cursor-default ranking">
               <span class="d-none d-sm-inline">#</span>{{ i }}
             </p>
-            <p class="text-center ranking-info">
+            <p class="text-center cursor-default ranking-info">
               <span class="d-block">
                 <i class="far fa-poll mb-1"></i>
               </span>
@@ -21,11 +21,11 @@
              :style="getCoverStyle(novel.cover)">
           <div class="d-flex justify-content-between align-items-center text-nowrap">
             <div class="overflow-hidden novel-info">
-              <p class="mb-1 title-text"> {{ novel.title }} </p>
-              <p class="fader-text"> {{ novel.author }} </p>
+              <p class="pointable title-text"> {{ novel.title }} </p>
+              <p class="pointable fader-text"> {{ novel.author }} </p>
             </div>
             <div class="d-inline-block ml-sm-3 ratings">
-              <p>
+              <p class="cursor-default">
                 <span>
                   <i class="fas fa-star"></i>
                 </span>
@@ -35,7 +35,7 @@
           </div>
 
           <div class="d-flex justify-content-between text-center publication-info">
-            <p class="mr-sm-1">
+            <p class="mr-sm-1 cursor-default">
               <span class="d-block">
                 <i class="fas fa-books mb-1"></i>
               </span>
@@ -43,7 +43,7 @@
               {{ novel.chapters }}
               </span>
             </p>
-            <p class="mr-sm-1">
+            <p class="mr-sm-1 cursor-default">
               <span class="d-block">
                 <i class="far fa-heart-rate mb-1"></i>
               </span>
@@ -51,7 +51,7 @@
                 Ongoing
               </span>
             </p>
-            <p>
+            <p class="cursor-default">
               <span class="d-block">
                 <i class="far fa-calendar-alt mb-1"></i>
               </span>
@@ -67,113 +67,90 @@
       </div>
     </div>
 
-    <div class="d-none d-md-block d-xl-none md-screen">
+    <div class="d-none d-md-block md-screen">
       <div class="row no-gutters align-items-center"
           v-for="i in 17" :key="i">
-        <div class="col-md-1 text-center ranking">
-          <p>#{{ i + 3 }} </p>
-        </div>
-        <div class="col-md-7 d-flex novel-info">
-          <div class="cover">
-            <img class="img-fluid"
-                :src="require(`@/assets/images/novel-list/${novel.cover}`)">
-          </div>
-          <div class= "my-auto right-col">
-            <div class="overflow-hidden text-nowrap text-center title" 
-                @mouseenter="startMarquee" 
-                @mouseleave="stopMarquee">
-              <p class="d-inline-block"> {{ novel.title }} </p>
-            </div>
-            <div class="overflow-hidden text-nowrap text-center author"
-                @mouseenter="startMarquee" 
-                @mouseleave="stopMarquee">
-              <p class="d-inline-block"> {{ novel.author }} </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex justify-content-around text-center ranking-info">
-          <p>
-            <span class="d-block">
-              <i class="far fa-poll mb-2"></i>
-            </span>
-            <span class="d-block">
-              {{ novel.votes }}
-            </span>
-          </p>
-
-          <p>
-            <span class="d-block">
-              <i class="fas fa-books mb-2"></i>
-            </span>
-            <span class="d-block">
-            {{ novel.chapters }}
-            </span>
-          </p>
-
-          <p>
-            <span class="d-block">
-              <i class="fas fa-star mb-2"></i>
-            </span>
-            <span class="d-block">
-            {{ novel.ratings }}
-            </span>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="d-none d-xl-block xl-screen">
-      <div class="row no-gutters align-items-center"
-          v-for="i in 17" :key="i">
-        <div class="col-md-1 text-center ranking">
-          <p>#{{ i + 3 }} </p>
+        <div class="col-md-1  ranking">
+          <p class="cursor-default">#{{ i + 3 }} </p>
         </div>
         <div class="col-md-11 d-flex novel-info">
           <div class="cover">
             <img :src="require(`@/assets/images/novel-list/${novel.cover}`)">
           </div>
-          <div class= "d-flex flex-column overflow-hidden right-col">
-            <div class="overflow-hidden text-nowrap title" 
-                @mouseenter="startMarquee" 
-                @mouseleave="stopMarquee">
-              <p class="d-inline-block"> {{ novel.title }} </p>
-            </div>
-            <div class="overflow-hidden text-nowrap author"
-                @mouseenter="startMarquee" 
-                @mouseleave="stopMarquee">
-              <p class="d-inline-block"> {{ novel.author }} </p>
-            </div>
-            <div class="d-flex justify-content-between stats">
-              <p>
-                <span>
-                  <i class="far fa-poll mr-1"></i>
+          <div class= "d-flex flex-column overflow-hidden w-100 right-col">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="overflow-hidden">
+                <div class="overflow-hidden text-nowrap title-text" 
+                    @mouseenter="startMarquee" 
+                    @mouseleave="stopMarquee">
+                  <p class="d-inline-block pointable"> {{ novel.title }}</p>
+                </div>
+                <div class="overflow-hidden text-nowrap fader-text"
+                    @mouseenter="startMarquee" 
+                    @mouseleave="stopMarquee">
+                  <p class="d-inline-block pointable"> {{ novel.author }}</p>
+                </div>
+              </div>
+
+              <div class="d-flex ml-3 ratings">
+                <span v-for="fullStar in getRatingStars(novel.ratings).fullStars" :key="fullStar">
+                  <i class="fas fa-star"></i>
                 </span>
-                {{ novel.votes }}
+                <span v-if="getRatingStars(novel.ratings).haveHalfStar">
+                  <i class="fas fa-star-half-alt"></i>
+                </span>
+                <span v-for="emptyStar in getRatingStars(novel.ratings).emptyStars" :key="emptyStar">
+                  <i class="far fa-star"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="text-nowrap tags">
+              <base-tag v-for="genre in getLoopedElements(novel.genres, 5)" :key="genre"
+                        class="tag">
+                {{ genre }}
+              </base-tag>
+            </div>
+
+            <div class="d-flex justify-content-between text-center stats">
+              <p class="mr-4">
+                <span class="d-md-block d-lg-inline">
+                  <i class="far fa-poll mr-2 mb-1"></i>
+                </span>
+                <span class="d-md-block d-lg-inline text-nowrap cursor-default">
+                  {{ novel.votes }} Votes
+                </span>
               </p> 
-              <p>
-                <span> 
-                  <i class="fas fa-books mr-1"></i>
+              <p class="mr-4">
+                <span class="d-md-block d-lg-inline"> 
+                  <i class="fas fa-books mr-2 mb-1"></i>
                 </span>
-                {{ novel.chapters }} Chapters
+                <span class="d-md-block d-lg-inline text-nowrap cursor-default">
+                  {{ novel.chapters }} Chapters
+                </span>
+              </p>
+              <p class="mr-4">
+                <span class="d-md-block d-lg-inline">
+                  <i class="far fa-heart-rate mr-2 mb-1"></i>
+                </span>
+                <span class="d-md-block d-lg-inline text-nowrap cursor-default">Ongoing</span>
               </p>
               <p>
-                <span>
-                  <i class="far fa-heart-rate"></i>
+                <span class="d-md-block d-lg-inline">
+                  <i class="far fa-calendar-alt mr-2 mb-1"></i>
                 </span>
-                Ongoing
-              </p>
-              <p>
-                <span>
-                  <i class="far fa-calendar-alt"></i>
-                </span>
-                Every 14 Day(s)
+                <span class="d-md-block d-lg-inline text-nowrap cursor-default">Every 14 Day(s)</span>
               </p>
             </div>
-            <div class="synopsis paragraph-text"
+
+            <div class="d-none d-lg-block paragraph-text viewport"
                  v-dragscroll>
-              <p v-for="line in novel.synopsis" :key="line">
-                {{ line }}
-              </p>
+              <div class="grabbable synopsis">
+                <p v-for="line in novel.synopsis" :key="line"
+                   class="grabbable">
+                  {{ line }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -183,10 +160,15 @@
 </template>
 
 <script>
-import ScrollText from "@/assets/js/mixins/ScrollText.js"
+import Utils from "@/assets/js/mixins/Utils.js";
+import ScrollText from "@/assets/js/mixins/ScrollText.js";
+import BaseTag from "@/components/common/BaseTag.vue";
 
 export default {
-  mixins: [ScrollText],
+  components: {
+    "base-tag": BaseTag
+  },
+  mixins: [Utils, ScrollText],
   data() {
     return {
       novel: {
@@ -240,8 +222,8 @@ export default {
 }
 
 .sm-screen .left-col {
-  background-color: var(--primary-color);
-  color: #000;
+  background-color: var(--darker-secondary-color);
+  color: var(--primary-color);
 }
 
 .sm-screen .ranking {
@@ -254,7 +236,6 @@ export default {
 .sm-screen .publication-info,
 .sm-screen .ratings {
   font-size: 1.3rem;
-  /* font-weight: bold; */
 }
 
 .sm-screen .ranking-info,
@@ -267,7 +248,7 @@ export default {
 }
 
 .md-screen > div {
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 }
 
 .md-screen > div:first-child {
@@ -276,97 +257,45 @@ export default {
 
 .md-screen .ranking {
   font-family: "numbers-prospekt", sans-serif;
-  font-size: 2.3rem;
-}
-
-.md-screen .cover {
-  width: 25%;
-  padding-left: 1rem;
-}
-
-.md-screen .right-col {
-  width: 75%;
-}
-
-.md-screen .novel-info .title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 0 1rem;
-  margin-bottom: .25rem;
-}
-
-.md-screen .novel-info .author {
-  font-weight: 300;
-  font-style: italic;
-  font-size: .8rem;
-  margin: 0 1rem;
-}
-
-.md-screen .ranking-info {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.xl-screen > div {
-  margin: 2rem 0;
-}
-
-.xl-screen > div:first-child {
-  margin-top: 0;
-}
-
-.xl-screen .ranking {
-  font-family: "numbers-prospekt", sans-serif;
   font-size: 2.7rem;
 }
 
-.xl-screen .cover {
+.md-screen .cover {
   padding-left: 1rem;
   padding-right:.5rem;
 }
 
-.xl-screen img {
+.md-screen img {
   height: 30vh;
   width: auto;
 }
 
-.xl-screen .right-col {
+.md-screen .right-col {
   padding-bottom: 0;
   height: 30vh;
-}
-
-.xl-screen .novel-info .title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 0 1rem;
-  margin-bottom: .25rem;
-  padding-bottom: 1rem;
-}
-
-.xl-screen .novel-info .author {
-  font-weight: 300;
-  font-size: .8rem;
-  font-style: italic;
   margin-left: 1rem;
-  padding-bottom: .8rem;
-  margin-bottom: .5rem;
 }
 
-.xl-screen .novel-info .stats {
-  margin-left: 1rem;
-  margin-bottom: .5rem;
+@media(max-width: 992px) {
+  .md-screen img {
+    height: 16vh;
+  } 
+
+  .md-screen .right-col {
+    height: 16.5vh;
+  }
 }
 
-.xl-screen .novel-info .synopsis {
-  height: 50vh;
+.md-screen .novel-info .tags,
+.md-screen .novel-info .stats {
+  margin-top: .5rem;
+}
+
+.md-screen .novel-info .tag {
   margin-left: 1rem;
-  padding-bottom: .9rem;
-  overflow: scroll;
-  -webkit-mask-image: -webkit-gradient(linear, center top, center bottom, 
-      color-stop(0.80,  rgba(0,0,0,1)),
-      color-stop(1.00,  rgba(0,0,0,0)));
-  mask-image: -webkit-gradient(linear, center top, center bottom, 
-                                color-stop(0.70,  rgba(0,0,0,1)),
-                                color-stop(1.00,  rgba(0,0,0,0)));
+}
+
+.md-screen .novel-info .tag:first-child {
+  margin-left: 0;
 }
 </style>

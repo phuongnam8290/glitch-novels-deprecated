@@ -63,7 +63,6 @@ export default {
 
 body {
   --primary-color: #EBE5DE;
-  /* --secondary-color: #B98B56; */
   --secondary-color: #C9A882;
   --darker-secondary-color: #8E6E48;
 
@@ -87,6 +86,13 @@ header.container-fluid {
 section.container-fluid {
   padding: 3rem 4rem 0 4rem;
   background: transparent;
+}
+
+@media (max-width: 576px) {
+  section.container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 .section-title {
@@ -117,10 +123,6 @@ section.container-fluid {
   margin-left: 1.2rem;
 }
 
-.color-primary {
-  color: var(--primary-color);
-}
-
 p {
   word-spacing: 2px;
   padding-right: 2px;
@@ -145,7 +147,8 @@ a:hover {
 
 .fader-text {
   font-weight: 300;
-  font-size: 0.8rem;
+  font-size: .8rem;
+  margin-top: .25rem;
 }
 
 .paragraph-text p {
@@ -154,6 +157,35 @@ a:hover {
 
 .paragraph-text p:first-child {
   margin-top: 0;
+}
+
+/* For style cursor */
+.cursor-default {
+  cursor: default !important;
+}
+
+.pointable {
+  cursor: pointer !important;
+}
+
+.grabbable {
+  cursor: grab !important;
+}
+
+/* For viewport */
+.viewport {
+  margin-top: .25rem;
+  overflow: scroll;
+  -webkit-mask-image: -webkit-gradient(linear, center top, center bottom, 
+      color-stop(.6,  rgba(0,0,0,1)),
+      color-stop(1,  rgba(0,0,0,.5)));
+  mask-image: -webkit-gradient(linear, center top, center bottom, 
+                                color-stop(.6,  rgba(0,0,0,1)),
+                                color-stop(1,  rgba(0,0,0,.5)));
+}
+
+.viewport > div {
+    padding-bottom: 1.5rem;
 }
 
 /* For tooltip */
@@ -177,5 +209,10 @@ a:hover {
 .fadeout {
   animation: fadeOut;
   animation-duration: .5s;
+}
+
+/* For rating stars */
+.ratings {
+  color: var(--secondary-color);
 }
 </style>

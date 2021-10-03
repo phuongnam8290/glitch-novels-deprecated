@@ -72,6 +72,13 @@ export default {
   padding: 3rem 3rem 1rem 3rem;
 }
 
+@media (max-width: 576px) {
+  .modal-guts {
+    padding: 1.5rem;
+    padding-bottom: 0;
+  }
+}
+
 .custom-modal-header p:before {
   position: absolute;
   content: "";

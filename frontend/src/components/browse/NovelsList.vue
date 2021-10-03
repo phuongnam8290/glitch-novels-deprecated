@@ -30,8 +30,8 @@
       <template v-slot:footer>
         <p class="d-flex justify-content-between info">
           <span>
-            <i class="fas fa-star pr-1"></i>
-            {{ novels[0].rating }}
+            <i class="fas fa-star pr-1 ratings"></i>
+            {{ novels[0].ratings }}
           </span>
           <span class="d-none d-sm-block pl-3">
             <i class="fas fa-books pr-1"></i>
@@ -74,7 +74,7 @@ export default {
             "However, a mysterious System grants him the power of the ‘Player’, setting him on a course for an incredible and often times perilous Journey.",
             "Follow Sang Jin-Woo as he embarks on an adventure to become an unparalleled existence through his “Level-Up” system - the only one in the entire world!"
           ],
-          rating: 3.78,
+          ratings: 3.78,
           publication: "428 Chapters (Ongoing)",
           genres: ["Action", "Adventure", "Urban", "Fantasy", "Weak to Strong", "Game Element"],
           bookmarks: "15,785",
@@ -91,5 +91,9 @@ export default {
 <style scoped>
 .row {
   margin-left: -2rem;
+}
+
+.info {
+  margin-top: 1rem;
 }
 </style>

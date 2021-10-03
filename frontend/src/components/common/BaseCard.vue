@@ -12,7 +12,7 @@
     </div>
 
     <div class="d-flex flex-column overflow-hidden card-body py-0 pr-0">
-      <div class="d-flex justify-content-between align-items-start">
+      <div class="d-flex justify-content-between align-items-center">
         <div class="overflow-hidden">
           <div class="overflow-hidden" 
                @mouseenter="startMarquee" 
@@ -26,7 +26,7 @@
                v-if="hasSubtitleSlot"
                @mouseenter="startMarquee" 
                @mouseleave="stopMarquee">
-            <p class="d-inline-block text-nowrap mt-1 fader-text" style="cursor: pointer;">
+            <p class="d-inline-block text-nowrap fader-text" style="cursor: pointer;">
               <slot name="subtitle"></slot>
             </p>
           </div>
@@ -41,7 +41,7 @@
 
       <div class="mt-2 paragraph-text viewport"
            v-dragscroll>
-        <div class="pb-5">
+        <div>
           <slot name="content"></slot>
         </div>
       </div>
@@ -61,7 +61,7 @@
     </div>
 
     <div class="d-flex flex-column overflow-hidden card-body py-0 pr-0">
-      <div class="d-flex justify-content-between align-items-end overflow-hidden mb-1">
+      <div class="d-flex justify-content-between align-items-start overflow-hidden mb-1">
         <div class="overflow-hidden"
               @mouseenter="startMarquee" 
               @mouseleave="stopMarquee">
@@ -70,14 +70,14 @@
           </p>
         </div>
 
-        <div class="d-flex ml-3">
-          <span v-for="fullStar in getRatingStars(novel.rating).fullStars" :key="fullStar">
+        <div class="d-flex ml-3 ratings">
+          <span v-for="fullStar in getRatingStars(novel.ratings).fullStars" :key="fullStar">
             <i class="fas fa-star"></i>
           </span>
-          <span v-if="getRatingStars(novel.rating).haveHalfStar">
+          <span v-if="getRatingStars(novel.ratings).haveHalfStar">
             <i class="fas fa-star-half-alt"></i>
           </span>
-          <span v-for="emptyStar in getRatingStars(novel.rating).emptyStars" :key="emptyStar">
+          <span v-for="emptyStar in getRatingStars(novel.ratings).emptyStars" :key="emptyStar">
             <i class="far fa-star"></i>
           </span>
         </div>
@@ -199,6 +199,10 @@ export default {
   padding: 2rem 0 2rem 1rem;
 }
 
+.card ::-webkit-scrollbar {
+  display: none;
+}
+
 .default.card:nth-child(odd):not(.col-12),
 .minimal.card:nth-child(odd):not(.col-12) {
   padding-right: 1rem;
@@ -235,18 +239,18 @@ export default {
   height: 180px;
 }
 
-.viewport {
+/* .viewport {
   overflow: hidden;
   white-space: normal;
-  cursor: grab;
+  cursor: grab; */
   /* Fading viewport to bottom - May not work on some browsers */
-  -webkit-mask-image: -webkit-gradient(linear, center top, center bottom, 
-      color-stop(0.70,  rgba(0,0,0,1)),
-      color-stop(1.00,  rgba(0,0,0,0)));
+/*  -webkit-mask-image: -webkit-gradient(linear, center top, center bottom, 
+      color-stop(.7,  rgba(0,0,0,1)),
+      color-stop(.9,  rgba(0,0,0,0)));
   mask-image: -webkit-gradient(linear, center top, center bottom, 
-                                color-stop(0.70,  rgba(0,0,0,1)),
-                                color-stop(1.00,  rgba(0,0,0,0)));
-}
+                                color-stop(.7,  rgba(0,0,0,1)),
+                                color-stop(.9,  rgba(0,0,0,0)));
+} */
 
 .thumbnail .overlay {
   width: 100%;

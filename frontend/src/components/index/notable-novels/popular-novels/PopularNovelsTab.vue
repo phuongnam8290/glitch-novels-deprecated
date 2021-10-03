@@ -26,7 +26,7 @@ export default {
             "However, a mysterious System grants him the power of the ‘Player’, setting him on a course for an incredible and often times perilous Journey.",
             "Follow Sang Jin-Woo as he embarks on an adventure to become an unparalleled existence through his “Level-Up” system - the only one in the entire world!"
           ],
-          rating: 4.78,
+          ratings: 4.78,
           publication: "428 Chapters (Ongoing)"
         }
       ]

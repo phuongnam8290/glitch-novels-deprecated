@@ -1,18 +1,26 @@
 <template>
   <div class="d-flex justify-content-center">
-    <ul class="d-flex overflow-hidden">      
-      <li class="d-none d-md-flex item"
+    <ul class="d-flex">      
+      <li class="d-flex"
           @click.stop="showModal">
-        <i class="fad fa-crown"></i>
-        <p class="d-inline-block text-nowrap">
-          Ranking: {{ generateRankingMessage("rankings") }}
+        <p class="text-nowrap">
+          <span>
+            <i class="fad fa-crown"></i>
+          </span>
+          <span>
+            Ranking: {{ generateRankingMessage("rankings") }}            
+          </span>
         </p> 
       </li>
-      <li class="d-none d-md-flex item status"
+      <li class="d-flex"
           @click.stop="showModal">
-        <i class="fad fa-calendar-alt"></i>
-        <p class="d-inline-block text-nowrap">
-          Time: {{ generateRankingMessage("periods") }}
+        <p class="text-nowrap">
+          <span>
+            <i class="fad fa-calendar-alt"></i>
+          </span>
+          <span>
+            Time: {{ generateRankingMessage("periods") }}
+          </span>
         </p> 
       </li>
     </ul>
@@ -121,6 +129,12 @@ li i {
 
 li.item {
   max-width: 25vw;
+}
+
+@media (max-width: 440px) {
+  li:last-child {
+    margin-top: .5rem;
+  }
 }
 
 li.item i {

@@ -124,6 +124,12 @@ li p {
   margin-right: 3rem;
 }
 
+@media (max-width: 576px) {
+  .items-group:first-child {
+    margin-right: 0;
+  }
+}
+
 .group-name {
   font-weight: bold;
   margin-bottom: 1rem
