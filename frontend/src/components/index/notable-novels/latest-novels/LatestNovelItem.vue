@@ -8,9 +8,7 @@
     </template>
 
     <template v-slot:content> 
-      <p v-for="paragraph in novel.synopsis" :key="paragraph"
-         style="cursor:grab;"
-      >
+      <p v-for="paragraph in novel.synopsis" :key="paragraph">
       {{ paragraph }}
       </p>
     </template>

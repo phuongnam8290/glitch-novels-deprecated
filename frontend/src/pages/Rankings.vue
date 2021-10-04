@@ -7,8 +7,8 @@
   </section>
   <section class="container-fluid">
     <div class="row">
-      <div class="col-12 col-lg-9 px-sm-0">
-        <rankings-list></rankings-list>
+      <div class="col-12 col-lg-9">
+        <rankings-list class="rankings-list"></rankings-list>
       </div>
       <div class="col-0 col-lg-3"></div>
     </div>
@@ -30,4 +30,7 @@ export default {
 </script>
 
 <style scoped>
+.rankings-list {
+  margin-top: -2.5rem;
+}
 </style>

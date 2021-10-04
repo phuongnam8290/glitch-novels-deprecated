@@ -20,9 +20,7 @@
       </template>
 
       <template v-slot:content> 
-        <p v-for="paragraph in novels[0].synopsis" :key="paragraph"
-          style="cursor:grab;"
-        >
+        <p v-for="paragraph in novels[0].synopsis" :key="paragraph">
           {{ paragraph }}
         </p>
       </template>
@@ -35,7 +33,7 @@
           </span>
           <span class="d-none d-sm-block pl-3">
             <i class="fas fa-books pr-1"></i>
-            {{ novels[0].publication }}
+            {{ novels[0].chapters }} Chapters
           </span>
         </p>
       </template>
@@ -74,13 +72,15 @@ export default {
             "However, a mysterious System grants him the power of the ‘Player’, setting him on a course for an incredible and often times perilous Journey.",
             "Follow Sang Jin-Woo as he embarks on an adventure to become an unparalleled existence through his “Level-Up” system - the only one in the entire world!"
           ],
-          ratings: 3.78,
-          publication: "428 Chapters (Ongoing)",
           genres: ["Action", "Adventure", "Urban", "Fantasy", "Weak to Strong", "Game Element"],
-          bookmarks: "15,785",
-          views: "35,751",
-          reviews: "235",
-          comments: "14,756"
+          ratings: 4.5,
+          bookmarks: 15785,
+          views: 35751,
+          reviews: 235,
+          comments: 14756,
+          chapters: 1423,
+          status: "ongoing",
+          votes: 154
         }
       ]
     }
@@ -89,10 +89,6 @@ export default {
 </script>
 
 <style scoped>
-.row {
-  margin-left: -2rem;
-}
-
 .info {
   margin-top: 1rem;
 }

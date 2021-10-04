@@ -1,5 +1,5 @@
 <template>
-  <section class="container-fluid py-0 controls">
+  <section class="container-fluid controls">
     <controls @change-style="changeNovelsStyle"></controls>
   </section>
 
@@ -7,7 +7,7 @@
     <novels-list :style="novelsStyle" >
     </novels-list>  
   </section>
-  <section class="container-fluid pt-4 pb-5">
+  <section class="container-fluid">
     <pagination :pages="15"></pagination>
   </section>
 </template>
@@ -37,13 +37,7 @@ export default {
 </script>
 
 <style scoped>
-.controls {
-  margin-top: 1.7rem;
-  margin-bottom: .3rem;
-}
-
 .novels {
-  padding-top: 0;
-  margin-top: -1rem;
+  margin-top: -2.5rem;
 }
 </style>

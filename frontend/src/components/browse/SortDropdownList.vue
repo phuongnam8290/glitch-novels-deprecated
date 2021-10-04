@@ -133,12 +133,12 @@ export default {
 }
 
 .sort-btn {
-  padding: .8rem .8rem .6rem 1rem;
+  padding: .8rem .8rem .8rem 1rem;
   cursor: pointer;
 }
 
 .text{
-  padding: .7rem 1rem .7rem 0;
+  padding: .8rem 1rem .8rem 0;
   max-width: 17rem;
   min-width: 10rem;
   cursor: pointer;

@@ -1,32 +1,32 @@
 <template>
   <!-- Use slots if you want to render default template 
-  Use novel props if you want to render minimal & thumbnail template (only use for render novel card) -->
+  Use novel props if you want to render minimal & thumbnail template (only use for render novel patch) -->
   <transition enter-active-class="fadein"
               leave-active-class="fadeout"
               mode="out-in">
   <!-- Default style -->
-  <div class="d-flex card pt-4 pb-3" :class="[layoutStyle, style]"
+  <div class="d-flex patch" :class="[layoutStyle, style]"
        v-if="style == 'default'" key="default">
-    <div class="cover">
+    <div>
        <img :src="require(`@/assets/images/${cover}`)">
     </div>
 
-    <div class="d-flex flex-column overflow-hidden card-body py-0 pr-0">
-      <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex flex-column overflow-hidden right-column">
+      <div class="d-flex justify-content-between align-items-center patch-header">
         <div class="overflow-hidden">
           <div class="overflow-hidden" 
                @mouseenter="startMarquee" 
                @mouseleave="stopMarquee">
-            <p class="d-inline-block text-nowrap title-text" style="cursor: pointer;">
+            <p class="d-inline-block text-nowrap pointable title-text">
               <slot name="title"></slot>
             </p>
           </div>
 
-          <div class="overflow-hidden" 
+          <div class="overflow-hidden mt-1" 
                v-if="hasSubtitleSlot"
                @mouseenter="startMarquee" 
                @mouseleave="stopMarquee">
-            <p class="d-inline-block text-nowrap fader-text" style="cursor: pointer;">
+            <p class="d-inline-block text-nowrap pointable fader-text">
               <slot name="subtitle"></slot>
             </p>
           </div>
@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <div class="mt-2 paragraph-text viewport"
+      <div class="paragraph-text viewport"
            v-dragscroll>
         <div>
           <slot name="content"></slot>
@@ -54,18 +54,18 @@
   <!-- End default style -->
   
   <!-- Minimal style -->
-  <div class="d-flex card pt-4 pb-3" :class="[layoutStyle, style]"
+  <div class="d-flex patch" :class="[layoutStyle, style]"
        v-else-if="style == 'minimal'" key="minimal">
-    <div class="cover">
+    <div>
        <img :src="require(`@/assets/images/${cover}`)">
     </div>
 
-    <div class="d-flex flex-column overflow-hidden card-body py-0 pr-0">
+    <div class="d-flex flex-column justify-content-between overflow-hidden right-column">
       <div class="d-flex justify-content-between align-items-start overflow-hidden mb-1">
         <div class="overflow-hidden"
               @mouseenter="startMarquee" 
               @mouseleave="stopMarquee">
-          <p class="d-inline-block text-nowrap title-text">
+          <p class="d-inline-block text-nowrap title-text pointable">
             {{ novel.title }}
           </p>
         </div>
@@ -83,50 +83,55 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-between mt-2">
-        <span class="d-sm-block">
-          <i class="fas fa-books mr-1"></i>
-          {{ novel.publication }}
-        </span>
-        <span class="d-none d-sm-block ml-3"> 
-          <i class="fas fa-bookmark pr-1"></i>
-          {{ novel.bookmarks }}
-        </span>
-        <span class="d-none d-md-block ml-3">
-          <i class="fas fa-eye pr-1"></i>
-          {{ novel.views }}
-        </span>
-        <span class="d-none d-md-block ml-3">
-          <i class="fas fa-clipboard-check"></i>
-          {{ novel.reviews }}
-        </span>
-        <span class="d-none d-md-block ml-3">
-          <i class="fas fa-comments"></i>
-          {{ novel.comments }}
-        </span>
-      </div>
-
       <div class="mt-2 text-nowrap">
           <base-tag v-for="genre in getLoopedElements(novel.genres, 5)" :key="genre">
             {{ genre }}
           </base-tag>
+      </div>
+
+      <div class="d-flex justify-content-between text-center mt-2">
+        <p class="mr-4">
+          <span> 
+            <i class="fas fa-books mr-2 mb-1"></i>
+          </span>
+          <span class="text-nowrap cursor-default">
+            {{ novel.chapters }} Chapters
+          </span>
+        </p>
+        <p class="mr-4">
+          <span>
+            <i class="far fa-heart-rate mr-2 mb-1"></i>
+          </span>
+          <span class="cursor-default">Ongoing</span>
+        </p>
+        <p class="mr-4">
+          <span>
+            <i class="far fa-calendar-alt mr-2 mb-1"></i>
+          </span>
+          <span class="text-nowrap cursor-default">Every 14 Day(s)</span>
+        </p>
+        <p>
+          <span>
+            <i class="fas fa-bookmark mr-2 mb-1"></i>
+          </span>
+          <span class="cursor-default">{{ novel.bookmarks}} </span>
+        </p>
       </div>
     </div>
   </div>
   <!-- End of minimal style -->
 
   <!-- Thumbnail style -->
-  <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex card pt-4 pb-3" :class="style"
+  <div class="col-6 col-sm-4 col-md-3 col-lg-2 d-flex patch" :class="style"
        v-else-if="style == 'thumbnail'" key="thumbnail">
-    <div class="position-relative cover">
+    <div class="position-relative left-column">
         <img class="img-fluid"
              :src="require(`@/assets/images/${cover}`)">
         <div class="position-absolute overlay">
           <div class="position-absolute text-center overflow-hidden title"
                @mouseenter="startMarquee" 
                @mouseleave="stopMarquee">
-            <p class="d-inline-block text-nowrap"
-               style="cursor: pointer"> {{ novel.title }} </p>
+            <p class="d-inline-block text-nowrap pointable"> {{ novel.title }} </p>
           </div>
         </div>       
     </div>
@@ -170,13 +175,17 @@ export default {
         return {
           cover: "n/a",
           title: "n/a",
-          rating: NaN,
-          publication: "n/a",
+          author: "n/a",
+          synopsis: [],
           genres: [],
-          bookmarks: "n/a",
-          views: "n/a",
-          reviews: "n/a",
-          comments: "n/a"
+          ratings: NaN,
+          bookmarks: NaN,
+          views: NaN,
+          reviews: NaN,
+          comments: NaN,
+          chapters: NaN,
+          status: "n/a",
+          votes: NaN
         }
       }
     }
@@ -191,66 +200,69 @@ export default {
 
 
 <style scoped>
-.card {
+.patch {
   background-color: transparent;
   display: flex;
   flex-direction: row;
   border: none;
-  padding: 2rem 0 2rem 1rem;
+  margin-top: 2.5rem;
 }
 
-.card ::-webkit-scrollbar {
+.patch ::-webkit-scrollbar {
   display: none;
 }
 
-.default.card:nth-child(odd):not(.col-12),
-.minimal.card:nth-child(odd):not(.col-12) {
-  padding-right: 1rem;
+.default.patch:nth-child(odd) {
+  padding-right: 1.25rem;
 }
 
-.default.card:nth-child(even):not(.col-12),
-.minimal.card:nth-child(even):not(.col-12) {
-  padding-left: 2rem;
+.default.patch:nth-child(even) {
+  padding-left: 1.25rem;
 }
 
 @media (max-width: 992px) {
-  .default.card:nth-child(odd):not(.col-12),
-  .minimal.card:nth-child(odd):not(.col-12) {
-    padding-right: 0;
-  }
-
-  .default.card:nth-child(even):not(.col-12),
-  .minimal.card:nth-child(even):not(.col-12) {
-    padding-left: 1rem;
+  .default.patch {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
   }
 }
 
-.default img {
-  width: 125px;
-  height: 180px;
+.default.patch img {
+  height: 25vh;
 }
 
-.minimal img {
-  width: auto;
-  height: 85px;
+.default.patch .right-column {
+  height: 25vh;
+  padding-left: 1.5rem;
 }
 
-.default .card-body {
-  height: 180px;
+.default.patch .patch-header > div:first-child {
+  min-width: 10vw;
 }
 
-/* .viewport {
-  overflow: hidden;
-  white-space: normal;
-  cursor: grab; */
-  /* Fading viewport to bottom - May not work on some browsers */
-/*  -webkit-mask-image: -webkit-gradient(linear, center top, center bottom, 
-      color-stop(.7,  rgba(0,0,0,1)),
-      color-stop(.9,  rgba(0,0,0,0)));
-  mask-image: -webkit-gradient(linear, center top, center bottom, 
-                                color-stop(.7,  rgba(0,0,0,1)),
-                                color-stop(.9,  rgba(0,0,0,0)));
-} */
+.minimal.patch img {
+  height: 100px;
+}
+
+.minimal.patch .right-column {
+  padding-left: 1.5rem;
+  width: 100%;
+}
+
+.minimal.patch:nth-child(odd) {
+  padding-right: 1.25rem;
+}
+
+.minimal.patch:nth-child(even) {
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 992px) {
+  .minimal.patch {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
 
 .thumbnail .overlay {
   width: 100%;

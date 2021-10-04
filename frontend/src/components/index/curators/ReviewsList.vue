@@ -7,7 +7,7 @@
     </template>
 
     <template v-slot:misc>
-      <div class="d-none d-md-flex pl-2">
+      <div class="d-none d-md-flex pl-2 ratings">
         <span v-for="fullStar in getRatingStars(reviews[0].rating).fullStars" :key="fullStar">
           <i class="fas fa-star"></i>
         </span>
@@ -20,9 +20,7 @@
       </div>
     </template>
     <template v-slot:content>
-      <p v-for="paragraph in reviews[0].content" :key="paragraph"
-        style="cursor:grab;"
-      >
+      <p v-for="paragraph in reviews[0].content" :key="paragraph" >
         {{ paragraph }}
       </p>
     </template>

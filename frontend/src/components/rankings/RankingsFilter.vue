@@ -102,19 +102,15 @@ export default {
 <style scoped>
 ul {
   flex-wrap: wrap;
-  margin-bottom: -.5rem;
+  margin-top: -.5rem;
 }
 
 li {
   border: 1px solid var(--primary-color); 
   padding: .8rem 1rem .8rem 1rem;
   margin-right: 1rem;
-  margin-bottom: .5rem;
+  margin-top: .5rem;
   transition: all .3s;
-  cursor: pointer;
-}
-
-li p {
   cursor: pointer;
 }
 
@@ -129,12 +125,6 @@ li i {
 
 li.item {
   max-width: 25vw;
-}
-
-@media (max-width: 440px) {
-  li:last-child {
-    margin-top: .5rem;
-  }
 }
 
 li.item i {

@@ -20,9 +20,7 @@
 
     <template v-slot:content> 
       <p v-for="paragraph in novel.synopsis"
-         :key="paragraph"
-         style="cursor:grab;"
-      >
+         :key="paragraph">
         {{ paragraph }}
       </p>
     </template>

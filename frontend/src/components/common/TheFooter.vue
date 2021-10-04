@@ -19,6 +19,7 @@
 footer {
   background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .8));
   padding: 0.7rem 3rem !important;
+  margin-top: 3rem;
 }
 
 footer .logo img {

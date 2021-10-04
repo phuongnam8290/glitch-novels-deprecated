@@ -85,7 +85,7 @@
                     @mouseleave="stopMarquee">
                   <p class="d-inline-block pointable"> {{ novel.title }}</p>
                 </div>
-                <div class="overflow-hidden text-nowrap fader-text"
+                <div class="overflow-hidden text-nowrap mt-1 fader-text"
                     @mouseenter="startMarquee" 
                     @mouseleave="stopMarquee">
                   <p class="d-inline-block pointable"> {{ novel.author }}</p>
@@ -105,14 +105,13 @@
               </div>
             </div>
 
-            <div class="text-nowrap tags">
-              <base-tag v-for="genre in getLoopedElements(novel.genres, 5)" :key="genre"
-                        class="tag">
+            <div class="text-nowrap mt-2 tags">
+              <base-tag v-for="genre in getLoopedElements(novel.genres, 5)" :key="genre">
                 {{ genre }}
               </base-tag>
             </div>
 
-            <div class="d-flex justify-content-between text-center stats">
+            <div class="d-flex justify-content-between text-center mt-2 stats">
               <p class="mr-4">
                 <span class="d-md-block d-lg-inline">
                   <i class="far fa-poll mr-2 mb-1"></i>
@@ -214,11 +213,7 @@ export default {
 }
 
 .sm-screen > div {
-  margin: 1.5rem 0;
-}
-
-.sm-screen > div:first-child {
-  margin-top: 0;
+  margin-top: 2.5rem;
 }
 
 .sm-screen .left-col {
@@ -248,11 +243,7 @@ export default {
 }
 
 .md-screen > div {
-  margin: 2rem 0;
-}
-
-.md-screen > div:first-child {
-  margin-top: 0;
+  margin-top: 2.5rem;
 }
 
 .md-screen .ranking {
@@ -284,18 +275,5 @@ export default {
   .md-screen .right-col {
     height: 16.5vh;
   }
-}
-
-.md-screen .novel-info .tags,
-.md-screen .novel-info .stats {
-  margin-top: .5rem;
-}
-
-.md-screen .novel-info .tag {
-  margin-left: 1rem;
-}
-
-.md-screen .novel-info .tag:first-child {
-  margin-left: 0;
 }
 </style>

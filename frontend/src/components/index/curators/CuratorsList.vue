@@ -10,11 +10,11 @@
       </div>
       <div class="overflow-hidden ml-3 info">
         <div class="overflow-hidden title-text username">
-          <p class="d-inline"> {{ activeCurator.username }} </p>
+          <p class="d-inline pointable"> {{ activeCurator.username }} </p>
         </div>
         <div class="d-flex align-items-start mt-3 paragraph-text follow">
           <a @mouseenter="slideRight('start')"
-            @mouseleave="slideRight('stop')">
+             @mouseleave="slideRight('stop')">
             Follow
           </a>
           <div class="d-inline-block followers">
@@ -28,7 +28,7 @@
 
   
   <!-- Curators list section -->
-  <div class="d-flex justify-content-end curators-list">
+  <div class="d-flex justify-content-start overflow-hidden curators-list">
     <div class="d-flex curator inactive"
         v-for="(curator, index) in inactiveCurators" :key="curator.id"
         @click="activateCurator($event, index)">

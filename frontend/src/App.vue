@@ -1,19 +1,19 @@
 <template>
   <navigation-bar></navigation-bar>
   <router-view></router-view>
-  <custom-footer></custom-footer>
+  <the-footer></the-footer>
 </template>
 
 <script>
 import NavigationBar from './components/common/TheNavigationBar.vue'
-import Footer from './components/common/TheFooter.vue'
+import TheFooter from './components/common/TheFooter.vue'
 
 
 export default {
   name: 'App',
   components: {
     'navigation-bar': NavigationBar,
-    'custom-footer': Footer
+    'the-footer': TheFooter
   }
 }
 </script>
@@ -83,8 +83,10 @@ header.container-fluid {
   padding: 0 0;
 }
 
-section.container-fluid {
-  padding: 3rem 4rem 0 4rem;
+section.container-fluid {  
+  padding: 3rem;
+  padding-bottom: 0;
+
   background: transparent;
 }
 
@@ -97,6 +99,8 @@ section.container-fluid {
 
 .section-title {
   overflow: hidden;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .section-title p {
@@ -126,7 +130,6 @@ section.container-fluid {
 p {
   word-spacing: 2px;
   padding-right: 2px;
-  padding-bottom: 0.1rem;
 }
 
 a:hover {
@@ -139,20 +142,15 @@ a:hover {
   font-size: 1.3rem; 
 }
 
+.fader-text {
+  font-weight: 300;
+  font-size: .8rem;
+}
+
 .paragraph-text {
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.fader-text {
-  font-weight: 300;
-  font-size: .8rem;
-  margin-top: .25rem;
-}
-
-.paragraph-text p {
-  margin-top: 1rem;
 }
 
 .paragraph-text p:first-child {
@@ -174,7 +172,7 @@ a:hover {
 
 /* For viewport */
 .viewport {
-  margin-top: .25rem;
+  margin-top: .5rem;
   overflow: scroll;
   -webkit-mask-image: -webkit-gradient(linear, center top, center bottom, 
       color-stop(.6,  rgba(0,0,0,1)),
@@ -184,8 +182,13 @@ a:hover {
                                 color-stop(1,  rgba(0,0,0,.5)));
 }
 
+.viewport > div,
+.viewport > div > p {
+  cursor: grab;
+}
+
 .viewport > div {
-    padding-bottom: 1.5rem;
+  padding-bottom: 2rem;
 }
 
 /* For tooltip */

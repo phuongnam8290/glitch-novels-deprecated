@@ -19,7 +19,7 @@
           </p> 
         </div>
       </li>
-      <li class="d-none d-md-flex item status">
+      <li class="d-none d-md-flex item">
         <i class="far fa-heart-rate"></i>
         <div class="overflow-hidden"
             @mouseenter="startMarquee" 
@@ -212,14 +212,14 @@ export default {
 <style scoped>
 ul {
   flex-wrap: wrap;
-  margin-bottom: -.5rem;
+  margin-top: -.5rem;
 }
 
 li {
  border: 1px solid var(--primary-color); 
  padding: .8rem 1rem .8rem 1rem;
  margin-right: 1rem;
- margin-bottom: .5rem;
+ margin-top: .5rem;
  transition: all .3s;
  cursor: pointer;
 }

@@ -14,7 +14,7 @@
   background-position: bottom right;
   transition: background-position .5s;
 
-  padding: .3rem .8rem;
+  padding: .3rem 1.5rem;
 
   cursor: pointer;
 }
@@ -35,7 +35,6 @@
 
 .tag .content {
   color: var(--primary-color);
-  font-size: 0.9rem;
   text-decoration: none;
 }
 </style>

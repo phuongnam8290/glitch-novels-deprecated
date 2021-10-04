@@ -1,12 +1,12 @@
 <template>
   <div class="row filter-control">
-    <div class="col-12 px-0">
+    <div class="col-12">
       <filter-control></filter-control>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-12 d-flex justify-content-between px-0 misc-controls">
+    <div class="col-12 d-flex justify-content-between align-items-end misc-controls">
       <sort-drop-down-list class="drop-down-list"></sort-drop-down-list>
 
       <header-slider class="slider"
@@ -78,18 +78,17 @@ export default {
 </script>
 
 <style scoped>
-.filter-control {
-  margin-bottom: 1.7rem;
-}
 
 .misc-controls {
   flex-wrap: wrap;
-  margin-top: -1.7rem;
 }
 
-.drop-down-list,
-.slider {
-  margin-top: 1.7rem;
+.misc-controls .drop-down-list {
+  margin-top: 1.5rem;
+}
+
+.misc-controls .slider {
+  margin-top: 1.5rem;
 }
 
 </style>

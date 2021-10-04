@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-12 pr-0 pb-2">
+    <div class="col-12">
       <base-header-slider :style="'header'"
                           :slots="slots"
                           @activate-tab="changeComponent">

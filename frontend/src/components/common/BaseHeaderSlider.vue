@@ -45,10 +45,6 @@ export default {
 </script>
 
 <style scoped>
-ul.tab-bar.button {
-  margin-bottom: 1rem;
-}
-
 ul.tab-bar,
 ul.tab-bar>li { 
   position: relative; 
@@ -123,7 +119,7 @@ ul.button li.active:hover {
 }
 
 ul.header li {
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
   margin-right: 2rem;
 }
 
