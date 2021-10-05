@@ -1,14 +1,13 @@
 <template>
   <div class="accordion" :id="id">
-    <div class="py-4 text-center title-text header" 
+    <div class="text-center title-text header" 
          @click="toggleAccordion">
       <p class="d-inline"> 
         <slot name="title"></slot>
       </p>
     </div>
-    <div class="body" 
-         v-once :style="{display: active ? 'block' : 'none'}">
-      <div class="content paragraph-text">
+    <div class="body">
+      <div class="paragraph-text">
         <slot name="content"></slot>
       </div>
     </div>
@@ -64,6 +63,7 @@ export default {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  padding: 2rem 0;
 }
 
 .header p{

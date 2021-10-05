@@ -14,12 +14,12 @@
           {{ itemsGroup.name }} {{itemsGroup.selectAll ? "(All)" : ""}}
         </p>
 
-        <ul class="group-content">
+        <ul class="d-flex group-content">
           <li :class="{active: item.selected}"
               v-for="(item, index) in itemsGroup.content" :key="item.name"
               v-tooltip="{content: item.tooltip ? `<i class='fal fa-info-circle'></i> ${item.tooltip}` : null, html: true}"
               @click="toggleItem(itemsGroup, index)">
-            <p>
+            <p class="pointable">
               {{ item.name }}
             </p>            
           </li>
@@ -88,7 +88,6 @@ export default {
 
 <style scoped>
 ul {
-  display: flex;
   flex-wrap: wrap;
 }
 
@@ -110,10 +109,6 @@ li.active {
   border: 1px solid var(--darker-secondary-color);
   background-color: var(--darker-secondary-color);
   color: var(--primary-color);
-}
-
-li p {
-  cursor: pointer;
 }
 
 .items-group {

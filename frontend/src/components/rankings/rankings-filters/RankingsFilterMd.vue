@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import {provide, reactive} from "vue";
+import {provide, inject} from "vue";
 
 import RankingsModal from "@/components/rankings/RankingsModal.vue";
 
@@ -62,35 +62,7 @@ export default {
     }
   },
   setup() {
-    const rankings = reactive({
-      rankings: {
-        name: "Rankings",
-        icon: "fa-crown",
-        content: [
-          {name: "Trending", selected: false, 
-           tooltip: "The ranking is based on the total number of readers votes during a specific period."},
-          {name: "Collect", selected: false, 
-           tooltip: "The ranking is based on the number of readers who bookmark this book during a specific period."},
-          {name: "Popular", selected: true,
-           tooltip: "The ranking is based on the number of increased readers to a book during a specific period."},
-          {name: "Update", selected: false,
-           tooltip: "The ranking is based on the number of words published during a specific period."},
-          {name: "Active", selected: false,
-           tooltip: "The ranking is based on the number of new comments to a book during a specific period."}
-        ],
-      },
-      periods: {
-        name: "Periods",
-        icon: "fa-calendar-alt",
-        content: [
-          {name: "Montly", selected: true},
-          {name: "Season", selected: false, tooltip: "Last 3 months"},
-          {name: "Bi-annual", selected: false, tooltip: "Last 6 months"},
-          {name: "Annual", selected: false, tooltip: "Last year"},
-          {name: "All-time", selected: false},
-        ] 
-      }
-    });
+    const rankings = inject("rankings");
 
     provide("rankings", rankings);
 
