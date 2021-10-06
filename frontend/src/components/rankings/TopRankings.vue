@@ -8,36 +8,16 @@
             <img src="@/assets/images/novel-list/01.png">
             <div class="overlay"></div>
           </div>
-          <div class="d-flex justify-content-center align-items-center back">
+          <div class="d-none d-lg-flex justify-content-center align-items-center back">
             <div class="content">
-              <table>
-                <tr>
-                  <td>Title</td>
-                  <td>Solo Leveling</td>
-                </tr>
-                <tr>
-                  <td>Author</td>
-                  <td>ChuGong</td>
-                </tr>
-                <tr>
-                  <td>Views</td>
-                  <td>50,000</td>
-                </tr>
-                <tr>
-                  <td>Chapters</td>
-                  <td>520</td>
-                </tr>
-                <tr>
-                  <td>Status</td>
-                  <td>Ongoing</td>
-                </tr>
-                <tr>
-                </tr>
-              </table>
-              
+
+              <p class="title-text title">
+                Solo Leveling
+              </p>              
               <div class="d-flex justify-content-center">
                 <p class="read-btn">Read now</p>
               </div>
+
             </div>
           </div>
         </div>
@@ -55,33 +35,12 @@
             <img src="@/assets/images/novel-list/01.png">
             <div class="overlay"></div>
           </div>
-          <div class="d-flex justify-content-center align-items-center back">
+          <div class="d-none d-lg-flex  justify-content-center align-items-center back">
             <div class="content">
-              <table>
-                <tr>
-                  <td>Title</td>
-                  <td>Solo Leveling</td>
-                </tr>
-                <tr>
-                  <td>Author</td>
-                  <td>ChuGong</td>
-                </tr>
-                <tr>
-                  <td>Views</td>
-                  <td>50,000</td>
-                </tr>
-                <tr>
-                  <td>Chapters</td>
-                  <td>520</td>
-                </tr>
-                <tr>
-                  <td>Status</td>
-                  <td>Ongoing</td>
-                </tr>
-                <tr>
-                </tr>
-              </table>
               
+              <p class="title-text title">
+                Solo Leveling        
+              </p>            
               <div class="d-flex justify-content-center">
                 <p class="read-btn">Read now</p>
               </div>
@@ -103,36 +62,16 @@
             <img src="@/assets/images/novel-list/01.png">
             <div class="overlay"></div>
           </div>
-          <div class="d-flex justify-content-center align-items-center back">
+          <div class="d-none d-lg-flex justify-content-center align-items-center back">
             <div class="content">
-              <table>
-                <tr>
-                  <td>Title</td>
-                  <td>Solo Leveling</td>
-                </tr>
-                <tr>
-                  <td>Author</td>
-                  <td>ChuGong</td>
-                </tr>
-                <tr>
-                  <td>Views</td>
-                  <td>50,000</td>
-                </tr>
-                <tr>
-                  <td>Chapters</td>
-                  <td>520</td>
-                </tr>
-                <tr>
-                  <td>Status</td>
-                  <td>Ongoing</td>
-                </tr>
-                <tr>
-                </tr>
-              </table>
-              
+
+              <p class="title-text title">
+                Solo Leveling
+              </p>
               <div class="d-flex justify-content-center">
                 <p class="read-btn">Read now</p>
               </div>
+
             </div>
           </div>
         </div>
@@ -147,20 +86,21 @@
 
 <style scoped>
 .rankings {
-  margin-right: 3rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
-.rankings:last-child {
+/* .rankings:last-child {
   margin-right: 0;
-}
+} */
 
 .second-ranking img,
 .third-ranking img {
-  width: 20vw;
+  width: 15vw;
 }
 
 .first-ranking img {
-  width: 22vw;
+  width: 18vw;
 }
 
 .front {
@@ -193,10 +133,30 @@
 }
 
 .back .content {
-  padding: .5rem;
+  padding: 1rem;
 }
 
-.back .content table {
+.back .title {
+  line-height: 1.5;
+  text-align: center;
+
+  /* Add elipsis to overflowed text */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  margin: 1rem;
+}
+
+.first-ranking .back .title {
+  -webkit-line-clamp: 5;
+}
+
+.second-ranking .back .title,
+.third-ranking .back .title {
+  -webkit-line-clamp: 4;
+}
+/* .back .content table {
   margin-left: auto;
   margin-right: auto;
 }
@@ -209,8 +169,8 @@
 .back .content td:first-child {
   padding-right: 1rem;
   font-weight: bold;
-  
-}
+
+}*/
 
 .back .content .read-btn {
   display: inline-block;

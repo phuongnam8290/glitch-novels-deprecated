@@ -10,7 +10,7 @@
       <div class="col-12 col-lg-9">
         <rankings-list class="rankings-list"></rankings-list>
       </div>
-      <div class="col-0 col-lg-3">
+      <div class="d-none d-lg-block col-lg-3">
         <rankings-filter-lg class="rankings-filter-lg"></rankings-filter-lg>
       </div>
     </div>

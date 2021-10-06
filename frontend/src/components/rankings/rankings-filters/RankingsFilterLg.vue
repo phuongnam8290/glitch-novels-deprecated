@@ -1,30 +1,16 @@
 <template>
   <div class="wrapper">
-    <base-accordion id="acc-rankings" active>
-      <template v-slot:title> {{ rankings.rankings.name }} </template>
+    <base-accordion v-for="itemsGroup in rankings" :key="itemsGroup.name"
+                    :id="`acc-${itemsGroup.name}`" active>
+      <template v-slot:title> {{ itemsGroup.name }} </template>
       <template v-slot:content>
         <ul class="d-flex">
-          <li :class="{active: ranking.selected}"
-              v-for="(ranking, index) in rankings.rankings.content" :key="ranking.name"
-              v-tooltip="{content: ranking.tooltip ? `<i class='fal fa-info-circle'></i> ${ranking.tooltip}` : null, html: true}"
-              @click="toggleFilter('rankings', index)">
+          <li :class="{active: item.selected}"
+              v-for="(item, index) in itemsGroup.content" :key="item.name"
+              v-tooltip="{content: item.tooltip ? `<i class='fal fa-info-circle'></i> ${item.tooltip}` : null, html: true}"
+              @click="toggleFilter(itemsGroup.content, index)">
             <p class="pointable">
-              {{ ranking.name }}
-            </p>
-          </li>
-        </ul>
-      </template>
-    </base-accordion>
-    <base-accordion id="acc-periods" active>
-      <template v-slot:title> {{ rankings.periods.name }} </template>
-      <template v-slot:content>
-        <ul class="d-flex">
-          <li :class="{active: period.selected}"
-              v-for="(period, index) in rankings.periods.content" :key="period.name"
-              v-tooltip="{content: period.tooltip ? `<i class='fal fa-info-circle'></i> ${period.tooltip}` : null, html: true}"
-              @click="toggleFilter('periods', index)">
-            <p class="pointable">
-              {{ period.name }}
+              {{ item.name }}
             </p>
           </li>
         </ul>
@@ -42,13 +28,11 @@ export default {
     "base-accordion": BaseAccordion
   },
   methods: {
-    toggleFilter(type, index) {
-      for (let filter of this.rankings[type].content) {
+    toggleFilter(itemsGroup, index) {
+      for (let filter of itemsGroup) {
         filter.selected = false;
       }
-      this.rankings[type].content[index].selected = true;
-
-      console.log(this.rankings[type].content[index]);
+      itemsGroup[index].selected = true;
     }
   },
   setup() {
