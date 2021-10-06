@@ -11,7 +11,7 @@
           <div class="d-none d-lg-flex justify-content-center align-items-center back">
             <div class="content">
 
-              <p class="title-text title">
+              <p class="title-text cursor-default title">
                 Solo Leveling
               </p>              
               <div class="d-flex justify-content-center">
@@ -38,7 +38,7 @@
           <div class="d-none d-lg-flex  justify-content-center align-items-center back">
             <div class="content">
               
-              <p class="title-text title">
+              <p class="title-text cursor-default title">
                 Solo Leveling        
               </p>            
               <div class="d-flex justify-content-center">
@@ -65,7 +65,7 @@
           <div class="d-none d-lg-flex justify-content-center align-items-center back">
             <div class="content">
 
-              <p class="title-text title">
+              <p class="title-text cursor-default title">
                 Solo Leveling
               </p>
               <div class="d-flex justify-content-center">

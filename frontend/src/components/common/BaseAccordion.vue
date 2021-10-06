@@ -6,7 +6,8 @@
         <slot name="title"></slot>
       </p>
     </div>
-    <div class="body">
+    <div class="body"
+         :style="{display: isInitOpen ? 'auto' : 'none'}">
       <div class="paragraph-text">
         <slot name="content"></slot>
       </div>
@@ -34,14 +35,15 @@ export default {
   emits: ["toggle-accordion"],
   data() {
     return {
-      open: this.active,
+      isInitOpen: this.active,
+      isOpen: this.active
     }
   },
   watch: {
-    open(open) {
+    isOpen(isOpen) {
       let accordionBody = $(`#${this.id} .body`);
 
-      if(open) {
+      if(isOpen) {
         accordionBody.slideDown(250);
       } else {
         accordionBody.slideUp(250);
@@ -50,7 +52,7 @@ export default {
   },
   methods: {
     toggleAccordion() {
-        this.open = !this.open;
+        this.isOpen = !this.isOpen;
         // Listen to this event if you want to trigger custom handler on parent.
         this.$emit('toggle-accordion', this.id);
     }

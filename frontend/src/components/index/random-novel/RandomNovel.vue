@@ -130,7 +130,7 @@ export default {
 
       refs.forEach(ref => {
         if(ref.id != id) {
-          ref.open = false;
+          ref.isOpen = false;
         }
       });
     }
