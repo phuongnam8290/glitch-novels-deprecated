@@ -170,12 +170,13 @@ input:focus-visible {
 }
 
 .active {
-  background-color: var(--secondary-color);
-  border: 1px solid var(--secondary-color);
+  background-color: var(--darker-secondary-color);
+  border: 1px solid var(--darker-secondary-color);
 }
 
 .active:hover {
   color: var(--primary-color);
+  border: 1px solid var(--darker-secondary-color);
 }
 
 </style>

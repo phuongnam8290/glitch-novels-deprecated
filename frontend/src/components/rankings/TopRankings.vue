@@ -90,17 +90,13 @@
   margin-right: 1.5rem;
 }
 
-/* .rankings:last-child {
-  margin-right: 0;
-} */
-
 .second-ranking img,
 .third-ranking img {
-  width: 15vw;
+  width: 18vw;
 }
 
 .first-ranking img {
-  width: 18vw;
+  width: 20vw;
 }
 
 .front {
@@ -156,21 +152,6 @@
 .third-ranking .back .title {
   -webkit-line-clamp: 4;
 }
-/* .back .content table {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.back .content td {
-  font-size: 1.2rem;
-  padding-bottom: 1rem;
-}
-
-.back .content td:first-child {
-  padding-right: 1rem;
-  font-weight: bold;
-
-}*/
 
 .back .content .read-btn {
   display: inline-block;
@@ -187,12 +168,21 @@
 
 .medal {
   position: absolute;
-  top: -1rem;
-  right: -1rem;
+}
+
+.first-ranking .medal {
+  top: -1.5vw;
+  right: -1.5vw;
+}
+
+.second-ranking .medal,
+.third-ranking .medal {
+  top: -1.2vw;
+  right: -1.2vw;
 }
 
 .first-ranking .medal img {
-  width: 6vw;
+  width: 7vw;
 }
 
 .second-ranking .medal img,

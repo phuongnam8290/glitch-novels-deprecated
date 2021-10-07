@@ -97,36 +97,6 @@ section.container-fluid {
   }
 }
 
-.section-title {
-  overflow: hidden;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.section-title p {
-  position: relative;
-}
-
-.section-title p:before {
-  position: absolute;
-  content: "";
-  right: 100%;
-  top: 50%;
-  width: 50vw;
-  border-bottom: 1px solid var(--primary-color);
-  margin-right: 1.2rem;
-}
-
-.section-title p:after {
-  position: absolute;
-  content: "";
-  left: 100%;
-  top: 50%;
-  width: 50vw;
-  border-bottom: 1px solid var(--primary-color);
-  margin-left: 1.2rem;
-}
-
 p {
   word-spacing: 2px;
   padding-right: 2px;
@@ -135,6 +105,11 @@ p {
 a:hover {
   transition: all 0.3s ease-in-out;
   color: var(--secondary-color);
+}
+
+.section-text {
+  font-weight: bold;
+  font-size: 1.8rem;
 }
 
 .title-text {

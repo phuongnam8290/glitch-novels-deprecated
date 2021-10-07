@@ -18,14 +18,9 @@
   </section>
 
   <section class="container-fluid">
-    <div class="row section-title">
-      <div class="col-12 d-flex justify-content-center">
-        <p class="title-text pb-1">
-          Suggested Curators
-        </p>
-      </div>
-    </div>
-
+    <base-section-header>
+      Suggested Curators
+    </base-section-header>
     <div class="row overflow-hidden">
       <div class="col-12 d-flex justify-content-between curators-list">
         <curators-list @change-active-reviews="changeActiveReviews"></curators-list>
@@ -45,17 +40,19 @@
 </template>
 
 <script>
-import IndexBanner from "@/components/index/IndexBanner.vue"
-import NotableNovels from "@/components/index/notable-novels/NotableNovels.vue"
-import RandomNovel from "@/components/index/random-novel/RandomNovel.vue"
-import CuratorsList from "@/components/index/curators/CuratorsList.vue"
-import ReviewsList from "@/components/index/curators/ReviewsList.vue"
+import IndexBanner from "@/components/index/IndexBanner.vue";
+import NotableNovels from "@/components/index/notable-novels/NotableNovels.vue";
+import RandomNovel from "@/components/index/random-novel/RandomNovel.vue";
+import BaseSectionHeader from "@/components/common/BaseSectionHeader.vue";
+import CuratorsList from "@/components/index/curators/CuratorsList.vue";
+import ReviewsList from "@/components/index/curators/ReviewsList.vue";
 
 export default {
   components: {
     "index-banner": IndexBanner,
     "notable-novels": NotableNovels,
     "random-novel": RandomNovel,
+    "base-section-header": BaseSectionHeader,
     "curators-list": CuratorsList,
     "reviews-list": ReviewsList
   },

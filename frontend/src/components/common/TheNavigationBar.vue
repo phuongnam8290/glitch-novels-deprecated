@@ -33,7 +33,11 @@
                        to="rankings">
             Rankings
           </router-link>
-          <a href="#" class="nav-item nav-link mb-2 mb-lg-0">News</a>
+          <router-link class="nav-item nav-link mr-lg-2 mb-1 mb-lg-0"
+                       :class="{active: isActive('schedule')}"
+                       to="schedule">
+            Schedule
+          </router-link>
         </div>
         <form class="mr-5 mb-2 mb-lg-0 ml-4 ml-lg-auto">
           <input type="text" class="form-control search-input" placeholder="&#xF002; Search anything"/>
