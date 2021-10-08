@@ -1,19 +1,22 @@
 <template>
-<div class="position-relative wrapper">
-  <div class="d-flex btn-group">
-    <div class="btn-item"
+<div class="wrapper"
+     :class="style">
+  <div class="position-relative btn-group">
+    <p class="btn-item"
         v-for="btn in btns.totalBtns" :key="btn.ref"
         :id="btn.ref"
         :ref="btn.ref"
         @click="clickBtn">
-      <p v-if="btn.text">
+      <span class="d-block" 
+            v-if="btn.text">
         {{ btn.text }}
-      </p>
+      </span>
       <i v-if="btn.class"
          :class="btn.class"></i>
-    </div>
+    </p>
+    <div class="bg"></div>
+    <div class="btn-bg" ref="btn-bg"></div> 
   </div>  
-  <div class="btn-bg" ref="btn-bg"></div> 
 </div>
 </template>
 
@@ -36,10 +39,13 @@ export default {
         }
       }      
     },
-    initBtn: {
-      type: Number,
+    style: {
+      type: String,
       required: false,
-      default: 1
+      default: "default",
+      validator(value) {
+        return ["default", "header-slider", "switch-btn"].includes(value);
+      }
     }
   },
   methods: {
@@ -62,60 +68,132 @@ export default {
         bgLeftPos += elem.offsetWidth;
       }
 
-      btnBg.style.left = `${bgLeftPos}px`;
-      btnBg.style.width = `${btn.offsetWidth}px`;
-      btnBg.style.height = `${btn.offsetHeight}px`;
+      if(this.style == "default") {
+        btnBg.style.left = `${bgLeftPos}px`;
+        btnBg.style.width = `${btn.offsetWidth}px`;
+        btnBg.style.height = `${btn.offsetHeight}px`;
+      }
+      else if (this.style == "switch-btn") {
+        btnBg.style.top = `3px`;
+        btnBg.style.left = `${bgLeftPos == 0 ? bgLeftPos + 4 : bgLeftPos}px`;
+        btnBg.style.width = `${btn.offsetWidth - 5}px`;
+        btnBg.style.height = `${btn.offsetHeight - 7}px`;
+      }
     },
 
     clickBtn(event) {
       let target = event.currentTarget;
       this.setBgStyle(target);
 
-      this.$emit("clickBtnGroup", target.id)
+      // Add .active class to selected btn
+      let btns = this.$el.getElementsByClassName("btn-item");      
+      for(let btn of btns) {
+        btn.classList.remove("active");
+      }
+      target.classList.add("active");
+
+      this.$emit("clickBtnGroup", target.id);
     }
   },
   mounted() {
     let initBtn = this.$refs[`${this.btns.initBtn.ref}`];
+    initBtn.classList.add("active");
 
     setTimeout(() => {
       this.setBgStyle(initBtn);
-    }, 300)
+    }, 200)
   }
 }
 </script>
 
 <style scoped>
-  .btn-item:first-child {
-    border-left: 1px solid var(--primary-color);
-  }
 
-  .btn-item:last-child {
-    border-right: 1px solid var(--primary-color);
-  }
-  
-  .btn-item {
-    color: var(--primary-color);
+.btn-item {
+  z-index: 1;
+}
 
-    border-top: 1px solid var(--primary-color);
-    border-bottom: 1px solid var(--primary-color);
-  }
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
-  .btn-item > p {
-    padding: .8rem 1rem;
-  }
+  z-index: -2;
+}
 
-  .btn-item > i {
-    font-weight: bold;
-    font-size: 1.3rem;
-    padding: .6rem;
-    padding-top: .7rem;
-  }
+.bg-btn {
+  z-index: -1;
+}
 
-  .btn-bg {
-    position: absolute;
-    top: 0;
-    background-color: var(--darker-secondary-color);
-    z-index: -1;
-    transition: all .5s ease-out;
-  }
+/* .default .btn-group {
+  border: 1px solid var(--primary-color);
+} */
+
+.default .btn-item {
+  color: var(--primary-color);
+  border-top: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.default .btn-group .btn-item:first-of-type {
+  border-left: 1px solid var(--primary-color);
+}
+
+.default .btn-group .btn-item:last-of-type {
+  border-right: 1px solid var(--primary-color);
+}
+
+.default .btn-item > span {
+  padding: .8rem 1rem;
+}
+
+.default .btn-item > i {
+  font-weight: bold;
+  font-size: 1.3rem;
+
+  padding: .6rem;
+  padding-top: .7rem;
+}
+
+.default .btn-bg {
+  position: absolute;
+  background-color: var(--darker-secondary-color);
+  transition: all .5s ease-out;
+}
+
+
+/* Switch button style */
+.switch-btn .btn-item {
+  color: var(--secondary-color);
+  transition: all .5s ease-out;
+}
+
+.switch-btn .btn-item.active {
+  color: var(--primary-color);
+}
+
+.switch-btn .btn-item > span {
+  padding: .8rem 2rem;
+}
+
+.switch-btn .btn-item > i {
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding: .6rem;
+  padding-top: .7rem;
+}
+
+.switch-btn .bg {  
+  background-color: var(--primary-color);
+  opacity: 20%;
+  border-radius: 35px;
+}
+
+.switch-btn .btn-bg {
+  position: absolute;
+  background-color: var(--darker-secondary-color);
+  border-radius: 35px;
+  transition: all .5s ease-out;
+}
 </style>

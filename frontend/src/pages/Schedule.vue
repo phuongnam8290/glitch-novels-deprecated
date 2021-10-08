@@ -4,7 +4,7 @@
       New Arrival
     </base-section-header>
 
-    <base-button-group  :btns="btnGroupData"></base-button-group>
+    <base-button-group  :btns="btnGroupData" :style="'switch-btn'"></base-button-group>
   </section>
 </template>
 
