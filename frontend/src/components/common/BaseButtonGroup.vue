@@ -2,7 +2,7 @@
 <div class="wrapper"
      :class="style">
   <div class="position-relative btn-group">
-    <p class="btn-item"
+    <p class="pointable btn-item"
         v-for="btn in btns.totalBtns" :key="btn.ref"
         :id="btn.ref"
         :ref="btn.ref"
@@ -122,13 +122,12 @@ export default {
   z-index: -2;
 }
 
-.bg-btn {
+.btn-bg {
+  position: absolute;
+  background-color: var(--darker-secondary-color);
+  transition: all .5s ease-out;
   z-index: -1;
 }
-
-/* .default .btn-group {
-  border: 1px solid var(--primary-color);
-} */
 
 .default .btn-item {
   color: var(--primary-color);
@@ -156,13 +155,6 @@ export default {
   padding-top: .7rem;
 }
 
-.default .btn-bg {
-  position: absolute;
-  background-color: var(--darker-secondary-color);
-  transition: all .5s ease-out;
-}
-
-
 /* Switch button style */
 .switch-btn .btn-item {
   color: var(--secondary-color);
@@ -177,13 +169,6 @@ export default {
   padding: .8rem 2rem;
 }
 
-.switch-btn .btn-item > i {
-  font-weight: bold;
-  font-size: 1.3rem;
-  padding: .6rem;
-  padding-top: .7rem;
-}
-
 .switch-btn .bg {  
   background-color: var(--primary-color);
   opacity: 20%;
@@ -191,9 +176,6 @@ export default {
 }
 
 .switch-btn .btn-bg {
-  position: absolute;
-  background-color: var(--darker-secondary-color);
   border-radius: 35px;
-  transition: all .5s ease-out;
 }
 </style>

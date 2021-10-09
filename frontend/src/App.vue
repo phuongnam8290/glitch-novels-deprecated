@@ -63,6 +63,7 @@ export default {
 
 body {
   --primary-color: #EBE5DE;
+  --primary-color-rgb: 235, 229, 222;
   --secondary-color: #C9A882;
   --darker-secondary-color: #8E6E48;
 
