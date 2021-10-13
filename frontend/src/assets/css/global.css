@@ -1,0 +1,190 @@
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_regular-webfont.woff2);
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_bold-webfont.woff2);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_light-webfont.woff2);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_regular_italic-webfont.woff2);
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_bold_italic-webfont.woff2);
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url(~@/assets/font/proxima-nova/proxima_nova_alt_light_italic-webfont.woff2);
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Fix inconsistence height for form-control with appended button in Bootstrap 4.1.3 and later */
+.form-control.search-input {
+  height: auto !important;
+}
+
+body {
+  --primary-color: #EBE5DE;
+  --primary-color-rgb: 235, 229, 222;
+  --secondary-color: #C9A882;
+  --darker-secondary-color: #8E6E48;
+
+  font-family: 'Proxima Nova', sans-serif !important;
+
+  background:
+  linear-gradient(
+    rgba(12.5, 13.3, 13.3, 0.95), 
+    rgba(12.5, 13.3, 13.3, 0.95)
+  ), 
+  url(~@/assets/images/background.png) 
+  fixed center/cover no-repeat;
+  height: 100%;
+  color: var(--primary-color);
+}
+
+header.container-fluid {
+  padding: 0 0;
+}
+
+section.container-fluid {  
+  padding: 3rem;
+  padding-bottom: 0;
+
+  background: transparent;
+}
+
+@media (max-width: 576px) {
+  section.container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+p {
+  word-spacing: 2px;
+  padding-right: 2px;
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  transition: all 0.3s ease-in-out;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.section-text {
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.title-text {
+  font-weight: bold;
+  font-size: 1.3rem; 
+}
+
+.fader-text {
+  font-weight: 300;
+  font-size: .8rem;
+}
+
+.paragraph-text {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.paragraph-text p {
+  margin-top: .5rem;
+}
+
+.paragraph-text p:first-child {
+  margin-top: 0;
+}
+
+/* For style cursor */
+.cursor-default {
+  cursor: default !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-grab {
+  cursor: grab !important;
+}
+
+/* For viewport */
+.viewport {
+  /* margin-top: .5rem; */
+  overflow: hidden;
+  
+  -webkit-mask-image: -webkit-gradient(linear, center top, center bottom, 
+      color-stop(.6,  rgba(0,0,0,1)),
+      color-stop(1,  rgba(0,0,0,.1)));
+  mask-image: -webkit-gradient(linear, center top, center bottom, 
+                                color-stop(.6,  rgba(0,0,0,1)),
+                                color-stop(1,  rgba(0,0,0,.1)));
+
+}
+
+.viewport:hover {
+  overflow-y: scroll;
+  overflow-y: overlay;
+}
+
+.viewport  > p {
+  cursor: grab;
+}
+
+.viewport > :last-child {
+  padding-bottom: 1.75rem;
+}
+
+/* For tooltip */
+.v-popper--theme-tooltip .v-popper__inner {
+  max-width: 20rem;
+  padding: .8rem 1rem;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  line-height: 1.3rem;
+}
+
+.v-popper--theme-tooltip .v-popper__inner i {
+  padding-right: .3rem;
+}
+
+.fadein {
+  animation: fadeIn;
+  animation-duration: .5s;
+}
+
+.fadeout {
+  animation: fadeOut;
+  animation-duration: .5s;
+}
+
+/* For rating stars */
+.ratings {
+  color: var(--secondary-color);
+}

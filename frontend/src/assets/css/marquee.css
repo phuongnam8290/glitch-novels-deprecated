@@ -1,0 +1,20 @@
+.marquee {
+  overflow: hidden;
+  display: block;
+}
+
+.marquee > :first-child {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: marquee var(--duration) linear infinite;
+}
+
+.marquee :first-child:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { margin-left: 0; }
+  100% { margin-left: var(--width-offset); }
+}
