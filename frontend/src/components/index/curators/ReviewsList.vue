@@ -1,7 +1,7 @@
 <template>
   <review class="col-12 col-md-6 item"
-          v-for="n in 4" :key="n"
-          :review="reviews[0]">
+          v-for="review in reviews" :key="review.id"
+          :review="review">
   </review>
 </template>
 

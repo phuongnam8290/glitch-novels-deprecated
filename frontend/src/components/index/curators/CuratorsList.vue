@@ -10,7 +10,7 @@
   
   <!-- Curators list section -->
   
-  <div class="d-flex position-relative inactive-curators-list">
+  <div class="d-none d-md-flex position-relative inactive-curators-list">
     <transition-group name="fade" @before-leave="beforeLeave">
       <inactive-curator class="inactive-curator"
                         v-for="(curator, index) in inactiveCurators" :key="curator.id"  
@@ -19,10 +19,22 @@
       </inactive-curator>
     </transition-group>
   </div>
+
+  <div class="d-block d-md-none ml-3 ml-md-0">
+    <transition enter-active-class="fadein"
+                leave-active-class="fadeout"
+                mode="out-in">
+      <inactive-curator class="inactive-curator"
+                  :key="inactiveCurators[inactiveCuratorIndex].id"  
+                  :curator="inactiveCurators[inactiveCuratorIndex]"
+                  @click="activateCurator($event, inactiveCuratorIndex)">
+      </inactive-curator>
+    </transition>
+  </div>
 </template>
 
 <script>
-import { inject, reactive } from "vue";
+import { inject } from "vue";
 
 import ActiveCurator from "@/components/index/curators/ActiveCurator.vue"
 import InactiveCurator from "@/components/index/curators/InactiveCurator.vue";
@@ -31,6 +43,11 @@ export default {
   components: {
     "active-curator": ActiveCurator,
     "inactive-curator": InactiveCurator
+  },
+  data() {
+    return {
+      inactiveCuratorIndex: 0
+    }
   },
   computed: {
     activeCurator() {
@@ -59,8 +76,19 @@ export default {
       el.style.setProperty("--left-position", `${leftPosition}px`);
     },
   },
+  mounted() {
+    setInterval(() => {
+      if(this.inactiveCuratorIndex == 3) {
+        this.inactiveCuratorIndex = 0;
+      } else {
+        this.inactiveCuratorIndex++;
+      }
+    }, 3000);
+  },
   setup() {
-    const curators = reactive(inject("curators"));
+    // const curators = reactive(inject("curators"));
+
+    const curators = inject("curators");
     for (let curator of curators) {
       curator.shouldSlideLeft = true;
     }
@@ -73,12 +101,8 @@ export default {
 
 <style scoped>
 /* Deactived curator list */
-.inactive-curator {
-  padding-left: 1rem;
-}
-
-.inactive-curators:first-child {
-  padding-left: 0;
+.inactive-curators-list .inactive-curator {
+  padding-left: 15px;
 }
 
 .fade-enter-from,

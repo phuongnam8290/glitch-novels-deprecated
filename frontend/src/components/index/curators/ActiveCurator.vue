@@ -3,27 +3,47 @@
     <div class="avatar">
       <img :src="require(`@/assets/images/avatars/${curator.avatar}`)">
     </div>
-    <div class="d-flex flex-column justify-content-between ml-3 info">
-      <div class="title-text username">
-        <p class="cursor-pointer"> {{ curator.username }} </p>
+    <div class="d-flex flex-column justify-content-between overflow-hidden ml-3 info">
+      <div class="title-text marquee username" ref="username">
+        <p class="overflow-hidden cursor-pointer">
+          <span class="d-inline-block"> {{ curator.username }} </span> 
+        </p>
       </div>
       <div class="d-flex text-nowrap follow">
         <a class="cursor-pointer follow-link">
           Follow
         </a>
-        <div class="followers"> {{ curator.followers }} Followers</div>
+        <div class="d-none d-sm-block followers"> {{ curator.followers }} Followers</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Marquee from "@/assets/js/mixins/Marquee.js";
+
 export default {
   props: {
     curator: {
       type: Object,
       required: true
     }
+  },
+  mixins: [Marquee],
+  methods: {
+    startMarqueeEffect() {
+      this.marquee(this.$refs.username, 2);
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.startMarqueeEffect();
+    }, 500);
+
+    window.addEventListener("resize", this.startMarqueeEffect);
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.startMarqueeEffect);
   }
 }
 </script>

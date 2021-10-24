@@ -31,7 +31,8 @@
     <transition enter-active-class="fadein"
                 leave-active-class="fadeout"
                 mode="out-in">
-      <div class="row">
+      <div class="row"
+           :key="curators[0].id">
         <reviews-list></reviews-list>
       </div>
     </transition>
@@ -39,7 +40,7 @@
 </template>
 
 <script>
-import { provide } from "vue";
+import { reactive, provide } from "vue";
 import { useStore } from "vuex";
 
 import IndexBanner from "@/components/index/IndexBanner.vue";
@@ -63,9 +64,12 @@ export default {
 
     // TODO: Repace with api call to backend
     // Deep copy from store
-    const curators = JSON.parse(JSON.stringify(store.state.defaultCuratorsData));
-
+    const curators = reactive(JSON.parse(JSON.stringify(store.state.defaultCuratorsData)));
     provide("curators", curators);
+
+    return {
+      curators
+    };
   }
 }
 </script>
