@@ -1,61 +1,30 @@
 <template>
-  <base-card v-for="n in 4" :key="n"
-             :cover="`reviews/${reviews[0].novel.cover}`">
-
-    <template v-slot:title>
-      {{ reviews[0].novel.title }}
-    </template>
-
-    <template v-slot:misc>
-      <div class="d-none d-md-flex pl-2 ratings">
-        <span v-for="fullStar in getRatingStars(reviews[0].rating).fullStars" :key="fullStar">
-          <i class="fas fa-star"></i>
-        </span>
-        <span v-if="getRatingStars(reviews[0].rating).haveHalfStar">
-          <i class="fas fa-star-half-alt"></i>
-        </span>
-        <span v-for="emptyStar in getRatingStars(reviews[0].rating).emptyStars" :key="emptyStar">
-          <i class="far fa-star"></i>
-        </span>
-      </div>
-    </template>
-    <template v-slot:content>
-      <p v-for="paragraph in reviews[0].content" :key="paragraph" >
-        {{ paragraph }}
-      </p>
-    </template>
-    <template v-slot:footer>
-      <p class="d-flex justify-content-end">
-        <span>
-          <i class="fas fa-book-reader pr-2"></i>
-        </span>
-        c.472
-      </p>
-    </template>
-  </base-card>
+  <review class="col-12 col-md-6 item"
+          v-for="n in 4" :key="n"
+          :review="reviews[0]">
+  </review>
 </template>
 
 <script>
-import Utils from "@/assets/js/mixins/Utils.js"
-import BaseCard from "@/components/common/BaseCard.vue"
+import { computed, inject, reactive } from "vue";
+import Review from "@/components/index/curators/Review.vue"
 
 export default {
   components: {
-    "base-card": BaseCard
+    "review": Review
   },
-  mixins: [Utils],
-  props: {
-    reviews: {
-      type: Array,
-      required: true
+  setup() {
+    const curators = reactive(inject("curators"));
+    const reviews = computed(() => curators[0].reviews)
+    return {
+      reviews
     }
   }
 }
 </script>
 
 <style scoped>
-img {
-  width: 125px;
-  height: auto;
+.item {
+  margin-top: 2.5rem;
 }
 </style>

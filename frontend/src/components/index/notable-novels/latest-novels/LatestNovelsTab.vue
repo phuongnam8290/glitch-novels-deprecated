@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <latest-novel class="col-12 col-lg-6 item"
-                       v-for="i in 8" :key="i">
+                  v-for="i in 8" :key="i">
     </latest-novel>
   </div>
 </template>

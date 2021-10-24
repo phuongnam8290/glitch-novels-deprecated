@@ -15,6 +15,13 @@
 }
 
 @keyframes marquee {
-  0% { margin-left: 0; }
-  100% { margin-left: var(--width-offset); }
+  0% { 
+    margin-left: 0; 
+    margin-right: var(--width-offset);
+  }
+
+  100% { 
+    margin-left: var(--width-offset); 
+    margin-right: 0;
+  }
 }

@@ -21,25 +21,27 @@
     <base-section-header>
       Suggested Curators
     </base-section-header>
-    <div class="row overflow-hidden">
+    <div class="row">
       <div class="col-12 d-flex justify-content-between curators-list">
-        <curators-list @change-active-reviews="changeActiveReviews"></curators-list>
+        <curators-list>
+        </curators-list>
       </div>
     </div>
 
     <transition enter-active-class="fadein"
                 leave-active-class="fadeout"
                 mode="out-in">
-      <div class="row"
-           :key="activeReviews"
-           v-if="activeReviews.length > 0">
-        <reviews-list :reviews="activeReviews"></reviews-list>
+      <div class="row">
+        <reviews-list></reviews-list>
       </div>
     </transition>
   </section>
 </template>
 
 <script>
+import { provide } from "vue";
+import { useStore } from "vuex";
+
 import IndexBanner from "@/components/index/IndexBanner.vue";
 import NotableNovels from "@/components/index/notable-novels/NotableNovels.vue";
 import RandomNovel from "@/components/index/random-novel/RandomNovel.vue";
@@ -56,15 +58,14 @@ export default {
     "curators-list": CuratorsList,
     "reviews-list": ReviewsList
   },
-  data() {
-    return {
-      activeReviews: []
-    }
-  },
-  methods: {
-    changeActiveReviews(activeReviews) {
-      this.activeReviews = activeReviews;
-    }
+  setup() {
+    const store = useStore();
+
+    // TODO: Repace with api call to backend
+    // Deep copy from store
+    const curators = JSON.parse(JSON.stringify(store.state.defaultCuratorsData));
+
+    provide("curators", curators);
   }
 }
 </script>

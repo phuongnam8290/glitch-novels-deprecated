@@ -6,8 +6,8 @@
       </div>
     </div>
     <div class="d-flex flex-column right-col">
-      <div class="d-flex card-header">
-        <div class="overflow-hidden">
+      <div class="d-flex justify-content-between align-items-center card-header">
+        <div class="overflow-hidden main">
           <div class="title-text marquee title" ref="title">
             <a href="#">
                 <span>
@@ -24,7 +24,9 @@
             </a>
           </div>
         </div>
-        <div class="misc">
+        <div class="ml-0 ml-md-5 misc" :class="{['misc-overflow']: miscOverflow}"
+             v-if="!!$slots.misc"
+             v-dragscroll>
           <slot name="misc"></slot>
         </div>
       </div>
@@ -32,7 +34,7 @@
            v-dragscroll>
         <slot name="card-content"></slot>
       </div>
-      <div class="card-footer"
+      <div class="text-nowrap card-footer"
            v-if="!!$slots['card-footer']">
         <slot name="card-footer"></slot>
       </div>
@@ -44,17 +46,32 @@
 import Marquee from "@/assets/js/mixins/Marquee.js";
 
 export default {
+  props: {
+    miscOverflow: {
+      type: Boolean,
+      required: false,
+      default: true
+    }
+  },
   mixins: [Marquee],
   methods: {
     hasFooterSlot() {
       return !!this.$slots["card-footer"]
+    },
+    startMarqueeEffect() {
+      this.marquee(this.$refs.title, 2);
+      this.marquee(this.$refs.subtitle, 2);
     }
   },
   mounted() {
     setTimeout(() => {
-      this.marquee(this.$refs.title);
-      this.marquee(this.$refs.subtitle);
+      this.startMarqueeEffect();
     }, 500);
+
+    window.addEventListener("resize", this.startMarqueeEffect);
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.startMarqueeEffect);
   }
 }
 </script>
@@ -70,28 +87,42 @@ export default {
   overflow: hidden;
 }
 
+.card .main {
+  flex-shrink: 1;
+}
+
 .card .subtitle {
   margin-top:.25rem;
+}
+
+.card .misc-overflow {
+  flex-shrink: 3;
+  overflow-y: hidden;
+  overflow-x: scroll ;
 }
 
 .card-content {
   margin-top: .75rem;
 }
 
-.card ::-webkit-scrollbar {
+.card-content::-webkit-scrollbar {
   width: 5px;
   background: transparent;
 }
 
-.card ::-webkit-scrollbar-track-piece  {
+.card-content::-webkit-scrollbar-track-piece  {
   background-image: url("~@/assets/images/scrollbar-track.png");
   background-repeat: repeat-y;
   background-size: contain;
 }
 
-.card ::-webkit-scrollbar-thumb {
+.card-content::-webkit-scrollbar-thumb {
   border-radius: 3px;
   border: 1px solid var(--primary-color);
   background-color: black;
+}
+
+.card .misc::-webkit-scrollbar {
+  display: none;
 }
 </style>
