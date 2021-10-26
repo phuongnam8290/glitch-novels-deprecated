@@ -5,20 +5,21 @@ const store = createStore({
     defaultNovelData: {
       novelInfo: {
         cover: "01.png",
-        title: "Solo Leveling" ,
-        author: "추공 (Chugong) 123456 123456 123456 123456 123456 123456 123456 123456 123456",
+        title: "Solo Leveling 123456 123456 123456 123456 123456 123456 123456 123456 123456 123456" ,
+        author: "추공 (Chugong)",
         synopsis: [
           "In this world where Hunters with various magical powers battle monsters from invading the defenceless humanity, Seong Jin-Woo was the weakest of all the Hunters, barely able to make a living.",
           "However, a mysterious System grants him the power of the ‘Player’, setting him on a course for an incredible and often times perilous Journey.",
           "Follow Sang Jin-Woo as he embarks on an adventure to become an unparalleled existence through his “Level-Up” system - the only one in the entire world!"
         ],
-        genres: ["Action", "Adventure", "Urban", "Fantasy", "Weak to Strong", "Game Element"],
+        genres: ["Action", "Adventure", "Urban", "Fantasy", "Weak to Strong", "Game Element", "Accelerated Growth", "Gate to Another World", "Hiding True Abilities"],
       },
       publicationInfo: {
         chapters: 1423,
         status: "Ongoing",
         latestChapter: 1423,
-        lastUpdate: "3 hours ago"
+        lastUpdate: "3 hours ago",
+        updatesFrequency: 14
       },
       valuationInfo: {
         ratings: 4.5,

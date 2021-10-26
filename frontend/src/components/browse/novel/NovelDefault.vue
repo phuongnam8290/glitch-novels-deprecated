@@ -1,5 +1,6 @@
 <template>
-  <base-card-default>
+  <base-card-default :ratings="novel.valuationInfo.ratings"
+                      :tags="novel.novelInfo.genres">
     <template v-slot:cover>
       <img :src="require(`@/assets/images/novels-list/${novel.novelInfo.cover}`)">
     </template>
@@ -14,35 +15,21 @@
         {{ paragraph }}
       </p>
     </template>
-    <template v-slot:card-footer>
-      <a class="d-flex justify-content-between align-items-center"
-         href="#">
-        <span>
-          <i class="fas fa-star pr-1 ratings"></i>
-          {{ novel.valuationInfo.ratings }}
-        </span>
-        <span class="d-none d-sm-block pl-3">
-          <i class="fas fa-books pr-1"></i>
-          {{ novel.publicationInfo.chapters }} Chapters ({{ novel.publicationInfo.status }})
-        </span>
-      </a>
-    </template>
   </base-card-default>
 </template>
 
 <script>
-import BaseCardDefaut from '@/components/common/cards/BaseCardDefault.vue';
+import BaseCardDefault from '@/components/common/cards/BaseCardDefault.vue';
 
 export default {
   components: {
-    "base-card-default": BaseCardDefaut
+    "base-card-default": BaseCardDefault
   },
   props: {
     novelData: {
       type: Object,
       //TODO: Change from false to true after implement backend
       required: false,
-      // default: this.$store.state.defaultNovelData
     }
   },
   computed: {
@@ -56,9 +43,5 @@ export default {
 <style scoped>
 img {
   height: 100%;
-}
-
-a {
-  height: 1.1rem;
 }
 </style>

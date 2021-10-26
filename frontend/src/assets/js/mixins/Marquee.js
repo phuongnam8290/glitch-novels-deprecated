@@ -22,7 +22,7 @@ export default {
       if(content.offsetWidth <= container.offsetWidth) {
         return;
       }
-    
+
       content.style.paddingRight = `${padding}rem`;
 
       // Clone content
@@ -31,6 +31,8 @@ export default {
 
       let contentWidth = content.offsetWidth;
       let containerWidth = contentWidth * 2 - padding;
+      // let containerWidth = contentWidth * 2;
+
       let duration = contentWidth / 50;
       
       container.style.width = `${containerWidth + 1}px`;

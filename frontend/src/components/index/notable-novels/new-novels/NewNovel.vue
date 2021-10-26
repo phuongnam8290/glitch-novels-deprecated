@@ -1,5 +1,6 @@
 <template>
-  <base-card-default>
+  <base-card-default :ratings="novel.valuationInfo.ratings" 
+                     :tags="novel.novelInfo.genres">
     <template v-slot:cover>
       <img :src="require(`@/assets/images/novels-list/${novel.novelInfo.cover}`)">
     </template>
@@ -8,13 +9,6 @@
     </template>
     <template v-slot:subtitle>
       {{ novel.novelInfo.author }}
-    </template>
-    <template v-slot:misc>
-      <div class="d-none d-md-flex genre">
-        <base-tag v-for="genre in novel.novelInfo.genres" :key="genre">
-          {{ genre }}
-        </base-tag>
-      </div>
     </template>
     <template v-slot:card-content>
       <p v-for="paragraph in novel.novelInfo.synopsis" :key="paragraph">
@@ -26,12 +20,10 @@
 
 <script>
 import BaseCardDefaut from '@/components/common/cards/BaseCardDefault.vue';
-import BaseTag from '@/components/common/BaseTag.vue';
 
 export default {
   components: {
     "base-card-default": BaseCardDefaut,
-    "base-tag": BaseTag
   },
   props: {
     novelData: {
@@ -51,6 +43,6 @@ export default {
 
 <style scoped>
 img {
-  width: 125px;
+  height: 100%;
 }
 </style>

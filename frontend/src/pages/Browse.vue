@@ -38,6 +38,6 @@ export default {
 
 <style scoped>
 .novels {
-  margin-top: -2.5rem;
+  margin-top: -3rem;
 }
 </style>
