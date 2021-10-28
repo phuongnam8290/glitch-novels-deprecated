@@ -1,5 +1,5 @@
 <template>
-  <base-card-default :height="100" :ratings="ratings" :tags="tags">
+  <base-card-default :height="120" :ratings="ratings" :tags="tags">
     <template v-slot:cover>
       <slot name="cover"></slot>
     </template>
@@ -28,6 +28,14 @@ export default {
   },
   components: {
     "base-card-default": BaseCardDefaut
+  },
+  mounted() {
+    // Override padding/margin from default card
+    let tagsWrapper = this.$el.querySelector(".tags-wrapper");
+    let miscInfo = this.$el.querySelector(".misc-info");
+
+    tagsWrapper.style.marginTop = "0";
+    miscInfo.style.marginTop = "0";
   }
 }
 </script>

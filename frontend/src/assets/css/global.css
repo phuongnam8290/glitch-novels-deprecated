@@ -45,6 +45,7 @@ body {
   --primary-color-rgb: 235, 229, 222;
   --secondary-color: #C9A882;
   --darker-secondary-color: #8E6E48;
+  --hover-duration: .25s;
 
   font-family: 'Proxima Nova', sans-serif !important;
 
@@ -121,6 +122,10 @@ a:hover {
   margin-top: 0;
 }
 
+.hide {
+  display: none !important;
+}
+
 /* For style cursor */
 .cursor-default {
   cursor: default !important;
@@ -187,4 +192,5 @@ a:hover {
 /* For rating stars */
 .ratings {
   color: var(--secondary-color);
+  display: flex;
 }

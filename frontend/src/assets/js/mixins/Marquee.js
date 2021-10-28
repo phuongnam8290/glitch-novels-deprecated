@@ -31,7 +31,6 @@ export default {
 
       let contentWidth = content.offsetWidth;
       let containerWidth = contentWidth * 2 - padding;
-      // let containerWidth = contentWidth * 2;
 
       let duration = contentWidth / 50;
       

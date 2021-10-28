@@ -6,7 +6,7 @@
     :loop="true"
     class="banner"
   >
-    <swiper-slide v-for="(title, index) in titles" :key="title" 
+    <swiper-slide v-for="(title, index) in titles" :key="title"
       :style="getCoverStyle(index)"
       class="item"> 
       <p class="title"> {{ title }} </p>

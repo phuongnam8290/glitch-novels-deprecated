@@ -11,17 +11,17 @@
     </div>
 
     <div class="row"
-        v-else-if="style === 'minimal'">
+         v-else-if="style === 'minimal'">
       <div class="col-md-6 item"
-          v-for="n in 18" :key="n">
+           v-for="n in 18" :key="n">
         <novel-minimal></novel-minimal>
       </div>
     </div>
 
     <div class="row"
-        v-else-if="style === 'thumbnail'">
+         v-else-if="style === 'thumbnail'">
       <div class="col-6 col-sm-4 col-md-3 col-lg-2 item"
-            v-for="n in 18" :key="n">
+           v-for="n in 18" :key="n">
           <novel-thumbnail></novel-thumbnail>
       </div>
     </div>

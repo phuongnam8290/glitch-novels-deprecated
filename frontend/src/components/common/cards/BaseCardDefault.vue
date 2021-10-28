@@ -25,8 +25,8 @@
           </div>
         </div>
 
-        <div class="d-none d-lg-flex ml-4 ratings"
-              v-if="!!ratings">
+        <div class="ml-4 ratings ratings-lg"
+             v-if="!!ratings">
           <span v-for="fullStar in getRatingStars(ratings).fullStars" :key="fullStar">
             <i class="fas fa-star"></i>
           </span>
@@ -37,8 +37,8 @@
             <i class="far fa-star"></i>
           </span>
         </div>
-        <div class="d-flex d-lg-none ml-4 ratings"
-              v-if="!!ratings">
+        <div class="ml-4 hide ratings ratings-sm"
+             v-if="!!ratings">
           <span>
             <i class="fas fa-star"></i>
           </span>
@@ -48,16 +48,32 @@
         </div>
       </div>
 
-      <div class="d-flex tags"
-            v-if="!!tags"
-            v-dragscroll.x>
-        <base-tag v-for="tag in tags" :key="tag">
-          {{ tag }}
-        </base-tag>
+      <div class="position-relative tags-wrapper">
+        <div class="d-flex h-100 hide cursor-pointer left-arrow"
+             @click="scroll('left')">
+          <span class="align-self-center">
+            <i class="fas fa-chevron-double-left"></i>
+          </span>
+        </div>
+        <div class="d-flex tags"
+             v-if="!!tags"
+             v-dragscroll.x>
+          <base-tag class="tag"
+                    v-for="(tag, index) in tags" :key="tag"
+                    :class="{'start': index === 0, 'end': index === tags.length - 1}">
+            {{ tag }}
+          </base-tag>
+        </div>
+        <div class="d-flex h-100 hide cursor-pointer right-arrow"
+             @click="scroll('right')">
+          <span class="align-self-center">
+            <i class="fas fa-chevron-double-right"></i>
+          </span>
+        </div>
       </div>
-      <div class="d-flex justify-content-between text-center mt-2 misc-info"
-           v-if="!!$slots['misc-info']"
-           v-dragscroll.x>
+
+      <div class="misc-info"
+           v-if="!!$slots['misc-info']">
         <slot name="misc-info"></slot>
       </div>
       <div class="content viewport paragraph-text"
@@ -98,21 +114,107 @@ export default {
     "base-tag": BaseTag
   },
   mixins: [Utils, Marquee],
+  data() {
+    return {
+      resizeObserver: null,
+      intersectionObserver: null
+    }
+  },
   methods: {
     startMarqueeEffect() {
       this.marquee(this.$refs.title, 2);
       this.marquee(this.$refs.subtitle, 2);
+    },
+    renderElements() {
+      let width = this.$el.querySelector(".right-col").offsetWidth;
+      let ratingsLg = this.$el.querySelector(".ratings-lg");
+      let ratingsSm = this.$el.querySelector(".ratings-sm");
+      let tags = this.$el.querySelector(".tags-wrapper");
+
+      // Only render tags & ratings stars when column width > 300 px
+      if (width >= 300) {
+        if(ratingsLg) ratingsSm.classList.add("hide");
+        if(ratingsSm) ratingsLg.classList.remove("hide");
+        if(tags) tags.classList.remove("hide");
+      } 
+      else if (width < 300 && width >= 150) {
+        if(ratingsLg) ratingsSm.classList.remove("hide");
+        if(ratingsSm) ratingsLg.classList.add("hide");
+        if(tags) tags.classList.add("hide");
+      } else {
+        if(ratingsSm) ratingsSm.classList.add("hide");
+      }
+    },
+    observeScroll(entries) {
+      let leftArrow = this.$el.querySelector(".left-arrow");
+      let rightArrow = this.$el.querySelector(".right-arrow");
+      let tags = this.$el.querySelector(".tags");
+
+      for (let entry of entries) {
+        let target = entry.target;
+
+        if ((target.classList.contains("start")) && (entry.isIntersecting)) {
+          leftArrow.classList.add("hide");
+          tags.classList.remove("left-transparent");
+        }
+        if ((target.classList.contains("start")) && !(entry.isIntersecting)) {
+          leftArrow.classList.remove("hide");
+          tags.classList.add("left-transparent");
+        }
+        if ((target.classList.contains("end")) && (entry.isIntersecting)) {
+          rightArrow.classList.add("hide");
+          tags.classList.remove("right-transparent");
+        }
+        if ((target.classList.contains("end")) && !(entry.isIntersecting)) {
+          rightArrow.classList.remove("hide");
+          tags.classList.add("right-transparent");
+        }
+      }
+    },
+    scroll(direction) {
+      let tags = this.$el.querySelector(".tags");
+      let scrollWidth = tags.offsetWidth / 2;
+      let currentPosition = tags.scrollLeft;
+
+      if (direction === "left"){
+        // tags.scrollLeft -= scrollWidth;
+        tags.scrollTo({
+          top: 0,
+          left: currentPosition - scrollWidth,
+          behavior: "smooth"
+        })
+      } else if (direction === "right") {
+        // tags.scrollLeft += scrollWidth;
+        tags.scrollTo({
+          top: 0,
+          left: currentPosition + scrollWidth,
+          behavior: "smooth"
+        })
+      }
     }
   },
   mounted() {
-    setTimeout(() => {
+    this.resizeObserver = new ResizeObserver(() => {
+      this.renderElements();
       this.startMarqueeEffect();
-    }, 500);
+    });
+    this.resizeObserver.observe(this.$el.querySelector(".right-col"));
 
-    window.addEventListener("resize", this.startMarqueeEffect);
+    this.renderElements();
+    this.startMarqueeEffect();
+
+    let options = {
+      root: this.$el.querySelector(".tags"),
+      threshold: 0.8
+    }
+    this.intersectionObserver = new IntersectionObserver(this.observeScroll, options);
+    this.intersectionObserver.observe(this.$el.querySelector(".tags > :first-child"));
+    this.intersectionObserver.observe(this.$el.querySelector(".tags > :last-child"));
   },
   unmounted() {
-    window.removeEventListener("resize", this.startMarqueeEffect);
+    this.resizeObserver.unobserve(this.$el.querySelector(".right-col"));
+    this.intersectionObserver.unobserve(this.$el.querySelector(".tags > :first-child"));
+    this.intersectionObserver.unobserve(this.$el.querySelector(".tags > :last-child"));
   }
 }
 </script>
@@ -136,11 +238,11 @@ export default {
   margin-top:.25rem;
 }
 
-.ratings {
-  font-weight: 1.1rem;
+#ratings-sm > span:last-child {
+  font-size: 1.1rem;
 }
 
-.tags,
+.tags-wrapper,
 .misc-info,
 .content {
   margin-top: .75rem;
@@ -152,11 +254,15 @@ export default {
 }
 
 .tags {
-  overflow-x: scroll ;
+  overflow-x: scroll;
 }
 
-.misc-info {
-  overflow-x: scroll;
+.tag {
+  margin-right: 1rem;
+}
+
+.tag:last-child {
+  margin-right: 0;
 }
 
 .content {
@@ -178,5 +284,39 @@ export default {
   border-radius: 3px;
   border: 1px solid var(--primary-color);
   background-color: black;
+}
+
+/* For tags left & right scroll indicators */
+.left-transparent {
+  mask-image: linear-gradient(to left, black 80%, transparent 90%);
+}
+
+.right-transparent {
+  mask-image: linear-gradient(to right, black 80%, transparent 90%);
+}
+
+.left-transparent.right-transparent {
+  mask-image: linear-gradient(0.25turn, transparent 10%, black 20%, black 80%, transparent 90%);
+}
+
+.left-arrow,
+.right-arrow {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  transition: color var(--hover-duration) ease-in;
+}
+
+.left-arrow:hover,
+.right-arrow:hover {
+  color: var(--secondary-color);
+}
+
+.left-arrow {
+  left: 0;
+}
+
+.right-arrow {
+  right: 0;
 }
 </style>

@@ -136,7 +136,7 @@
   line-height: 1.5;
   text-align: center;
 
-  /* Add elipsis to overflowed text */
+  /* Add ellipsis to overflowed text */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
