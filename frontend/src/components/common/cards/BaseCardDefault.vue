@@ -205,16 +205,16 @@ export default {
 
     let options = {
       root: this.$el.querySelector(".tags"),
-      threshold: 0.8
+      threshold: 0.95
     }
     this.intersectionObserver = new IntersectionObserver(this.observeScroll, options);
-    this.intersectionObserver.observe(this.$el.querySelector(".tags > :first-child"));
-    this.intersectionObserver.observe(this.$el.querySelector(".tags > :last-child"));
+    this.intersectionObserver.observe(this.$el.querySelector(".tags > .start"));
+    this.intersectionObserver.observe(this.$el.querySelector(".tags > .end"));
   },
   unmounted() {
     this.resizeObserver.unobserve(this.$el.querySelector(".right-col"));
-    this.intersectionObserver.unobserve(this.$el.querySelector(".tags > :first-child"));
-    this.intersectionObserver.unobserve(this.$el.querySelector(".tags > :last-child"));
+    this.intersectionObserver.unobserve(this.$el.querySelector(".tags > .start"));
+    this.intersectionObserver.unobserve(this.$el.querySelector(".tags > .end"));
   }
 }
 </script>
@@ -259,10 +259,6 @@ export default {
 
 .tag {
   margin-right: 1rem;
-}
-
-.tag:last-child {
-  margin-right: 0;
 }
 
 .content {
