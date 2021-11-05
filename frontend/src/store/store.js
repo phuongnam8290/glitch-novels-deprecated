@@ -5,7 +5,7 @@ const store = createStore({
     defaultNovelData: {
       novelInfo: {
         cover: "01.png",
-        title: "Solo Leveling" ,
+        title: "Solo Leveling 123456 123456 123456 123456",
         author: "추공 (Chugong)",
         synopsis: [
           "In this world where Hunters with various magical powers battle monsters from invading the defenceless humanity, Seong Jin-Woo was the weakest of all the Hunters, barely able to make a living.",

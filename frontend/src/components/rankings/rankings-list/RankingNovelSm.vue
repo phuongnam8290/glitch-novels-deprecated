@@ -122,8 +122,6 @@ export default {
       this.startMarqueeEffect();
     });
     this.resizeObserver.observe(this.$el.querySelector(".novel-info"));
-
-    this.startMarqueeEffect();
   },
   unmounted() {
     this.resizeObserver.unobserve(this.$el.querySelector(".novel-info"));

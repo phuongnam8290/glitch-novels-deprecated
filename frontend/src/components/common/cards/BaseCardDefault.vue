@@ -133,9 +133,6 @@ export default {
       this.startMarqueeEffect();
     });
     this.resizeObserver.observe(this.$el.querySelector(".right-col"));
-
-    this.renderElements();
-    this.startMarqueeEffect();
   },
   unmounted() {
     this.resizeObserver.unobserve(this.$el.querySelector(".right-col"));

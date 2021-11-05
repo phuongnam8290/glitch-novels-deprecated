@@ -33,7 +33,7 @@ export default {
       let containerWidth = contentWidth * 2 - padding;
 
       let duration = contentWidth / 50;
-      
+
       container.style.width = `${containerWidth + 1}px`;
       container.style.setProperty('--width-offset', `-${contentWidth}px`);
       container.style.setProperty('--duration', `${duration}s`);

@@ -4,14 +4,14 @@
       <slot name="cover"></slot>
     </div>
     <div class="marquee title" ref="title">
-      <p class="text-nowrap text-center title-text">
+      <p class="text-nowrap title-text">
         <span>
           <slot name="title"></slot>
         </span>
       </p>
     </div>
     <div class="marquee subtitle" ref="subtitle">
-      <p class="text-nowrap text-center fader-text">
+      <p class="text-nowrap fader-text">
         <span>
           <slot name="subtitle"></slot>
         </span>
@@ -25,6 +25,11 @@ import Marquee from "@/assets/js/mixins/Marquee.js";
 
 export default {
   mixins: [Marquee],
+  data() {
+    return {
+      resizeObserver: null
+    }
+  },
   methods: {
     startMarqueeEffect() {
       this.marquee(this.$refs.title, 2);
@@ -32,14 +37,14 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
+    this.resizeObserver = new ResizeObserver(() => {
       this.startMarqueeEffect();
-    }, 500);
+    })
 
-    window.addEventListener("resize", this.startMarqueeEffect);
+    this.resizeObserver.observe(this.$el);
   },
   unmounted() {
-    window.removeEventListener("resize", this.startMarqueeEffect);
+    this.resizeObserver.unobserve(this.$el);
   }
 }
 </script>
