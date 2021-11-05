@@ -2,16 +2,16 @@
   <section class="container-fluid d-none d-md-block">
     <top-rankings></top-rankings>
   </section>
-  <section class="container-fluid d-block d-lg-none">
-    <rankings-filter-md></rankings-filter-md>
+  <section class="container-fluid d-block d-xl-none">
+    <rankings-filter-top></rankings-filter-top>
   </section>
   <section class="container-fluid">
     <div class="row">
-      <div class="col-12 col-lg-9">
+      <div class="col-12 col-xl-9">
         <rankings-list class="rankings-list"></rankings-list>
       </div>
-      <div class="d-none d-lg-block col-lg-3">
-        <rankings-filter-lg class="rankings-filter-lg"></rankings-filter-lg>
+      <div class="d-none d-xl-block col-xl-3">
+        <rankings-filter-side class="rankings-filter-side"></rankings-filter-side>
       </div>
     </div>
   </section>
@@ -21,15 +21,15 @@
 import {provide, reactive} from "vue";
 
 import TopRankings from "@/components/rankings/TopRankings.vue";
-import RankingsFilterMd from "@/components/rankings/rankings-filters/RankingsFilterMd.vue";
-import RankingsFilterLg from "@/components/rankings/rankings-filters/RankingsFilterLg.vue";
+import RankingsFilterTop from "@/components/rankings/rankings-filters/RankingsFilterTop.vue";
+import RankingsFilterSide from "@/components/rankings/rankings-filters/RankingsFilterSide.vue";
 import RankingsList from "@/components/rankings/rankings-list/RankingsList.vue";
 
 export default {
   components: {
     "top-rankings": TopRankings,
-    "rankings-filter-md": RankingsFilterMd,
-    "rankings-filter-lg": RankingsFilterLg,
+    "rankings-filter-top": RankingsFilterTop,
+    "rankings-filter-side": RankingsFilterSide,
     "rankings-list": RankingsList
   },
   setup() {
@@ -80,7 +80,7 @@ export default {
   }
 }
 
-.rankings-filter-lg {
+.rankings-filter-side {
   margin-top: -2rem;
   position: sticky;
   top: 4rem;

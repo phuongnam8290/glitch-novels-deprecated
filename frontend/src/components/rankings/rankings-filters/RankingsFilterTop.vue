@@ -27,7 +27,7 @@
 
     <teleport to="#app">
       <rankings-modal v-if="isShowModal"
-                     @close-modal="closeModal"></rankings-modal>
+                      @close-modal="closeModal"></rankings-modal>
     </teleport>
   </div>
 </template>

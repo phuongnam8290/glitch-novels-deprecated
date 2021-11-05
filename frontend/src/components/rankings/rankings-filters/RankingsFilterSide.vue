@@ -9,7 +9,7 @@
               v-for="(item, index) in itemsGroup.content" :key="item.name"
               v-tooltip="{content: item.tooltip ? `<i class='fal fa-info-circle'></i> ${item.tooltip}` : null, html: true}"
               @click="toggleFilter(itemsGroup.content, index)">
-            <p class="pointable">
+            <p class="cursor-pointer">
               {{ item.name }}
             </p>
           </li>
@@ -50,6 +50,8 @@ ul {
   flex-wrap: wrap;
   margin-left: -1rem;
   margin-top: -1rem;
+  padding-top:1px;
+  padding-bottom: 1px;
 }
 
 li {

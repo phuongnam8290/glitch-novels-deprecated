@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import BaseCardDefaut from '@/components/common/cards/BaseCardDefault.vue';
+import BaseCardDefault from '@/components/common/cards/BaseCardDefault.vue';
 
 export default {
    props: {
@@ -27,14 +27,14 @@ export default {
     }
   },
   components: {
-    "base-card-default": BaseCardDefaut
+    "base-card-default": BaseCardDefault
   },
   mounted() {
     // Override padding/margin from default card
-    let tagsWrapper = this.$el.querySelector(".tags-wrapper");
+    let scrollableTags = this.$el.querySelector(".scrollable-tags");
     let miscInfo = this.$el.querySelector(".misc-info");
 
-    tagsWrapper.style.marginTop = "0";
+    scrollableTags.style.marginTop = "0";
     miscInfo.style.marginTop = "0";
   }
 }

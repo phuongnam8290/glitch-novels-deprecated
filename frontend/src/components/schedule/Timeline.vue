@@ -52,20 +52,6 @@
           </div>
         </div> -->
 
-        <base-card :cover="`novel-list/${day.releaseNovel.cover}`">
-          <template v-slot:title>
-            {{ day.releaseNovel.title }}
-          </template>
-          <template v-slot:subtitle>
-            {{ day.releaseNovel.author }}
-          </template>
-
-          <template v-slot:content> 
-            <p v-for="paragraph in day.releaseNovel.synopsis" :key="paragraph">
-            {{ paragraph }}
-            </p>
-          </template>
-        </base-card>
       </div>
     </div>
 
@@ -73,12 +59,8 @@
 </template>
 
 <script>
-import BaseCard from '@/components/common/BaseCard.vue';
 
 export default {
-  components: {
-    "base-card": BaseCard
-  },
   data() {
     return {
       week: [
