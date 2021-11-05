@@ -161,7 +161,7 @@
 <script>
 import Utils from "@/assets/js/mixins/Utils.js";
 import ScrollText from "@/assets/js/mixins/ScrollText.js";
-import BaseTag from "@/components/common/BaseTag.vue";
+import BaseTag from "@/components/common/tags/BaseTag.vue";
 
 export default {
   components: {

@@ -17,8 +17,8 @@
     <template v-slot:card-footer>
       <a class="d-flex justify-content-between align-items-center"
          href="#">
-        <span>
-          <i class="fas fa-star pr-1 ratings"></i>
+        <span class="text-nowrap">
+          <i class="fas fa-star pr-1"></i>
           {{ novel.valuationInfo.ratings }}
         </span>
         <span class="d-none d-sm-block pl-3">
