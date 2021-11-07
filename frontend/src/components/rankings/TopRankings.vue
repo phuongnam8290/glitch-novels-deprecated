@@ -1,8 +1,9 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center">
+  <div class="d-flex justify-content-center align-items-center wrapper"
+       :class="{animating: isAnimating}">
     
     <div class="rankings second-ranking">
-      <div class="position-relative wrapper">
+      <div class="position-relative">
         <div class="position-relative overflow-hidden">
           <div class="front">
             <img src="@/assets/images/novel-list/01.png">
@@ -28,7 +29,7 @@
     <div class="rankings first-ranking"
          @mouseenter="startMarqueeEffect"
          @mouseleave="stopMarqueeEffect">
-      <div class="position-relative wrapper">
+      <div class="position-relative">
         <div class="position-relative overflow-hidden">
           <div class="front">
             <img src="@/assets/images/novel-list/01.png">
@@ -63,7 +64,7 @@
     </div>
 
     <div class="rankings third-ranking">
-      <div class="position-relative wrapper">
+      <div class="position-relative">
         <div class="position-relative overflow-hidden">
           <div class="front">
             <img src="@/assets/images/novel-list/01.png">
@@ -99,22 +100,41 @@ export default {
       firstRanking: null,
       secondRanking: null,
       thirdRanking: null,
+      lastScrollPosition: 0,
+      isAnimating: null
     }
   },
   methods: {
     addAnimateClass() {
-      this.firstRanking.classList.add("animating", "ranking-enter-top");
-      this.secondRanking.classList.add("animating", "ranking-enter-left");
-      this.thirdRanking.classList.add("animating", "ranking-enter-right");
+      this.isAnimating = true;
+
+      this.firstRanking.classList.add("ranking-enter-top");
+      this.secondRanking.classList.add("ranking-enter-left");
+      this.thirdRanking.classList.add("ranking-enter-right");
     },
     removeAnimateClass() {
-      this.firstRanking.classList.remove("animating", "ranking-enter-top");
-      this.secondRanking.classList.remove("animating", "ranking-enter-left");
-      this.thirdRanking.classList.remove("animating", "ranking-enter-right");
+      this.firstRanking.classList.remove("ranking-enter-top");
+      this.secondRanking.classList.remove("ranking-enter-left");
+      this.thirdRanking.classList.remove("ranking-enter-right");
+
+      this.isAnimating = false;
     },
     animate() {
       this.addAnimateClass();
       this.$el.addEventListener("animationend", this.removeAnimateClass);
+    },
+    scrollAnimate() {
+      let currentScrollPosition = window.scrollY;
+      console.log(currentScrollPosition);
+      // Scroll up
+      if (currentScrollPosition < this.lastScrollPosition) {
+        // from position lower than element position
+        if (currentScrollPosition <= 550 && this.lastScrollPosition > 550) {
+          this.animate();
+        }
+      }
+
+      this.lastScrollPosition = currentScrollPosition;
     },
     startMarqueeEffect() {
       this.marquee(this.$refs.title, 2);
@@ -131,6 +151,7 @@ export default {
     this.thirdRanking = this.$el.querySelector(".third-ranking");
 
     this.animate();
+    document.addEventListener("scroll", this.scrollAnimate);
   }
 }
 </script>
@@ -175,7 +196,8 @@ export default {
   transition: top .6s, opacity .4s;
 }
 
-.rankings:hover:not(.animating) .back {
+/* Only show back content when element finish animate */
+.wrapper:not(.animating) .rankings:hover .back {
   top: 0;
   opacity: 1;
   display: block;
@@ -235,19 +257,23 @@ export default {
   width: 5vw;
 }
 
+.ranking-enter-top,
+.ranking-enter-left,
+.ranking-enter-right {
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
 .ranking-enter-top {
   animation-name: enterTop;
-  animation-duration: 2s;
 }
 
 .ranking-enter-left {
   animation-name: enterLeft;
-  animation-duration: 2s;
 }
 
 .ranking-enter-right {
   animation-name: enterRight;
-  animation-duration: 2s;
 }
 
 @keyframes enterTop {
