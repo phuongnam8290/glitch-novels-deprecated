@@ -35,7 +35,7 @@
 <script>
 import {provide, inject} from "vue";
 
-import RankingsModal from "@/components/rankings/RankingsModal.vue";
+import RankingsModal from "@/components/rankings/rankings-filters/RankingsModal.vue";
 
 export default {
   components: {

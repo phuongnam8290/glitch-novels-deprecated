@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import TopRankingNovel from "@/components/rankings/TopRankingNovel.vue";
+import TopRankingNovel from "@/components/rankings/top-rankings/TopRankingNovel.vue";
 
 export default {
   components: {
@@ -72,7 +72,7 @@ export default {
 .ranking-enter-left,
 .ranking-enter-right {
   animation-duration: 1s;
-  animation-timing-function: ease-in;
+  animation-timing-function: ease-in-out;
 }
 
 .ranking-enter-top {

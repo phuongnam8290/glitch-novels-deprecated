@@ -1,6 +1,6 @@
 <template>
   <section class="container-fluid d-none d-md-block">
-    <top-rankings></top-rankings>
+    <top-rankings-list></top-rankings-list>
   </section>
   <section class="container-fluid d-block d-xl-none">
     <rankings-filter-top></rankings-filter-top>
@@ -20,14 +20,14 @@
 <script>
 import {provide, reactive} from "vue";
 
-import TopRankings from "@/components/rankings/TopRankings.vue";
+import TopRankingsList from "@/components/rankings/top-rankings/TopRankingsList.vue";
 import RankingsFilterTop from "@/components/rankings/rankings-filters/RankingsFilterTop.vue";
 import RankingsFilterSide from "@/components/rankings/rankings-filters/RankingsFilterSide.vue";
 import RankingsList from "@/components/rankings/rankings-list/RankingsList.vue";
 
 export default {
   components: {
-    "top-rankings": TopRankings,
+    "top-rankings-list": TopRankingsList,
     "rankings-filter-top": RankingsFilterTop,
     "rankings-filter-side": RankingsFilterSide,
     "rankings-list": RankingsList
