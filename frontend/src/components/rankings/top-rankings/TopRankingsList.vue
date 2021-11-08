@@ -1,8 +1,16 @@
 <template>
   <div class="d-flex justify-content-center align-items-center wrapper">
-    <top-ranking-novel ranking="second" ref="second"></top-ranking-novel>
-    <top-ranking-novel ranking="first" ref="first"></top-ranking-novel>
-    <top-ranking-novel ranking="third" ref="third"></top-ranking-novel>
+    <top-ranking-novel ranking="second" ref="second"
+                       :class="{'ranking-enter-left': isAnimating, animating: isAnimating}">
+    </top-ranking-novel>
+
+    <top-ranking-novel ranking="first" ref="first"
+                       :class="{'ranking-enter-top': isAnimating, animating: isAnimating}">
+    </top-ranking-novel>
+
+    <top-ranking-novel ranking="third" ref="third"
+                       :class="{'ranking-enter-right': isAnimating, animating: isAnimating}">
+    </top-ranking-novel>
   </div>
 </template>
 
@@ -19,25 +27,17 @@ export default {
       secondRanking: null,
       thirdRanking: null,
       lastScrollPosition: 0,
+      isAnimating: null
     }
   },
   methods: {
-    addAnimateClass() {
-      this.firstRanking.classList.add("animating", "ranking-enter-top");
-      console.log(this.firstRanking.classList)
-      this.secondRanking.classList.add("animating", "ranking-enter-left");
-      this.thirdRanking.classList.add("animating", "ranking-enter-right");
-    },
-    removeAnimateClass() {
-      this.firstRanking.classList.remove("animating", "ranking-enter-top");
-      this.secondRanking.classList.remove("animating", "ranking-enter-left");
-      this.thirdRanking.classList.remove("animating", "ranking-enter-right");
-
-      this.$el.removeEventListener("animationend", this.removeAnimateClass);
+    cleanupAnimateClass() {
+      this.isAnimating = false;
+      this.$el.removeEventListener("animationend", this.cleanupAnimateClass);
     },
     animate() {
-      this.addAnimateClass();
-      this.$el.addEventListener("animationend", this.removeAnimateClass);
+      this.isAnimating = true;
+      this.$el.addEventListener("animationend", this.cleanupAnimateClass)
     },
     scrollAnimate() {
       let currentScrollPosition = window.scrollY;
