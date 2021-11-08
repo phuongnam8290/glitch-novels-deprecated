@@ -1,20 +1,21 @@
 <template>
   <div class="justify-content-around timeline-lg">
     <div class="d-flex flex-column align-items-center text-center"
-         :style="{width: `${100 / timeline.length}vw`}"
-         v-for="day in timeline" :key="day.weekday">
+         :style="{width: `${100 / week.weekData.length}vw`}"
+         v-for="date in week.weekData" :key="date.weekday">
 
       <div class="d-inline-block weekday"
-           :class="addWeekdayClass(day.weekday)">
-        {{ day.weekday }}
+           :class="addWeekdayClass(date.weekday)">
+        {{ date.weekday }}
       </div>
-      <div class="date"> {{ day.date }} </div>
+      <div class="date"> {{ date.day }}-{{ date.month }} </div>
       <novel-thumbnail class="new-novel"></novel-thumbnail>
     </div>
   </div>
 </template>
 
 <script>
+import { inject } from "vue";
 import NovelThumbnail from "@/components/common/cards/NovelThumbnail";
 
 export default {
@@ -23,17 +24,27 @@ export default {
   },
   data() {
     return {
-      timeline: this.$store.state.defaultTimeline,
       novel: this.$store.state.defaultNovelData
+    }
+  },
+  computed: {
+    week() {
+      for (let week of this.weeksData) {
+        if (week.selected === true) {
+          return week;
+        }
+      }
+
+      return null;
     }
   },
   methods: {
     isFirstWeekday(weekday) {
-      return weekday === this.timeline[0].weekday;
+      return weekday === this.week.weekData[0].weekday;
     },
 
     isLastWeekday(weekday) {
-      return weekday === this.timeline[this.timeline.length - 1].weekday;
+      return weekday === this.week.weekData[this.week.weekData.length - 1].weekday;
     },
 
     addWeekdayClass(weekday) {
@@ -43,6 +54,11 @@ export default {
         return {"last-weekday": true};
       }
     }
+  },
+  setup() {
+    const weeksData = inject("weeksData");
+
+    return { weeksData };
   }
 }
 </script>
@@ -55,7 +71,7 @@ export default {
 .timeline-lg .weekday {
   position: relative;
   border: 1px solid rgba(var(--primary-color-rgb), .6);
-
+  width: 56px;
   border-radius: 5px;
   padding: .2rem .5rem;
 }
@@ -94,7 +110,6 @@ export default {
 
 .timeline-lg .new-novel {
   margin-top: 1.5rem;
-  max-width: 11vw
+  width: 11vw
 }
-
 </style>

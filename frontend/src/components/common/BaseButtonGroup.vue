@@ -68,12 +68,12 @@ export default {
         bgLeftPos += elem.offsetWidth;
       }
 
-      if(this.style == "default") {
+      if(this.style === "default") {
         btnBg.style.left = `${bgLeftPos}px`;
         btnBg.style.width = `${btn.offsetWidth}px`;
         btnBg.style.height = `${btn.offsetHeight}px`;
       }
-      else if (this.style == "switch-btn") {
+      else if (this.style === "switch-btn") {
         btnBg.style.top = `3px`;
         btnBg.style.left = `${bgLeftPos == 0 ? bgLeftPos + 4 : bgLeftPos}px`;
         btnBg.style.width = `${btn.offsetWidth - 5}px`;

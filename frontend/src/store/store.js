@@ -809,36 +809,89 @@ const store = createStore({
         }]
       }
     ],
-    defaultTimeline: [
-      {
-        weekday: "MON",
-        date: "11-10",
-      },
-      {
-        weekday: "TUE",
-        date: "12-10",
-      },
-      {
-        weekday: "WED",
-        date: "13-10",
-      },
-      {
-        weekday: "THU",
-        date: "14-10",
-      },
-      {
-        weekday: "FRI",
-        date: "15-10",
-      },
-      {
-        weekday: "SAT",
-        date: "16-10",
-      },
-      {
-        weekday: "SUN",
-        date: "17-10",
-      },
-    ]
+    defaultWeeksData: [
+    {
+      week: "last",
+      timetable:
+      [
+        {
+          weekday: "MON",
+          day: 25,
+          month: 10
+        },
+        {
+          weekday: "TUE",
+          day: 26,
+          month: 10
+        },
+        {
+          weekday: "WED",
+          day: 27,
+          month: 10
+        },
+        {
+          weekday: "THU",
+          day: 28,
+          month: 10
+        },
+        {
+          weekday: "FRI",
+          day: 29,
+          month: 10
+        },
+        {
+          weekday: "SAT",
+          day: 30,
+          month: 10
+        },
+        {
+          weekday: "SUN",
+          day: 31,
+          month: 10
+        },
+      ]
+    },
+    {
+      week: "current",
+      timetable:
+      [
+        {
+          weekday: "MON",
+          day: 1,
+          month: 11
+        },
+        {
+          weekday: "TUE",
+          day: 2,
+          month: 11
+        },
+        {
+          weekday: "WED",
+          day: 3,
+          month: 11
+        },
+        {
+          weekday: "THU",
+          day: 4,
+          month: 11
+        },
+        {
+          weekday: "FRI",
+          day: 5,
+          month: 11
+        },
+        {
+          weekday: "SAT",
+          day: 6,
+          month: 11
+        },
+        {
+          weekday: "SUN",
+          day: 7,
+          month: 11
+        }
+      ]
+    }]
   }
 })
 
