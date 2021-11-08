@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import NovelDefault from '@/components/browse/novel/NovelDefault';
-import NovelMinimal from '@/components/browse/novel/NovelMinimal';
-import NovelThumbnail from '@/components/browse/novel/NovelThumbnail';
+import NovelDefault from '@/components/common/cards/NovelDefault';
+import NovelMinimal from '@/components/common/cards/NovelMinimal';
+import NovelThumbnail from '@/components/common/cards/NovelThumbnail';
 
 export default {
   components: {

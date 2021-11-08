@@ -18,7 +18,7 @@
 <script>
 import BaseSectionHeader from "@/components/common/BaseSectionHeader.vue";
 import BaseButtonGroup from "@/components/common/BaseButtonGroup.vue";
-import Timeline from "@/components/schedule/Timeline.vue";
+import Timeline from "@/components/schedule/timeline/Timeline.vue";
 
 export default {
   components: {

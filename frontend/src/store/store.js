@@ -808,6 +808,36 @@ const store = createStore({
           status: 450
         }]
       }
+    ],
+    defaultTimeline: [
+      {
+        weekday: "MON",
+        date: "11-10",
+      },
+      {
+        weekday: "TUE",
+        date: "12-10",
+      },
+      {
+        weekday: "WED",
+        date: "13-10",
+      },
+      {
+        weekday: "THU",
+        date: "14-10",
+      },
+      {
+        weekday: "FRI",
+        date: "15-10",
+      },
+      {
+        weekday: "SAT",
+        date: "16-10",
+      },
+      {
+        weekday: "SUN",
+        date: "17-10",
+      },
     ]
   }
 })
