@@ -31,13 +31,14 @@ export default {
     }
   },
   methods: {
-    cleanupAnimateClass() {
-      this.isAnimating = false;
-      this.$el.removeEventListener("animationend", this.cleanupAnimateClass);
-    },
     animate() {
+      let self = this
       this.isAnimating = true;
-      this.$el.addEventListener("animationend", this.cleanupAnimateClass)
+
+      this.$el.addEventListener("animationend", function cleanupAnimateClass() {
+        self.isAnimating = false;
+        self.$el.removeEventListener("animationend", cleanupAnimateClass);
+      })
     },
     scrollAnimate() {
       let currentScrollPosition = window.scrollY;
