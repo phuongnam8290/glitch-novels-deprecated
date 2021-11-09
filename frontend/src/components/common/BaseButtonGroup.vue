@@ -2,7 +2,7 @@
 <div class="wrapper"
      :class="style">
   <div class="position-relative btn-group">
-    <p class="pointable btn-item"
+    <p class="cursor-pointer btn-item"
         v-for="btn in btns.totalBtns" :key="btn.ref"
         :id="btn.ref"
         :ref="btn.ref"
@@ -153,29 +153,5 @@ export default {
 
   padding: .6rem;
   padding-top: .7rem;
-}
-
-/* Switch button style */
-.switch-btn .btn-item {
-  color: var(--secondary-color);
-  transition: all .5s ease-out;
-}
-
-.switch-btn .btn-item.active {
-  color: var(--primary-color);
-}
-
-.switch-btn .btn-item > span {
-  padding: .8rem 2rem;
-}
-
-.switch-btn .bg {  
-  background-color: var(--primary-color);
-  opacity: 20%;
-  border-radius: 35px;
-}
-
-.switch-btn .btn-bg {
-  border-radius: 35px;
 }
 </style>

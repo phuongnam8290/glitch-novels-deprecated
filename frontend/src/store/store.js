@@ -811,86 +811,120 @@ const store = createStore({
     ],
     defaultWeeksData: [
     {
-      week: "last",
-      timetable:
-      [
-        {
-          weekday: "MON",
-          day: 25,
-          month: 10
-        },
-        {
-          weekday: "TUE",
-          day: 26,
-          month: 10
-        },
-        {
-          weekday: "WED",
-          day: 27,
-          month: 10
-        },
-        {
-          weekday: "THU",
-          day: 28,
-          month: 10
-        },
-        {
-          weekday: "FRI",
-          day: 29,
-          month: 10
-        },
-        {
-          weekday: "SAT",
-          day: 30,
-          month: 10
-        },
-        {
-          weekday: "SUN",
-          day: 31,
-          month: 10
-        },
-      ]
+      chronology: "last",
+      weekData: [{
+        weekday: "MON",
+        day: 18,
+        month: 10
+        // TODO: JSON get back from backend need a list of novels that being publish in this date.
+      },
+      {
+        weekday: "TUE",
+        day: 19,
+        month: 10
+      },
+      {
+        weekday: "WED",
+        day: 20,
+        month: 10
+      },
+      {
+        weekday: "THU",
+        day: 21,
+        month: 10
+      },
+      {
+        weekday: "FRI",
+        day: 22,
+        month: 10
+      },
+      {
+        weekday: "SAT",
+        day: 23,
+        month: 10
+      },
+      {
+        weekday: "SUN",
+        day: 24,
+        month: 10
+      }]
     },
     {
-      week: "current",
-      timetable:
-      [
-        {
-          weekday: "MON",
-          day: 1,
-          month: 11
-        },
-        {
-          weekday: "TUE",
-          day: 2,
-          month: 11
-        },
-        {
-          weekday: "WED",
-          day: 3,
-          month: 11
-        },
-        {
-          weekday: "THU",
-          day: 4,
-          month: 11
-        },
-        {
-          weekday: "FRI",
-          day: 5,
-          month: 11
-        },
-        {
-          weekday: "SAT",
-          day: 6,
-          month: 11
-        },
-        {
-          weekday: "SUN",
-          day: 7,
-          month: 11
-        }
-      ]
+      chronology: "current",
+      weekData: [{
+        weekday: "MON",
+        day: 25,
+        month: 10
+      },
+      {
+        weekday: "TUE",
+        day: 26,
+        month: 10
+      },
+      {
+        weekday: "WED",
+        day: 27,
+        month: 10
+      },
+      {
+        weekday: "THU",
+        day: 28,
+        month: 10
+      },
+      {
+        weekday: "FRI",
+        day: 29,
+        month: 10
+      },
+      {
+        weekday: "SAT",
+        day: 30,
+        month: 10
+      },
+      {
+        weekday: "SUN",
+        day: 31,
+        month: 10
+      }]
+    },
+    {
+      chronology: "next",
+      weekData: [
+      {
+        weekday: "MON",
+        day: 1,
+        month: 11
+      },
+      {
+        weekday: "TUE",
+        day: 2,
+        month: 11
+      },
+      {
+        weekday: "WED",
+        day: 3,
+        month: 11
+      },
+      {
+        weekday: "THU",
+        day: 4,
+        month: 11
+      },
+      {
+        weekday: "FRI",
+        day: 5,
+        month: 11
+      },
+      {
+        weekday: "SAT",
+        day: 6,
+        month: 11
+      },
+      {
+        weekday: "SUN",
+        day: 7,
+        month: 11
+      }],
     }]
   }
 })
