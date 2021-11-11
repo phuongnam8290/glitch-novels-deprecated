@@ -2,9 +2,9 @@
   <div class="position-relative">
     <div class="d-flex h-100 hide cursor-pointer left-arrow"
          @click="scroll('left')">
-          <span class="align-self-center">
-            <i class="fas fa-chevron-double-left"></i>
-          </span>
+      <span class="align-self-center">
+        <i class="fas fa-chevron-double-left"></i>
+      </span>
     </div>
 
     <div class="d-flex tags"
@@ -18,9 +18,9 @@
 
     <div class="d-flex h-100 hide cursor-pointer right-arrow"
          @click="scroll('right')">
-          <span class="align-self-center">
-            <i class="fas fa-chevron-double-right"></i>
-          </span>
+      <span class="align-self-center">
+        <i class="fas fa-chevron-double-right"></i>
+      </span>
     </div>
   </div>
 </template>
@@ -76,14 +76,12 @@ export default {
       let currentPosition = tags.scrollLeft;
 
       if (direction === "left"){
-        // tags.scrollLeft -= scrollWidth;
         tags.scrollTo({
           top: 0,
           left: currentPosition - scrollWidth,
           behavior: "smooth"
         })
       } else if (direction === "right") {
-        // tags.scrollLeft += scrollWidth;
         tags.scrollTo({
           top: 0,
           left: currentPosition + scrollWidth,

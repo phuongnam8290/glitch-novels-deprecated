@@ -60,7 +60,6 @@ export default {
       }
 
       this.week.weekData[index].selected = true;
-      console.log(this.weeksData);
     }
   },
   setup() {

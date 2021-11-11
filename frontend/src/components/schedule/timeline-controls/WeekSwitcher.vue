@@ -2,11 +2,11 @@
   <div class="wrapper">
     <div class="position-relative btn-group">
       <p class="cursor-pointer btn-item"
-         :class="{selected: selectedBtn === week.chronology}"
-         v-for="week in weeksData" :key="week.chronology"
-         :ref="week.chronology"
-         @click="clickBtn($event, week.chronology)">
-        <span class="d-block"> {{ setBtnText(week.chronology) }} </span>
+         :class="{selected: selectedBtn === week.weekChronology}"
+         v-for="week in weeksData" :key="week.weekChronology"
+         :ref="week.weekChronology"
+         @click="clickBtn($event, week.weekChronology)">
+        <span class="d-block"> {{ setBtnText(week.weekChronology) }} </span>
       </p>
       <div class="bg"></div>
       <div class="btn-bg" ref="btn-bg"></div>
@@ -25,12 +25,12 @@ export default {
     }
   },
   methods: {
-    setBtnText(chronology) {
-      if (chronology === "current") {
-        chronology = "this"
+    setBtnText(weekChronology) {
+      if (weekChronology === "current") {
+        weekChronology = "this"
       }
 
-      return `${capitalize(chronology)} week`
+      return `${capitalize(weekChronology)} week`
     },
     getPreviousSiblings(elem) {
       let sibs = [];
@@ -55,25 +55,24 @@ export default {
       btnBg.style.width = `${btn.offsetWidth - 5}px`;
       btnBg.style.height = `${btn.offsetHeight - 7}px`;
     },
-    clickBtn(event, chronology) {
-      console.log(this.weeksData);
+    clickBtn(event, weekChronology) {
       let target = event.currentTarget;
 
       this.setSelectedBtnBg(target);
-      this.selectedBtn = chronology;
+      this.selectedBtn = weekChronology;
 
       for (let week of this.weeksData) {
-        week.selected = week.chronology === chronology;
+        week.selected = week.weekChronology === weekChronology;
       }
     }
   },
   mounted() {
     for (let week of this.weeksData) {
       if (week.selected === true) {
-        let chronology = week.chronology;
+        let weekChronology = week.weekChronology;
 
-        this.selectedBtn = chronology;
-        this.setSelectedBtnBg(this.$refs[chronology])
+        this.selectedBtn = weekChronology;
+        this.setSelectedBtnBg(this.$refs[weekChronology])
       }
     }
   },

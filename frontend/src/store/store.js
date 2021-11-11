@@ -811,7 +811,7 @@ const store = createStore({
     ],
     defaultWeeksData: [
     {
-      chronology: "last",
+      weekChronology: "last",
       weekData: [{
         weekday: "MON",
         day: 18,
@@ -850,7 +850,7 @@ const store = createStore({
       }]
     },
     {
-      chronology: "current",
+      weekChronology: "current",
       weekData: [{
         weekday: "MON",
         day: 25,
@@ -888,7 +888,7 @@ const store = createStore({
       }]
     },
     {
-      chronology: "next",
+      weekChronology: "next",
       weekData: [
       {
         weekday: "MON",
