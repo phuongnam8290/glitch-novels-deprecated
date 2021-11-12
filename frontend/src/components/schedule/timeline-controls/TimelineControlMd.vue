@@ -3,16 +3,16 @@
     <week-switcher class="d-flex justify-content-center"></week-switcher>
     <div class="d-flex justify-content-around timeline">
       <div class="d-flex flex-column align-items-center text-center date"
-           :class="{selected: !!date.selected}"
-           :style="{width: `${100 / week.weekData.length}vw`}"
-           v-for="(date, index) in week.weekData" :key="date.weekday">
+           :class="{selected: date.getTime() === selectedWeek.selectedDate.getTime()}"
+           :style="{width: `${100 / selectedWeek.week.length}vw`}"
+           v-for="date in selectedWeek.week" :key="date">
         <div class="cursor-pointer date-inner"
-             @click="selectDate(index)">
+             @click="selectDate(date)">
           <div class="d-inline-block weekday"
-               :class="addWeekdayClass(date.weekday)">
-            {{ date.weekday }}
+               :class="addWeekdayClass(date)">
+            {{ getWeekday(date.getDay()) }}
           </div>
-          <div class="day-month"> {{ date.day }}-{{ date.month }} </div>
+          <div class="day-month"> {{ date.getDate() }}-{{ date.getMonth() +1 }} </div>
         </div>
       </div>
     </div>
@@ -27,44 +27,99 @@ export default {
   components: {
     "week-switcher": WeekSwitcher
   },
+  data() {
+    return {
+      weekday: {
+        0: "SUN",
+        1: "MON",
+        2: "TUE",
+        3: "WED",
+        4: "THU",
+        5: "FRI",
+        6: "SAT"
+      }
+    }
+  },
   computed: {
-    week() {
-      for (let week of this.weeksData) {
-        if (week.selected === true) {
-          return week;
+    weeks() {
+      let weeks = {
+        last: [],
+        current: [],
+        next: []
+      }
+
+      for(let data of this.scheduleData) {
+        let date = new Date(data.date);
+
+        if (date >= this.weeksData.last.firstDate &&
+            date <= this.weeksData.last.lastDate) {
+          weeks.last.push(date);
+        }
+        else if (date >= this.weeksData.current.firstDate &&
+            date <= this.weeksData.current.lastDate) {
+          weeks.current.push(date);
+        }
+        else if (date >= this.weeksData.next.firstDate &&
+            date <= this.weeksData.next.lastDate) {
+          weeks.next.push(date);
         }
       }
 
-      return null;
+      return weeks;
+    },
+    selectedWeek() {
+      let selectedWeek = {
+        selectedDate: null,
+        week: []
+      };
+
+      for (let chronology in this.weeksData) {
+        if (this.weeksData[chronology].isWeekSelected) {
+          selectedWeek.week = this.weeks[chronology];
+          selectedWeek.selectedDate = this.weeksData[chronology].selectedDate;
+          break;
+        }
+      }
+
+      return selectedWeek;
     }
   },
   methods: {
-    isFirstWeekday(weekday) {
-      return weekday === this.week.weekData[0].weekday;
+    getWeekday(day) {
+      return this.weekday[day];
+    },
+    isFirstWeekday(date) {
+      return date.getTime() === this.selectedWeek.week[0].getTime();
     },
 
-    isLastWeekday(weekday) {
-      return weekday === this.week.weekData[this.week.weekData.length - 1].weekday;
+    isLastWeekday(date) {
+      let week = this.selectedWeek.week;
+      return date.getTime() === week[week.length - 1].getTime();
     },
 
-    addWeekdayClass(weekday) {
-      if (this.isFirstWeekday(weekday)) {
+    addWeekdayClass(date) {
+      if (this.isFirstWeekday(date)) {
         return {"first-weekday": true};
-      } else if (this.isLastWeekday(weekday)) {
+      } else if (this.isLastWeekday(date)) {
         return {"last-weekday": true};
       }
     },
-    selectDate(index) {
-      for (let date of this.week.weekData) {
-        date.selected = false;
+    selectDate(date) {
+      for(let chronology in this.weeksData) {
+        if (this.weeksData[chronology].isWeekSelected) {
+          this.weeksData[chronology].selectedDate = date;
+          break;
+        }
       }
-
-      this.week.weekData[index].selected = true;
     }
   },
+  mounted() {
+  },
   setup() {
+    const scheduleData = inject("scheduleData");
     const weeksData = inject("weeksData");
-    return { weeksData };
+
+    return { scheduleData, weeksData };
   }
 }
 </script>

@@ -2,11 +2,11 @@
   <div class="wrapper">
     <div class="position-relative btn-group">
       <p class="cursor-pointer btn-item"
-         :class="{selected: selectedBtn === week.weekChronology}"
-         v-for="week in weeksData" :key="week.weekChronology"
-         :ref="week.weekChronology"
-         @click="clickBtn($event, week.weekChronology)">
-        <span class="d-block"> {{ setBtnText(week.weekChronology) }} </span>
+         :class="{selected: selectedWeek === chronology}"
+         v-for="(data, chronology) in weeksData" :key="chronology"
+         :ref="chronology"
+         @click="changeWeek($event, chronology)">
+        <span class="d-block"> {{ setBtnText(chronology) }} </span>
       </p>
       <div class="bg"></div>
       <div class="btn-bg" ref="btn-bg"></div>
@@ -21,16 +21,16 @@ import { inject } from "vue";
 export default {
   data() {
     return {
-      selectedBtn: null
+      selectedWeek: null
     }
   },
   methods: {
-    setBtnText(weekChronology) {
-      if (weekChronology === "current") {
-        weekChronology = "this"
+    setBtnText(chronology) {
+      if (chronology === "current") {
+        chronology = "this"
       }
 
-      return `${capitalize(weekChronology)} week`
+      return `${capitalize(chronology)} week`
     },
     getPreviousSiblings(elem) {
       let sibs = [];
@@ -55,29 +55,27 @@ export default {
       btnBg.style.width = `${btn.offsetWidth - 5}px`;
       btnBg.style.height = `${btn.offsetHeight - 7}px`;
     },
-    clickBtn(event, weekChronology) {
+    changeWeek(event, chronology) {
       let target = event.currentTarget;
 
       this.setSelectedBtnBg(target);
-      this.selectedBtn = weekChronology;
+      this.selectedWeek = chronology;
 
-      for (let week of this.weeksData) {
-        week.selected = week.weekChronology === weekChronology;
+      for (let week in this.weeksData) {
+        this.weeksData[week].isWeekSelected = week === chronology;
       }
     }
   },
   mounted() {
-    for (let week of this.weeksData) {
-      if (week.selected === true) {
-        let weekChronology = week.weekChronology;
-
-        this.selectedBtn = weekChronology;
-        this.setSelectedBtnBg(this.$refs[weekChronology])
+    for (let chronology in this.weeksData) {
+      if (this.weeksData[chronology].isWeekSelected === true) {
+        this.selectedWeek = chronology;
+        this.setSelectedBtnBg(this.$refs[chronology])
       }
     }
   },
   setup() {
-    const weeksData = inject("weeksData");
+    const weeksData = inject("weeksData")
     return { weeksData };
   }
 }

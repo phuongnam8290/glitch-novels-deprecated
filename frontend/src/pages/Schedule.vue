@@ -14,6 +14,8 @@
 import { provide, reactive } from "vue";
 import { useStore } from "vuex";
 
+import { createWeekData } from "@/assets/js/fns/Date.js";
+
 import BaseSectionHeader from "@/components/common/BaseSectionHeader.vue";
 import Timeline from "@/components/schedule/timeline/Timeline.vue";
 
@@ -22,30 +24,30 @@ export default {
     "base-section-header": BaseSectionHeader,
     "timeline": Timeline
   },
-  unmounted() {
-    // Reset weeksData to initial state
-    // TODO Decide between remove when call to backend or cached?
-    for (let week of this.weeksData) {
-      week.selected = false;
-
-      for (let date of week.weekData) {
-        date.selected = false;
-      }
-    }
-  },
   setup() {
     const store = useStore();
-    const weeksData = reactive(store.state.defaultWeeksData);
 
-    // Set initial selected week & date
-    weeksData[1].selected = true;
-    weeksData[0].weekData[0].selected = true;
-    weeksData[1].weekData[0].selected = true;
-    weeksData[2].weekData[0].selected = true;
+    const scheduleData = reactive(store.state.defaultScheduleData);
+    const currentDate = new Date(store.state.currentDate.date);
 
+    // 7 days before current day
+    let dateBefore = new Date(currentDate);
+    dateBefore.setDate(dateBefore.getDate() - 7);
+
+    // 7 days after current day
+    let dateAfter = new Date(currentDate);
+    dateAfter.setDate(dateAfter.getDate() + 7);
+
+    let current = createWeekData(currentDate, true);
+    let last = createWeekData(dateBefore, false);
+    let next = createWeekData(dateAfter, false);
+
+    let weeksData = reactive({ last, current, next })
+
+    provide("scheduleData", scheduleData);
     provide("weeksData", weeksData);
 
-    return { weeksData };
+    return { scheduleData, weeksData };
   }
 }
 </script>

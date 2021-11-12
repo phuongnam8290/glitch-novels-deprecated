@@ -809,123 +809,149 @@ const store = createStore({
         }]
       }
     ],
-    defaultWeeksData: [
-    {
-      weekChronology: "last",
-      weekData: [{
-        weekday: "MON",
-        day: 18,
-        month: 10
-        // TODO: JSON get back from backend need a list of novels that being publish in this date.
-      },
-      {
-        weekday: "TUE",
-        day: 19,
-        month: 10
-      },
-      {
-        weekday: "WED",
-        day: 20,
-        month: 10
-      },
-      {
-        weekday: "THU",
-        day: 21,
-        month: 10
-      },
-      {
-        weekday: "FRI",
-        day: 22,
-        month: 10
-      },
-      {
-        weekday: "SAT",
-        day: 23,
-        month: 10
-      },
-      {
-        weekday: "SUN",
-        day: 24,
-        month: 10
-      }]
-    },
-    {
-      weekChronology: "current",
-      weekData: [{
-        weekday: "MON",
-        day: 25,
-        month: 10
-      },
-      {
-        weekday: "TUE",
-        day: 26,
-        month: 10
-      },
-      {
-        weekday: "WED",
-        day: 27,
-        month: 10
-      },
-      {
-        weekday: "THU",
-        day: 28,
-        month: 10
-      },
-      {
-        weekday: "FRI",
-        day: 29,
-        month: 10
-      },
-      {
-        weekday: "SAT",
-        day: 30,
-        month: 10
-      },
-      {
-        weekday: "SUN",
-        day: 31,
-        month: 10
-      }]
-    },
-    {
-      weekChronology: "next",
-      weekData: [
-      {
-        weekday: "MON",
-        day: 1,
-        month: 11
-      },
-      {
-        weekday: "TUE",
-        day: 2,
-        month: 11
-      },
-      {
-        weekday: "WED",
-        day: 3,
-        month: 11
-      },
-      {
-        weekday: "THU",
-        day: 4,
-        month: 11
-      },
-      {
-        weekday: "FRI",
-        day: 5,
-        month: 11
-      },
-      {
-        weekday: "SAT",
-        day: 6,
-        month: 11
-      },
-      {
-        weekday: "SUN",
-        day: 7,
-        month: 11
-      }],
-    }]
+    // defaultWeeksData: [
+    // {
+    //   weekChronology: "last",
+    //   weekData: [{
+    //     weekday: "MON",
+    //     day: 18,
+    //     month: 10
+    //     // TODO: JSON get back from backend need a list of novels that being publish in this date.
+    //   },
+    //   {
+    //     weekday: "TUE",
+    //     day: 19,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "WED",
+    //     day: 20,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "THU",
+    //     day: 21,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "FRI",
+    //     day: 22,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "SAT",
+    //     day: 23,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "SUN",
+    //     day: 24,
+    //     month: 10
+    //   }]
+    // },
+    // {
+    //   weekChronology: "current",
+    //   weekData: [{
+    //     weekday: "MON",
+    //     day: 25,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "TUE",
+    //     day: 26,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "WED",
+    //     day: 27,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "THU",
+    //     day: 28,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "FRI",
+    //     day: 29,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "SAT",
+    //     day: 30,
+    //     month: 10
+    //   },
+    //   {
+    //     weekday: "SUN",
+    //     day: 31,
+    //     month: 10
+    //   }]
+    // },
+    // {
+    //   weekChronology: "next",
+    //   weekData: [
+    //   {
+    //     weekday: "MON",
+    //     day: 1,
+    //     month: 11
+    //   },
+    //   {
+    //     weekday: "TUE",
+    //     day: 2,
+    //     month: 11
+    //   },
+    //   {
+    //     weekday: "WED",
+    //     day: 3,
+    //     month: 11
+    //   },
+    //   {
+    //     weekday: "THU",
+    //     day: 4,
+    //     month: 11
+    //   },
+    //   {
+    //     weekday: "FRI",
+    //     day: 5,
+    //     month: 11
+    //   },
+    //   {
+    //     weekday: "SAT",
+    //     day: 6,
+    //     month: 11
+    //   },
+    //   {
+    //     weekday: "SUN",
+    //     day: 7,
+    //     month: 11
+    //   }],
+    // }]
+    defaultScheduleData: [
+      // TODO: Array of novels when called from backend
+      // Server return date in local timezone
+      { date: 1638118800000 }, // 29-11-2021 MON
+      { date: 1638205200000 }, // 30-11-2021 TUE
+      { date: 1638291600000 }, // 01-12-2021 WED
+      { date: 1638378000000 }, // 02-12-2021 THU
+      { date: 1638464400000 }, // 03-12-2021 FRI
+      { date: 1638550800000 }, // 04-12-2021 SAT
+      { date: 1638637200000 }, // 05-12-2021 SUN
+      { date: 1638723600000 }, // 06-12-2021 MON
+      { date: 1638810000000 }, // 07-12-2021 TUE
+      { date: 1638896400000 }, // 08-12-2021 WED
+      { date: 1638982800000 }, // 09-12-2021 THU
+      { date: 1639069200000 }, // 10-12-2021 FRI
+      { date: 1639155600000 }, // 11-12-2021 SAT
+      { date: 1639242000000 }, // 12-12-2021 SUN
+      { date: 1639328400000 }, // 13-12-2021 MON
+      { date: 1639414800000 }, // 14-12-2021 TUE
+      { date: 1639501200000 }, // 15-12-2021 WED
+      { date: 1639587600000 }, // 16-12-2021 THU
+      { date: 1639674000000 }, // 17-12-2021 FRI
+      { date: 1639760400000 }, // 18-12-2021 SAT
+      { date: 1639846800000 } // 19-12-2021 SUN
+    ],
+    currentDate: { date: 1638896400000 } // // 08-12-2021 WED
   }
 })
 
