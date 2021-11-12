@@ -2,14 +2,14 @@
   <div class="wrapper">
     <div class="d-flex timeline" v-dragscroll>
       <div class="d-flex flex-column align-items-center text-center cursor-pointer date"
-           :class="{selected: setSelectedDateStyle(date)}"
+           :class="{selected: date.getTime() === selectedDate.getTime()}"
            :style="{minWidth: `${dateWidth}px`}"
-           v-for="date in dates" :key="date.day"
+           v-for="date in dates" :key="date"
            @click="selectDate(date)">
         <div class="weekday">
-          {{ getWeekdayAbb(date.weekday) }}
+          {{ getWeekdayAbb(date.getDay()) }}
         </div>
-        <div class="day"> {{ date.day }} </div>
+        <div class="day"> {{ date.getDate() }} </div>
       </div>
     </div>
   </div>
@@ -23,13 +23,13 @@ export default {
   data() {
     return {
       weekdayAbbreviation: {
-        MON: "M",
-        TUE: "T",
-        WED: "W",
-        THU: "T",
-        FRI: "F",
-        SAT: "S",
-        SUN: "U"
+        0: "U",
+        1: "M",
+        2: "T",
+        3: "W",
+        4: "T",
+        5: "F",
+        6: "S"
       },
       monthFull: {
         [1]: "January",
@@ -57,49 +57,36 @@ export default {
     dates() {
       let dates = [];
 
-      for (let week of this.weeksData) {
-        for (let date of week.weekData) {
-          date.weekChronology = week.weekChronology;
-          dates.push(date);
-        }
+      for (let data of this.scheduleData) {
+        dates.push(new Date(data.date));
       }
 
       return dates;
     },
-    selectedWeekChronology() {
-      for (let week of this.weeksData) {
-        if (week.selected === true) {
-          return week.weekChronology;
-        }
-      }
-
-      return null;
-    },
     selectedDate() {
-      for (let date of this.dates) {
-        if (date.selected === true &&
-            date.weekChronology === this.selectedWeekChronology) {
-          return date;
+      let selectedDate = null;
+
+      for(let chronology in this.weeksData) {
+        if (this.weeksData[chronology].isWeekSelected) {
+          selectedDate = this.weeksData[chronology].selectedDate;
         }
       }
 
-      return null;
+      return selectedDate;
     }
   },
   methods: {
-    selectDate(selectedDate) {
-      for (let date of this.dates) {
-        if (date.weekChronology === selectedDate.weekChronology) {
-          date.selected = false;
-        }
-        if (date.day === selectedDate.day &&
-            date.month === selectedDate.month) {
-          date.selected = true;
-        }
-      }
+    selectDate(date) {
+      for (let week in this.weeksData) {
+        this.weeksData[week].isWeekSelected = false;
 
-      for (let week of this.weeksData) {
-        week.selected = week.weekChronology === selectedDate.weekChronology;
+        let firstDate = this.weeksData[week].firstDate;
+        let lastDate = this.weeksData[week].lastDate;
+
+        if (date >= firstDate && date <= lastDate) {
+          this.weeksData[week].isWeekSelected = true;
+          this.weeksData[week].selectedDate = date;
+        }
       }
     },
     getWeekdayAbb(weekday) {
@@ -107,11 +94,6 @@ export default {
     },
     getMonthFull(month) {
       return this.monthFull[month];
-    },
-    setSelectedDateStyle(date) {
-      return (this.selectedDate.day === date.day &&
-              this.selectedDate.month === date.month &&
-              this.selectedDate.weekChronology === date.weekChronology);
     }
   },
   mounted() {
@@ -127,8 +109,10 @@ export default {
     this.resizeObserver.unobserve(timeline);
   },
   setup() {
+    const scheduleData = inject("scheduleData");
     const weeksData = inject("weeksData");
-    return { weeksData };
+
+    return { scheduleData, weeksData };
   }
 }
 </script>

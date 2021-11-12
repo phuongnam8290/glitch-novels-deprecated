@@ -28,6 +28,8 @@ export default {
     const store = useStore();
 
     const scheduleData = reactive(store.state.defaultScheduleData);
+
+    // TODO: Use current date instead of reading from store
     const currentDate = new Date(store.state.currentDate.date);
 
     // 7 days before current day
@@ -39,6 +41,7 @@ export default {
     dateAfter.setDate(dateAfter.getDate() + 7);
 
     let current = createWeekData(currentDate, true);
+    current.selectedDate = currentDate;
     let last = createWeekData(dateBefore, false);
     let next = createWeekData(dateAfter, false);
 
